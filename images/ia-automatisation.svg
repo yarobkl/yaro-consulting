@@ -13,10 +13,21 @@
       <stop offset="50%" stop-color="#b8d4bd" stop-opacity="0.55"/>
       <stop offset="100%" stop-color="#b8d4bd" stop-opacity="0.05"/>
     </linearGradient>
+    <style>
+      @keyframes tw { 0%,100% { opacity: .45 } 50% { opacity: 1 } }
+      @keyframes br { 0%,100% { opacity: .08 } 50% { opacity: .4 } }
+      @keyframes haze { 0%,100% { opacity: .85 } 50% { opacity: 1 } }
+      .n { animation: tw 3.6s ease-in-out infinite; }
+      .ring { animation: br 4.5s ease-in-out infinite; }
+      #glowLayer { animation: haze 6s ease-in-out infinite; transform-origin: 500px 280px; }
+      @media (prefers-reduced-motion: reduce) {
+        .n, .ring, #glowLayer { animation: none; }
+      }
+    </style>
   </defs>
 
   <rect width="1000" height="666" fill="url(#bg)"/>
-  <rect width="1000" height="666" fill="url(#glow)"/>
+  <rect id="glowLayer" width="1000" height="666" fill="url(#glow)"/>
 
   <!-- faint grid -->
   <g stroke="#7fa88a" stroke-opacity="0.06" stroke-width="1">
@@ -32,41 +43,82 @@
     <line x1="833" y1="0" x2="833" y2="666"/>
   </g>
 
-  <!-- network connections -->
-  <g stroke="url(#lineFade)" stroke-width="1.4" fill="none">
-    <path d="M120,470 L300,300 L500,360 L690,210 L860,260"/>
-    <path d="M300,300 L420,150"/>
-    <path d="M500,360 L520,520"/>
-    <path d="M690,210 L760,90"/>
-    <path d="M860,260 L920,410"/>
-    <path d="M120,470 L210,560"/>
-  </g>
-  <g stroke="#b8d4bd" stroke-opacity="0.18" stroke-width="1">
+  <!-- secondary connections (subtle) -->
+  <g stroke="#b8d4bd" stroke-opacity="0.18" stroke-width="1" fill="none">
     <path d="M210,560 L420,150"/>
     <path d="M520,520 L760,90"/>
     <path d="M300,300 L860,260"/>
   </g>
 
-  <!-- nodes -->
+  <!-- network connections : flux de données qui circule le long des fils -->
+  <g stroke="url(#lineFade)" stroke-width="1.4" fill="none" stroke-dasharray="5 13">
+    <path id="backbone" d="M120,470 L300,300 L500,360 L690,210 L860,260">
+      <animate attributeName="stroke-dashoffset" values="0;-180" dur="4.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M300,300 L420,150">
+      <animate attributeName="stroke-dashoffset" values="0;-90" dur="3.4s" repeatCount="indefinite"/>
+    </path>
+    <path d="M500,360 L520,520">
+      <animate attributeName="stroke-dashoffset" values="0;-90" dur="3.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M690,210 L760,90">
+      <animate attributeName="stroke-dashoffset" values="0;-90" dur="3.1s" repeatCount="indefinite"/>
+    </path>
+    <path d="M860,260 L920,410">
+      <animate attributeName="stroke-dashoffset" values="0;-90" dur="3.6s" repeatCount="indefinite"/>
+    </path>
+    <path d="M120,470 L210,560">
+      <animate attributeName="stroke-dashoffset" values="0;-90" dur="2.9s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- paquets lumineux qui parcourent l'épine dorsale -->
+  <circle r="3.6" fill="#e9f2eb">
+    <animateMotion dur="5.5s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+      <mpath href="#backbone"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="5.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="2.6" fill="#b8d4bd">
+    <animateMotion dur="5.5s" begin="2.75s" repeatCount="indefinite" rotate="auto">
+      <mpath href="#backbone"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" begin="2.75s" dur="5.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- nodes scintillants -->
   <g fill="#7fa88a">
-    <circle cx="120" cy="470" r="5"/>
-    <circle cx="300" cy="300" r="7"/>
-    <circle cx="500" cy="360" r="9"/>
-    <circle cx="690" cy="210" r="6"/>
-    <circle cx="860" cy="260" r="6"/>
-    <circle cx="420" cy="150" r="4"/>
-    <circle cx="520" cy="520" r="4"/>
-    <circle cx="760" cy="90" r="4"/>
-    <circle cx="920" cy="410" r="4"/>
-    <circle cx="210" cy="560" r="4"/>
+    <circle class="n" style="animation-delay:-0.2s" cx="120" cy="470" r="5"/>
+    <circle class="n" style="animation-delay:-1.4s" cx="300" cy="300" r="7"/>
+    <circle class="n" style="animation-delay:-0.7s" cx="500" cy="360" r="9"/>
+    <circle class="n" style="animation-delay:-2.1s" cx="690" cy="210" r="6"/>
+    <circle class="n" style="animation-delay:-1.0s" cx="860" cy="260" r="6"/>
+    <circle class="n" style="animation-delay:-2.6s" cx="420" cy="150" r="4"/>
+    <circle class="n" style="animation-delay:-0.4s" cx="520" cy="520" r="4"/>
+    <circle class="n" style="animation-delay:-1.8s" cx="760" cy="90" r="4"/>
+    <circle class="n" style="animation-delay:-3.0s" cx="920" cy="410" r="4"/>
+    <circle class="n" style="animation-delay:-2.3s" cx="210" cy="560" r="4"/>
   </g>
   <g fill="#e9f2eb">
     <circle cx="500" cy="360" r="3.5"/>
-    <circle cx="300" cy="300" r="2.5"/>
-    <circle cx="690" cy="210" r="2.5"/>
+    <circle class="n" style="animation-delay:-1.2s" cx="300" cy="300" r="2.5"/>
+    <circle class="n" style="animation-delay:-2.0s" cx="690" cy="210" r="2.5"/>
   </g>
 
-  <!-- center halo ring -->
-  <circle cx="500" cy="360" r="40" fill="none" stroke="#b8d4bd" stroke-opacity="0.25" stroke-width="1"/>
-  <circle cx="500" cy="360" r="64" fill="none" stroke="#b8d4bd" stroke-opacity="0.12" stroke-width="1"/>
+  <!-- nœud central : léger battement -->
+  <circle cx="500" cy="360" r="9" fill="#e9f2eb" opacity="0.9">
+    <animate attributeName="r" values="9;11;9" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- center halo : pings radar -->
+  <circle class="ring" cx="500" cy="360" r="40" fill="none" stroke="#b8d4bd" stroke-width="1"/>
+  <circle class="ring" cx="500" cy="360" r="64" fill="none" stroke="#b8d4bd" stroke-width="1" style="animation-delay:-2.2s"/>
+  <circle cx="500" cy="360" r="40" fill="none" stroke="#b8d4bd" stroke-width="1.2">
+    <animate attributeName="r" values="40;110" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-opacity" values="0.45;0" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="500" cy="360" r="40" fill="none" stroke="#7fa88a" stroke-width="1.2">
+    <animate attributeName="r" values="40;110" begin="2s" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-opacity" values="0.4;0" begin="2s" dur="4s" repeatCount="indefinite"/>
+  </circle>
 </svg>
