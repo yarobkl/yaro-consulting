@@ -193,6 +193,27 @@
             transform: translateY(20px);
             transition: color 0.3s, transform 0.6s var(--ease), opacity 0.6s ease;
         }
+        .menu-close {
+            position: absolute;
+            top: 1.4rem;
+            right: 1.4rem;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            color: var(--cream);
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.4s var(--ease) 0.35s, border-color 0.3s ease, background 0.3s ease;
+        }
+        .fullscreen-menu.open .menu-close { opacity: 1; }
+        .menu-close:active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+        .menu-close svg { width: 22px; height: 22px; }
+
         .fullscreen-menu.open > a:not(.menu-cta) { opacity: 1; transform: translateY(0); }
         .fullscreen-menu.open > a:nth-child(1) { transition-delay: 0.25s; }
         .fullscreen-menu.open > a:nth-child(2) { transition-delay: 0.33s; }
@@ -1246,6 +1267,9 @@
 
     <!-- FULLSCREEN MENU -->
     <div class="fullscreen-menu" id="fullMenu">
+        <button class="menu-close" id="menuClose" aria-label="Fermer le menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
         <a href="#vision">Vision</a>
         <a href="#expertises">Expertises</a>
         <a href="#methode">Méthode</a>
@@ -1642,7 +1666,11 @@
             document.body.style.overflow = open ? 'hidden' : '';
         }
         menuBtn.addEventListener('click', () => toggleMenu());
+        document.getElementById('menuClose').addEventListener('click', () => toggleMenu(false));
         fullMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && fullMenu.classList.contains('open')) toggleMenu(false);
+        });
 
         // Scroll reveal
         const io = new IntersectionObserver((entries) => {
