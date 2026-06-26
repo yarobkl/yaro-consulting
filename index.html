@@ -64,13 +64,16 @@
             --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
         }
 
-        html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+        html { font-size: 16px; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
 
         body {
             font-family: 'DM Sans', sans-serif;
             background: var(--ink);
             color: var(--cream);
             overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -333,6 +336,11 @@
             padding: 6rem 1.5rem 2.25rem;
             position: relative;
             overflow: hidden;
+        }
+        /* Anciens mobiles sans support svh : hauteur stable pilotée en JS
+           (ne change pas quand la barre d'adresse apparaît/disparaît) */
+        @supports not (height: 100svh) {
+            .hero { min-height: calc(var(--vh, 1vh) * 100); }
         }
         .hero-bg {
             position: absolute;
@@ -1808,6 +1816,20 @@
     </button>
 
     <script>
+        // ===== Hauteur de viewport stable (anti "saut" de la barre d'adresse mobile) =====
+        (function stableViewportHeight() {
+            const root = document.documentElement;
+            let lastW = window.innerWidth;
+            function setVH() { root.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px'); }
+            setVH();
+            // On ne recalcule que si la LARGEUR change (rotation, vrai redimensionnement),
+            // pas quand seule la hauteur bouge à cause de la barre d'adresse qui se masque.
+            window.addEventListener('resize', () => {
+                if (window.innerWidth !== lastW) { lastW = window.innerWidth; setVH(); }
+            }, { passive: true });
+            window.addEventListener('orientationchange', () => setTimeout(setVH, 250));
+        })();
+
         // ===== Internationalisation (FR / EN / ES) =====
         const I18N = {
             en: {
