@@ -175,6 +175,7 @@
         .menu-btn {
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 5px;
             cursor: pointer;
             background: none;
@@ -182,7 +183,7 @@
             z-index: 200;
             padding: 4px;
         }
-        .menu-btn span {
+        .menu-btn .menu-bar {
             display: block;
             width: 26px;
             height: 1.5px;
@@ -190,9 +191,18 @@
             transition: transform 0.5s var(--ease), opacity 0.3s ease, width 0.4s var(--ease);
             transform-origin: center;
         }
-        .menu-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-        .menu-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
-        .menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+        .menu-label {
+            font-size: 0.5rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--cream);
+            margin-top: 3px;
+            transition: opacity 0.3s ease;
+        }
+        .menu-btn.open .menu-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .menu-btn.open .menu-bar:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+        .menu-btn.open .menu-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+        .menu-btn.open .menu-label { opacity: 0; }
 
         /* Full-screen menu */
         .fullscreen-menu {
@@ -1308,7 +1318,8 @@
         <div class="nav-actions">
             <button class="lang-shortcut" id="langShortcut" type="button" aria-label="Changer de langue">FR</button>
             <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
-                <span></span><span></span><span></span>
+                <span class="menu-bar"></span><span class="menu-bar"></span><span class="menu-bar"></span>
+                <span class="menu-label" data-i18n="nav.menuLabel">Menu</span>
             </button>
         </div>
     </nav>
@@ -1690,7 +1701,7 @@
             en: {
                 'meta.title': 'Yaro Consulting | Rodrin Bakala Mouengue · Strategy & Digital Transformation',
                 'meta.desc': 'Yaro Consulting supports companies, institutions and organizations in their strategy, digital transformation and operational performance projects.',
-                'nav.vision': 'Vision', 'nav.expertises': 'Expertise', 'nav.methode': 'Method', 'nav.contact': 'Contact', 'nav.cta': 'Start a project',
+                'nav.vision': 'Vision', 'nav.expertises': 'Expertise', 'nav.methode': 'Method', 'nav.contact': 'Contact', 'nav.cta': 'Start a project', 'nav.menuLabel': 'Menu',
                 'hero.eyebrow': 'Consultant · Strategy · Digital Transformation',
                 'hero.title1': 'Turning ideas', 'hero.title2': 'into <em>systems</em>', 'hero.title3': 'that perform.',
                 'hero.sub': 'Rodrin Bakala Mouengue and Yaro Consulting support companies, institutions and organizations in their strategy and digital transformation projects, from diagnosis to deployment.',
@@ -1758,7 +1769,7 @@
             es: {
                 'meta.title': 'Yaro Consulting | Rodrin Bakala Mouengue · Estrategia y Transformación Digital',
                 'meta.desc': 'Yaro Consulting acompaña a empresas, instituciones y organizaciones en sus proyectos de estrategia, transformación digital y rendimiento operativo.',
-                'nav.vision': 'Visión', 'nav.expertises': 'Especialidades', 'nav.methode': 'Método', 'nav.contact': 'Contacto', 'nav.cta': 'Iniciar un proyecto',
+                'nav.vision': 'Visión', 'nav.expertises': 'Especialidades', 'nav.methode': 'Método', 'nav.contact': 'Contacto', 'nav.cta': 'Iniciar un proyecto', 'nav.menuLabel': 'Menú',
                 'hero.eyebrow': 'Consultor · Estrategia · Transformación Digital',
                 'hero.title1': 'Transformar las ideas', 'hero.title2': 'en <em>sistemas</em>', 'hero.title3': 'que rinden.',
                 'hero.sub': 'Rodrin Bakala Mouengue y Yaro Consulting acompañan a empresas, instituciones y organizaciones en sus proyectos de estrategia y transformación digital, del diagnóstico al despliegue.',
