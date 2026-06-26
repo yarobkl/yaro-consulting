@@ -633,13 +633,25 @@
             color: var(--gold);
             margin-bottom: 0.85rem;
         }
-        .project-note {
-            font-size: 0.78rem;
-            color: var(--muted);
-            font-style: italic;
-            margin-top: 2.5rem;
-            text-align: center;
+        a.project-card {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
         }
+        a.project-card .service-list { margin-bottom: 0; }
+        .project-link {
+            margin-top: auto;
+            padding-top: 1.4rem;
+            color: var(--gold);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            transition: gap 0.3s var(--ease);
+        }
+        a.project-card:hover .project-link { gap: 0.8rem; }
         #solutions .service-card { padding-bottom: 2rem; }
         .services-header {
             display: flex;
@@ -1569,44 +1581,52 @@
     <section id="realisations">
         <div class="services-header">
             <h2 class="services-title reveal" data-i18n="real.title">Projets <em>réalisés</em></h2>
-            <p class="section-label reveal" data-i18n="real.label">Des systèmes conçus, déployés et utilisés</p>
+            <p class="section-label reveal" data-i18n="real.label">Des plateformes et sites en ligne</p>
         </div>
         <p class="about-body reveal" data-i18n="real.body">
-            Voici un aperçu de réalisations menées pour des entreprises, institutions et organisations. Par respect de la confidentialité de nos clients, elles sont présentées par type de solution et par finalité, sans nom de projet.
+            Quelques réalisations conçues, développées et déployées. Découvrez-les directement en ligne.
         </p>
         <div class="services-grid">
-            <div class="service-card reveal">
-                <p class="service-cat" data-i18n="real1.cat">Institution publique</p>
-                <h3 class="service-name" data-i18n="real1.name">Plateforme citoyenne</h3>
-                <p class="service-desc" data-i18n="real1.desc">Un espace numérique fluidifiant la relation entre une institution et les citoyens : démarches, information et échanges centralisés.</p>
-            </div>
-            <div class="service-card reveal reveal-delay-1">
-                <p class="service-cat" data-i18n="real2.cat">Emploi & recrutement</p>
+            <a class="service-card project-card reveal" href="https://web-production-fcf26.up.railway.app" target="_blank" rel="noopener">
+                <p class="service-cat" data-i18n="real1.cat">Plateforme citoyenne</p>
+                <h3 class="service-name" data-i18n="real1.name">Plateforme citoyenne &amp; institutionnelle</h3>
+                <ul class="service-list">
+                    <li data-i18n="real1.f1">Prise de rendez-vous en ligne</li>
+                    <li data-i18n="real1.f2">Dépôt et suivi des demandes par référence</li>
+                    <li data-i18n="real1.f3">Formulaires contact &amp; presse</li>
+                    <li data-i18n="real1.f4">Multilingue &amp; assistant virtuel</li>
+                </ul>
+                <span class="project-link"><span data-i18n="real.cta">Voir le site</span>
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+            </a>
+            <a class="service-card project-card reveal reveal-delay-1" href="https://site-emploie-congo.vercel.app" target="_blank" rel="noopener">
+                <p class="service-cat" data-i18n="real2.cat">Emploi &amp; recrutement</p>
                 <h3 class="service-name" data-i18n="real2.name">Plateforme d'emploi</h3>
-                <p class="service-desc" data-i18n="real2.desc">Un outil de mise en relation entre candidats et recruteurs, pensé pour la réalité du marché local et l'accès au plus grand nombre.</p>
-            </div>
-            <div class="service-card reveal reveal-delay-2">
-                <p class="service-cat" data-i18n="real3.cat">Savoir & patrimoine</p>
-                <h3 class="service-name" data-i18n="real3.name">Bibliothèque numérique</h3>
-                <p class="service-desc" data-i18n="real3.desc">Une plateforme donnant accès à un fonds documentaire structuré, pour préserver et diffuser le savoir auprès d'un large public.</p>
-            </div>
-            <div class="service-card reveal">
-                <p class="service-cat" data-i18n="real4.cat">Organisation & données</p>
-                <h3 class="service-name" data-i18n="real4.name">Système d'archivage intelligent</h3>
-                <p class="service-desc" data-i18n="real4.desc">Un système qui organise, sécurise et rend exploitable une masse d'informations stratégiques, avec une recherche rapide et fiable.</p>
-            </div>
-            <div class="service-card reveal reveal-delay-1">
-                <p class="service-cat" data-i18n="real5.cat">Entreprise & commerce</p>
-                <h3 class="service-name" data-i18n="real5.name">CRM & pilotage commercial</h3>
-                <p class="service-desc" data-i18n="real5.desc">Une solution centralisant la relation client et fiabilisant le suivi commercial, du premier contact jusqu'à la fidélisation.</p>
-            </div>
-            <div class="service-card reveal reveal-delay-2">
-                <p class="service-cat" data-i18n="real6.cat">Direction & décision</p>
-                <h3 class="service-name" data-i18n="real6.name">Tableau de bord décisionnel</h3>
-                <p class="service-desc" data-i18n="real6.desc">Une vue claire et chiffrée de l'activité, réunissant les bons indicateurs pour éclairer les décisions des dirigeants.</p>
-            </div>
+                <ul class="service-list">
+                    <li data-i18n="real2.f1">Publication d'offres d'emploi</li>
+                    <li data-i18n="real2.f2">Candidatures en ligne</li>
+                    <li data-i18n="real2.f3">Recherche par filtres</li>
+                    <li data-i18n="real2.f4">Mise en relation recruteurs / candidats</li>
+                </ul>
+                <span class="project-link"><span data-i18n="real.cta">Voir le site</span>
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+            </a>
+            <a class="service-card project-card reveal reveal-delay-2" href="https://gaspardnz.style" target="_blank" rel="noopener">
+                <p class="service-cat" data-i18n="real3.cat">Image &amp; événementiel</p>
+                <h3 class="service-name" data-i18n="real3.name">Site vitrine premium</h3>
+                <ul class="service-list">
+                    <li data-i18n="real3.f1">Présentation des prestations</li>
+                    <li data-i18n="real3.f2">Identité visuelle soignée</li>
+                    <li data-i18n="real3.f3">Expérience mobile-first</li>
+                    <li data-i18n="real3.f4">Prise de contact directe</li>
+                </ul>
+                <span class="project-link"><span data-i18n="real.cta">Voir le site</span>
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+            </a>
         </div>
-        <p class="project-note reveal" data-i18n="real.note">Détails et références complètes communiqués sur demande, dans le respect de la confidentialité.</p>
     </section>
 
     <!-- MÉTHODE -->
@@ -1764,15 +1784,15 @@
                 'meta.desc': 'Yaro Consulting supports companies, institutions and organizations in their strategy, digital transformation and operational performance projects.',
                 'nav.vision': 'Vision', 'nav.expertises': 'Expertise', 'nav.realisations': 'Projects', 'nav.methode': 'Method', 'nav.contact': 'Contact', 'nav.cta': 'Start a project', 'nav.menuLabel': 'Menu',
                 'real.title': 'Completed <em>projects</em>',
-                'real.label': 'Systems designed, deployed and used',
-                'real.body': 'Here is an overview of work delivered for companies, institutions and organizations. Out of respect for our clients’ confidentiality, they are presented by type of solution and purpose, without project names.',
-                'real1.cat': 'Public institution', 'real1.name': 'Citizen platform', 'real1.desc': 'A digital space that streamlines the relationship between an institution and citizens: procedures, information and exchanges in one place.',
-                'real2.cat': 'Employment & recruitment', 'real2.name': 'Jobs platform', 'real2.desc': 'A tool connecting candidates and recruiters, designed for the reality of the local market and access for as many people as possible.',
-                'real3.cat': 'Knowledge & heritage', 'real3.name': 'Digital library', 'real3.desc': 'A platform giving access to a structured collection, to preserve and share knowledge with a wide audience.',
-                'real4.cat': 'Organization & data', 'real4.name': 'Smart archiving system', 'real4.desc': 'A system that organizes, secures and makes a mass of strategic information usable, with fast and reliable search.',
-                'real5.cat': 'Business & sales', 'real5.name': 'CRM & sales management', 'real5.desc': 'A solution that centralizes the customer relationship and makes sales tracking reliable, from first contact to loyalty.',
-                'real6.cat': 'Leadership & decisions', 'real6.name': 'Decision dashboard', 'real6.desc': 'A clear, data-driven view of the business, bringing together the right indicators to inform leaders’ decisions.',
-                'real.note': 'Full details and references available on request, in line with confidentiality.',
+                'real.label': 'Live platforms and websites',
+                'real.body': 'A few projects designed, built and deployed. Explore them directly online.',
+                'real.cta': 'Visit site',
+                'real1.cat': 'Citizen platform', 'real1.name': 'Citizen &amp; institutional platform',
+                'real1.f1': 'Online appointment booking', 'real1.f2': 'Request submission &amp; tracking by reference', 'real1.f3': 'Contact &amp; press forms', 'real1.f4': 'Multilingual &amp; virtual assistant',
+                'real2.cat': 'Employment &amp; recruitment', 'real2.name': 'Jobs platform',
+                'real2.f1': 'Job posting', 'real2.f2': 'Online applications', 'real2.f3': 'Filtered search', 'real2.f4': 'Recruiter / candidate matching',
+                'real3.cat': 'Image &amp; events', 'real3.name': 'Premium showcase website',
+                'real3.f1': 'Services presentation', 'real3.f2': 'Refined visual identity', 'real3.f3': 'Mobile-first experience', 'real3.f4': 'Direct contact',
                 'hero.eyebrow': 'Consultant · Strategy · Digital Transformation',
                 'hero.title1': 'Turning ideas', 'hero.title2': 'into <em>systems</em>', 'hero.title3': 'that perform.',
                 'hero.sub': 'Rodrin Bakala Mouengue and Yaro Consulting support companies, institutions and organizations in their strategy and digital transformation projects, from diagnosis to deployment.',
@@ -1842,15 +1862,15 @@
                 'meta.desc': 'Yaro Consulting acompaña a empresas, instituciones y organizaciones en sus proyectos de estrategia, transformación digital y rendimiento operativo.',
                 'nav.vision': 'Visión', 'nav.expertises': 'Especialidades', 'nav.realisations': 'Proyectos', 'nav.methode': 'Método', 'nav.contact': 'Contacto', 'nav.cta': 'Iniciar un proyecto', 'nav.menuLabel': 'Menú',
                 'real.title': 'Proyectos <em>realizados</em>',
-                'real.label': 'Sistemas diseñados, desplegados y utilizados',
-                'real.body': 'Aquí tiene una muestra de proyectos realizados para empresas, instituciones y organizaciones. Por respeto a la confidencialidad de nuestros clientes, se presentan por tipo de solución y finalidad, sin nombre de proyecto.',
-                'real1.cat': 'Institución pública', 'real1.name': 'Plataforma ciudadana', 'real1.desc': 'Un espacio digital que agiliza la relación entre una institución y los ciudadanos: trámites, información e intercambios centralizados.',
-                'real2.cat': 'Empleo y reclutamiento', 'real2.name': 'Plataforma de empleo', 'real2.desc': 'Una herramienta que conecta a candidatos y reclutadores, pensada para la realidad del mercado local y el acceso del mayor número de personas.',
-                'real3.cat': 'Saber y patrimonio', 'real3.name': 'Biblioteca digital', 'real3.desc': 'Una plataforma que da acceso a un fondo documental estructurado, para preservar y difundir el saber entre un amplio público.',
-                'real4.cat': 'Organización y datos', 'real4.name': 'Sistema de archivo inteligente', 'real4.desc': 'Un sistema que organiza, asegura y hace explotable una gran cantidad de información estratégica, con una búsqueda rápida y fiable.',
-                'real5.cat': 'Empresa y comercio', 'real5.name': 'CRM y gestión comercial', 'real5.desc': 'Una solución que centraliza la relación con el cliente y fiabiliza el seguimiento comercial, del primer contacto hasta la fidelización.',
-                'real6.cat': 'Dirección y decisión', 'real6.name': 'Cuadro de mando decisional', 'real6.desc': 'Una visión clara y cuantificada de la actividad, que reúne los indicadores adecuados para orientar las decisiones de los directivos.',
-                'real.note': 'Detalles y referencias completas disponibles a petición, respetando la confidencialidad.',
+                'real.label': 'Plataformas y sitios en línea',
+                'real.body': 'Algunos proyectos diseñados, desarrollados y desplegados. Descúbralos directamente en línea.',
+                'real.cta': 'Ver el sitio',
+                'real1.cat': 'Plataforma ciudadana', 'real1.name': 'Plataforma ciudadana e institucional',
+                'real1.f1': 'Reserva de citas en línea', 'real1.f2': 'Envío y seguimiento de solicitudes por referencia', 'real1.f3': 'Formularios de contacto y prensa', 'real1.f4': 'Multilingüe y asistente virtual',
+                'real2.cat': 'Empleo y reclutamiento', 'real2.name': 'Plataforma de empleo',
+                'real2.f1': 'Publicación de ofertas de empleo', 'real2.f2': 'Candidaturas en línea', 'real2.f3': 'Búsqueda con filtros', 'real2.f4': 'Conexión entre reclutadores y candidatos',
+                'real3.cat': 'Imagen y eventos', 'real3.name': 'Sitio escaparate premium',
+                'real3.f1': 'Presentación de servicios', 'real3.f2': 'Identidad visual cuidada', 'real3.f3': 'Experiencia mobile-first', 'real3.f4': 'Contacto directo',
                 'hero.eyebrow': 'Consultor · Estrategia · Transformación Digital',
                 'hero.title1': 'Transformar las ideas', 'hero.title2': 'en <em>sistemas</em>', 'hero.title3': 'que rinden.',
                 'hero.sub': 'Rodrin Bakala Mouengue y Yaro Consulting acompañan a empresas, instituciones y organizaciones en sus proyectos de estrategia y transformación digital, del diagnóstico al despliegue.',
