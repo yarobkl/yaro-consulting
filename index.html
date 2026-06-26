@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yaro Consulting's | Rodrin Bakala — Stratégie, IA & Transformation Digitale</title>
+    <title>Yaro Consulting's | Rodrin Bakala · Stratégie, IA & Transformation Digitale</title>
     <meta name="description" content="Yaro Consulting's accompagne entreprises, institutions et organisations dans leurs projets de stratégie, transformation digitale, intelligence artificielle et performance opérationnelle.">
     <meta name="author" content="Rodrin Bakala">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
            BASE = MOBILE FIRST
            ─────────────────────────────── */
 
-        /* Custom cursor — hidden by default, only enabled on fine pointers */
+        /* Custom cursor - hidden by default, only enabled on fine pointers */
         .cursor, .cursor-ring { display: none; }
 
         /* Noise overlay */
@@ -248,34 +248,16 @@
             animation: heroIntro 2s 0.2s var(--ease) forwards,
                        kenBurns 28s ease-in-out 2.2s infinite alternate;
         }
-        /* Grain animé très discret */
+        /* Grain statique très discret (texture, sans recalcul continu) */
         .hero-grain {
-            position: absolute;
-            inset: -50%;
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.06;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            background-size: 180px 180px;
-            animation: grainShift 6s steps(6) infinite;
-            mix-blend-mode: overlay;
-        }
-        /* Reflet doré qui balaye lentement */
-        .hero-sheen {
             position: absolute;
             inset: 0;
             z-index: 1;
             pointer-events: none;
-            background: linear-gradient(115deg,
-                transparent 35%,
-                rgba(184,212,189,0.10) 48%,
-                rgba(184,212,189,0.18) 50%,
-                rgba(184,212,189,0.10) 52%,
-                transparent 65%);
-            background-size: 280% 280%;
-            background-position: 120% 120%;
-            animation: sheen 11s ease-in-out 3s infinite;
-            mix-blend-mode: screen;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 180px 180px;
+            mix-blend-mode: overlay;
         }
         .hero-bg::after {
             content: '';
@@ -349,45 +331,13 @@
             padding: 1rem 2rem;
             text-decoration: none;
             position: relative;
-            transition: color 0.4s var(--ease);
+            transition: background 0.4s var(--ease), color 0.4s var(--ease);
             width: 100%;
             justify-content: center;
-            isolation: isolate;
         }
-        /* Halo doré conique qui tourne en boucle (bordure lumineuse) */
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 180%;
-            aspect-ratio: 1;
-            z-index: -2;
-            background: conic-gradient(
-                from 0deg,
-                transparent 0deg,
-                rgba(184,212,189,0.08) 55deg,
-                rgba(184,212,189,0.55) 85deg,
-                rgba(214,235,217,0.7) 90deg,
-                rgba(184,212,189,0.55) 95deg,
-                rgba(184,212,189,0.08) 125deg,
-                transparent 180deg,
-                transparent 360deg
-            );
-            animation: goldSpin 5s linear infinite;
-        }
-        /* Masque intérieur : ne laisse briller qu'un fin contour (~1.5px) */
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            inset: 1.5px;
-            z-index: -1;
-            background: var(--gold);
-            transition: background 0.4s var(--ease);
-        }
-        .btn-primary:active::after { background: var(--gold-light); }
+        .btn-primary:active { background: var(--gold-light); }
         @media (hover: hover) {
-            .btn-primary:hover::after { background: var(--gold-light); }
+            .btn-primary:hover { background: var(--gold-light); }
         }
         .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
         .btn-primary svg { transition: transform 0.4s var(--ease); }
@@ -862,28 +812,12 @@
             0%   { transform: scale(1.06) translate(calc(var(--px,0) * -14px), calc(var(--py,0) * -14px)); }
             100% { transform: scale(1.13) translate(calc(var(--px,0) * -14px - 10px), calc(var(--py,0) * -14px - 8px)); }
         }
-        @keyframes grainShift {
-            0%   { transform: translate(0, 0); }
-            20%  { transform: translate(-4%, 3%); }
-            40%  { transform: translate(3%, -3%); }
-            60%  { transform: translate(-3%, -2%); }
-            80%  { transform: translate(2%, 4%); }
-            100% { transform: translate(0, 0); }
-        }
-        @keyframes sheen {
-            0%, 18%   { background-position: 120% 120%; }
-            55%, 100% { background-position: -20% -20%; }
-        }
-        @keyframes goldSpin {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
         @keyframes marquee {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
 
-        /* Reveal on scroll — refined cascade */
+        /* Reveal on scroll - refined cascade */
         .reveal {
             opacity: 0;
             transform: translateY(36px);
@@ -896,7 +830,7 @@
         .reveal-delay-3 { transition-delay: 0.24s; }
 
         /* ───────────────────────────────
-           ≥ 640px — TABLETTE
+           ≥ 640px - TABLETTE
            ─────────────────────────────── */
         @media (min-width: 640px) {
             .hero-actions { flex-direction: row; align-items: center; gap: 2rem; }
@@ -909,7 +843,7 @@
         }
 
         /* ───────────────────────────────
-           ≥ 1024px — DESKTOP
+           ≥ 1024px - DESKTOP
            ─────────────────────────────── */
         @media (min-width: 1024px) {
             html { font-size: 16px; }
@@ -1011,9 +945,11 @@
                 position: relative;
                 grid-column: 2;
                 inset: auto;
+                overflow: hidden;
             }
             .hero-bg.loaded img { opacity: 0.9; }
-            .hero-bg img { object-position: 50% 18%; }
+            /* Sortir l'image du flux : la hauteur du hero reste pilotée par 100vh */
+            .hero-bg img { position: absolute; inset: 0; object-position: 50% 28%; }
             .hero-bg::after {
                 background: linear-gradient(to right, var(--ink) 0%, rgba(10,20,16,0.15) 35%, transparent 60%);
             }
@@ -1127,7 +1063,6 @@
         <div class="hero-bg" id="heroBg">
             <img src="images/portrait.jpg" alt="Portrait de Rodrin Bakala, fondateur de Yaro Consulting's" id="heroImg">
             <div class="hero-grain"></div>
-            <div class="hero-sheen"></div>
         </div>
         <div class="hero-content">
             <p class="hero-eyebrow">Stratégie · Intelligence Artificielle · Transformation</p>
@@ -1137,7 +1072,7 @@
                 <span class="line"><span>qui performent.</span></span>
             </h1>
             <p class="hero-sub">
-                Rodrin Bakala et Yaro Consulting's accompagnent entreprises, institutions et organisations dans leurs projets de stratégie, de transformation digitale et d'intelligence artificielle — du diagnostic jusqu'au déploiement.
+                Rodrin Bakala et Yaro Consulting's accompagnent entreprises, institutions et organisations dans leurs projets de stratégie, de transformation digitale et d'intelligence artificielle, du diagnostic jusqu'au déploiement.
             </p>
             <div class="hero-actions">
                 <a href="#expertises" class="btn-primary">
@@ -1195,7 +1130,7 @@
         <div class="about-right">
             <h2 class="reveal">Rodrin Bakala, un profil <em>hybride</em>.</h2>
             <p class="about-body reveal reveal-delay-1">
-                Avant de conseiller, j'ai dirigé sur le terrain : management opérationnel, commerce, distribution, logistique, pilotage d'équipes. Cette expérience m'a appris ce qu'aucune méthode ne peut enseigner — la performance d'une organisation se joue dans le détail de son exécution.
+                Avant de conseiller, j'ai dirigé sur le terrain : management opérationnel, commerce, distribution, logistique, pilotage d'équipes. Cette expérience m'a appris ce qu'aucune méthode ne peut enseigner : la performance d'une organisation se joue dans le détail de son exécution.
             </p>
             <p class="about-body reveal reveal-delay-1">
                 J'ai porté cette exigence vers la stratégie, la transformation digitale et l'intelligence artificielle, en concevant des solutions numériques répondant à des besoins réels. Cette double culture, terrain et digitale, est au cœur de la façon dont j'accompagne aujourd'hui les entreprises, institutions et organisations.
@@ -1287,7 +1222,7 @@
             <p class="section-label reveal">Sans nom de projet, une seule logique : l'utilité</p>
         </div>
         <p class="about-body reveal">
-            Nous ne livrons pas des sites vitrines. Nous concevons des systèmes qui structurent une activité, fiabilisent une relation client ou éclairent une décision — pour des entreprises, institutions et organisations africaines en transformation.
+            Nous ne livrons pas des sites vitrines. Nous concevons des systèmes qui structurent une activité, fiabilisent une relation client ou éclairent une décision, pour des entreprises, institutions et organisations africaines en transformation.
         </p>
         <div class="services-grid">
             <div class="service-card reveal">
@@ -1453,7 +1388,7 @@
     </footer>
 
     <script>
-        // Custom cursor (desktop only — pointer: fine)
+        // Custom cursor (desktop only - pointer: fine)
         if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
             const cursor = document.getElementById('cursor');
             const ring = document.getElementById('cursorRing');
@@ -1541,7 +1476,7 @@
             // Filet de sécurité : afficher quoi qu'il arrive après 2,5s
             setTimeout(() => heroBg.classList.add('loaded'), 2500);
 
-            // Parallaxe souris (desktop, pointeur fin) — très subtile
+            // Parallaxe souris (desktop, pointeur fin) - très subtile
             if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
                 let tx = 0, ty = 0, cxv = 0, cyv = 0;
                 window.addEventListener('mousemove', (e) => {
