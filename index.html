@@ -154,6 +154,23 @@
         .menu-lang { margin-top: 1.75rem; }
         .menu-lang .lang-switch button { font-size: 0.85rem; padding: 0.4rem 0.6rem 0.4rem 0; }
 
+        /* Raccourci de langue (barre mobile) */
+        .nav-actions { display: flex; align-items: center; gap: 0.9rem; }
+        .lang-shortcut {
+            font-family: inherit;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            color: var(--gold);
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.32rem 0.6rem;
+            cursor: pointer;
+            transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+        }
+        .lang-shortcut:active { border-color: var(--gold); }
+
         /* Mobile menu button */
         .menu-btn {
             display: flex;
@@ -984,6 +1001,7 @@
                 list-style: none;
             }
             .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+            .lang-shortcut { display: none; }
             .nav-links a {
                 font-size: 0.72rem;
                 letter-spacing: 0.15em;
@@ -1287,9 +1305,12 @@
             </div>
             <a href="#contact" class="nav-cta" data-i18n="nav.cta">Démarrer un projet</a>
         </div>
-        <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
+        <div class="nav-actions">
+            <button class="lang-shortcut" id="langShortcut" type="button" aria-label="Changer de langue">FR</button>
+            <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </nav>
 
     <!-- FULLSCREEN MENU -->
@@ -1872,12 +1893,22 @@
             document.title = getStr(LANG, 'meta.title') || document.title;
             if (_metaDesc) _metaDesc.setAttribute('content', getStr(LANG, 'meta.desc') || '');
             document.querySelectorAll('.lang-switch button').forEach(b => b.classList.toggle('active', b.dataset.lang === LANG));
+            const ls = document.getElementById('langShortcut');
+            if (ls) ls.textContent = LANG.toUpperCase();
             document.dispatchEvent(new CustomEvent('langchange', { detail: LANG }));
         }
 
+        const LANG_ORDER = ['fr', 'en', 'es'];
         document.querySelectorAll('.lang-switch button').forEach(b => {
             b.addEventListener('click', () => applyLang(b.dataset.lang));
         });
+        const langShortcutBtn = document.getElementById('langShortcut');
+        if (langShortcutBtn) {
+            langShortcutBtn.addEventListener('click', () => {
+                const next = LANG_ORDER[(LANG_ORDER.indexOf(LANG) + 1) % LANG_ORDER.length];
+                applyLang(next);
+            });
+        }
 
         (function initLang() {
             let saved = null;
