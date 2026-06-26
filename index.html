@@ -633,12 +633,12 @@
             color: var(--gold);
             margin-bottom: 0.85rem;
         }
-        a.project-card {
+        .project-card {
             text-decoration: none;
             display: flex;
             flex-direction: column;
         }
-        a.project-card .service-list { margin-bottom: 0; }
+        .project-card .service-list { margin-bottom: 0; }
         .project-link {
             margin-top: auto;
             padding-top: 1.4rem;
@@ -652,6 +652,24 @@
             transition: gap 0.3s var(--ease);
         }
         a.project-card:hover .project-link { gap: 0.8rem; }
+        .project-soon {
+            margin-top: auto;
+            padding-top: 1.4rem;
+            color: var(--muted);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .project-soon::before {
+            content: '';
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            opacity: 0.6;
+        }
         #solutions .service-card { padding-bottom: 2rem; }
         .services-header {
             display: flex;
@@ -1587,33 +1605,7 @@
             Quelques réalisations conçues, développées et déployées. Découvrez-les directement en ligne.
         </p>
         <div class="services-grid">
-            <a class="service-card project-card reveal" href="https://web-production-fcf26.up.railway.app" target="_blank" rel="noopener">
-                <p class="service-cat" data-i18n="real1.cat">Plateforme citoyenne</p>
-                <h3 class="service-name" data-i18n="real1.name">Plateforme citoyenne &amp; institutionnelle</h3>
-                <ul class="service-list">
-                    <li data-i18n="real1.f1">Prise de rendez-vous en ligne</li>
-                    <li data-i18n="real1.f2">Dépôt et suivi des demandes par référence</li>
-                    <li data-i18n="real1.f3">Formulaires contact &amp; presse</li>
-                    <li data-i18n="real1.f4">Multilingue &amp; assistant virtuel</li>
-                </ul>
-                <span class="project-link"><span data-i18n="real.cta">Voir le site</span>
-                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-            </a>
-            <a class="service-card project-card reveal reveal-delay-1" href="https://site-emploie-congo.vercel.app" target="_blank" rel="noopener">
-                <p class="service-cat" data-i18n="real2.cat">Emploi &amp; recrutement</p>
-                <h3 class="service-name" data-i18n="real2.name">Plateforme d'emploi</h3>
-                <ul class="service-list">
-                    <li data-i18n="real2.f1">Publication d'offres d'emploi</li>
-                    <li data-i18n="real2.f2">Candidatures en ligne</li>
-                    <li data-i18n="real2.f3">Recherche par filtres</li>
-                    <li data-i18n="real2.f4">Mise en relation recruteurs / candidats</li>
-                </ul>
-                <span class="project-link"><span data-i18n="real.cta">Voir le site</span>
-                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-            </a>
-            <a class="service-card project-card reveal reveal-delay-2" href="https://gaspardnz.style" target="_blank" rel="noopener">
+            <a class="service-card project-card reveal" href="https://gaspardnz.style" target="_blank" rel="noopener">
                 <p class="service-cat" data-i18n="real3.cat">Image &amp; événementiel</p>
                 <h3 class="service-name" data-i18n="real3.name">Site vitrine premium</h3>
                 <ul class="service-list">
@@ -1626,6 +1618,28 @@
                     <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
             </a>
+            <div class="service-card project-card reveal reveal-delay-1">
+                <p class="service-cat" data-i18n="real1.cat">Plateforme citoyenne</p>
+                <h3 class="service-name" data-i18n="real1.name">Plateforme citoyenne &amp; institutionnelle</h3>
+                <ul class="service-list">
+                    <li data-i18n="real1.f1">Prise de rendez-vous en ligne</li>
+                    <li data-i18n="real1.f2">Dépôt et suivi des demandes par référence</li>
+                    <li data-i18n="real1.f3">Formulaires contact &amp; presse</li>
+                    <li data-i18n="real1.f4">Multilingue &amp; assistant virtuel</li>
+                </ul>
+                <span class="project-soon" data-i18n="real.soon">À venir</span>
+            </div>
+            <div class="service-card project-card reveal reveal-delay-2">
+                <p class="service-cat" data-i18n="real2.cat">Emploi &amp; recrutement</p>
+                <h3 class="service-name" data-i18n="real2.name">Plateforme d'emploi</h3>
+                <ul class="service-list">
+                    <li data-i18n="real2.f1">Publication d'offres d'emploi</li>
+                    <li data-i18n="real2.f2">Candidatures en ligne</li>
+                    <li data-i18n="real2.f3">Recherche par filtres</li>
+                    <li data-i18n="real2.f4">Mise en relation recruteurs / candidats</li>
+                </ul>
+                <span class="project-soon" data-i18n="real.soon">À venir</span>
+            </div>
         </div>
     </section>
 
@@ -1786,7 +1800,7 @@
                 'real.title': 'Completed <em>projects</em>',
                 'real.label': 'Live platforms and websites',
                 'real.body': 'A few projects designed, built and deployed. Explore them directly online.',
-                'real.cta': 'Visit site',
+                'real.cta': 'Visit site', 'real.soon': 'Coming soon',
                 'real1.cat': 'Citizen platform', 'real1.name': 'Citizen &amp; institutional platform',
                 'real1.f1': 'Online appointment booking', 'real1.f2': 'Request submission &amp; tracking by reference', 'real1.f3': 'Contact &amp; press forms', 'real1.f4': 'Multilingual &amp; virtual assistant',
                 'real2.cat': 'Employment &amp; recruitment', 'real2.name': 'Jobs platform',
@@ -1864,7 +1878,7 @@
                 'real.title': 'Proyectos <em>realizados</em>',
                 'real.label': 'Plataformas y sitios en línea',
                 'real.body': 'Algunos proyectos diseñados, desarrollados y desplegados. Descúbralos directamente en línea.',
-                'real.cta': 'Ver el sitio',
+                'real.cta': 'Ver el sitio', 'real.soon': 'Próximamente',
                 'real1.cat': 'Plataforma ciudadana', 'real1.name': 'Plataforma ciudadana e institucional',
                 'real1.f1': 'Reserva de citas en línea', 'real1.f2': 'Envío y seguimiento de solicitudes por referencia', 'real1.f3': 'Formularios de contacto y prensa', 'real1.f4': 'Multilingüe y asistente virtual',
                 'real2.cat': 'Empleo y reclutamiento', 'real2.name': 'Plataforma de empleo',
