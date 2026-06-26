@@ -652,6 +652,10 @@
             transition: gap 0.3s var(--ease);
         }
         a.project-card:hover .project-link { gap: 0.8rem; }
+        .project-card-feature {
+            border: 1px solid rgba(127,168,138,0.45);
+            background: linear-gradient(160deg, rgba(127,168,138,0.07), var(--ink) 70%);
+        }
         .project-soon {
             margin-top: auto;
             padding-top: 1.4rem;
@@ -1618,14 +1622,17 @@
                     <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
             </a>
-            <div class="service-card project-card reveal reveal-delay-1">
-                <p class="service-cat" data-i18n="real1.cat">Plateforme citoyenne</p>
+            <div class="service-card project-card project-card-feature reveal reveal-delay-1">
+                <p class="service-cat" data-i18n="real1.cat">Communication stratégique</p>
                 <h3 class="service-name" data-i18n="real1.name">Plateforme citoyenne &amp; institutionnelle</h3>
+                <p class="service-desc" data-i18n="real1.desc">Avant tout un outil de communication stratégique et omnicanal : réunir toute la présence et les informations d'une personnalité publique sur une seule plateforme, avec un assistant conversationnel intelligent (IA) pour dialoguer en continu.</p>
                 <ul class="service-list">
-                    <li data-i18n="real1.f1">Prise de rendez-vous en ligne</li>
-                    <li data-i18n="real1.f2">Dépôt et suivi des demandes par référence</li>
-                    <li data-i18n="real1.f3">Formulaires contact &amp; presse</li>
-                    <li data-i18n="real1.f4">Multilingue &amp; assistant virtuel</li>
+                    <li data-i18n="real1.f1">Communication omnicanale centralisée</li>
+                    <li data-i18n="real1.f2">Toute l'information sur une seule plateforme</li>
+                    <li data-i18n="real1.f3">Assistant conversationnel intelligent (IA)</li>
+                    <li data-i18n="real1.f4">Prise de rendez-vous &amp; suivi des demandes</li>
+                    <li data-i18n="real1.f5">Formulaires contact &amp; presse · multilingue</li>
+                    <li data-i18n="real1.f6">Back-office d'administration : suivi &amp; gestion</li>
                 </ul>
                 <span class="project-soon" data-i18n="real.soon">À venir</span>
             </div>
@@ -1801,8 +1808,9 @@
                 'real.label': 'Live platforms and websites',
                 'real.body': 'A few projects designed, built and deployed. Explore them directly online.',
                 'real.cta': 'Visit site', 'real.soon': 'Coming soon',
-                'real1.cat': 'Citizen platform', 'real1.name': 'Citizen &amp; institutional platform',
-                'real1.f1': 'Online appointment booking', 'real1.f2': 'Request submission &amp; tracking by reference', 'real1.f3': 'Contact &amp; press forms', 'real1.f4': 'Multilingual &amp; virtual assistant',
+                'real1.cat': 'Strategic communication', 'real1.name': 'Citizen &amp; institutional platform',
+                'real1.desc': 'First and foremost a strategic, omnichannel communication tool: bringing a public figure’s entire presence and information together on a single platform, with an intelligent conversational assistant (AI) for ongoing dialogue.',
+                'real1.f1': 'Centralized omnichannel communication', 'real1.f2': 'All information on a single platform', 'real1.f3': 'Intelligent conversational assistant (AI)', 'real1.f4': 'Appointment booking &amp; request tracking', 'real1.f5': 'Contact &amp; press forms · multilingual', 'real1.f6': 'Admin back-office: tracking &amp; management',
                 'real2.cat': 'Employment &amp; recruitment', 'real2.name': 'Jobs platform',
                 'real2.f1': 'Job posting', 'real2.f2': 'Online applications', 'real2.f3': 'Filtered search', 'real2.f4': 'Recruiter / candidate matching',
                 'real3.cat': 'Image &amp; events', 'real3.name': 'Premium showcase website',
@@ -1879,8 +1887,9 @@
                 'real.label': 'Plataformas y sitios en línea',
                 'real.body': 'Algunos proyectos diseñados, desarrollados y desplegados. Descúbralos directamente en línea.',
                 'real.cta': 'Ver el sitio', 'real.soon': 'Próximamente',
-                'real1.cat': 'Plataforma ciudadana', 'real1.name': 'Plataforma ciudadana e institucional',
-                'real1.f1': 'Reserva de citas en línea', 'real1.f2': 'Envío y seguimiento de solicitudes por referencia', 'real1.f3': 'Formularios de contacto y prensa', 'real1.f4': 'Multilingüe y asistente virtual',
+                'real1.cat': 'Comunicación estratégica', 'real1.name': 'Plataforma ciudadana e institucional',
+                'real1.desc': 'Ante todo, una herramienta de comunicación estratégica y omnicanal: reunir toda la presencia y la información de una figura pública en una sola plataforma, con un asistente conversacional inteligente (IA) para un diálogo continuo.',
+                'real1.f1': 'Comunicación omnicanal centralizada', 'real1.f2': 'Toda la información en una sola plataforma', 'real1.f3': 'Asistente conversacional inteligente (IA)', 'real1.f4': 'Reserva de citas y seguimiento de solicitudes', 'real1.f5': 'Formularios de contacto y prensa · multilingüe', 'real1.f6': 'Back-office de administración: seguimiento y gestión',
                 'real2.cat': 'Empleo y reclutamiento', 'real2.name': 'Plataforma de empleo',
                 'real2.f1': 'Publicación de ofertas de empleo', 'real2.f2': 'Candidaturas en línea', 'real2.f3': 'Búsqueda con filtros', 'real2.f4': 'Conexión entre reclutadores y candidatos',
                 'real3.cat': 'Imagen y eventos', 'real3.name': 'Sitio escaparate premium',
