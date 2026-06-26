@@ -134,7 +134,25 @@
         }
         .logo span { color: var(--gold); }
 
-        .nav-links, .nav-cta { display: none; }
+        .nav-links, .nav-right { display: none; }
+
+        /* Sélecteur de langue */
+        .lang-switch { display: inline-flex; gap: 0.15rem; }
+        .lang-switch button {
+            font-family: inherit;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            background: none;
+            border: none;
+            padding: 0.3rem 0.4rem;
+            cursor: pointer;
+            transition: color 0.25s var(--ease);
+        }
+        .lang-switch button:hover { color: var(--cream); }
+        .lang-switch button.active { color: var(--gold); }
+        .menu-lang { margin-top: 1.75rem; }
+        .menu-lang .lang-switch button { font-size: 0.85rem; padding: 0.4rem 0.6rem 0.4rem 0; }
 
         /* Mobile menu button */
         .menu-btn {
@@ -965,6 +983,7 @@
                 gap: 2.25rem;
                 list-style: none;
             }
+            .nav-right { display: flex; align-items: center; gap: 1.5rem; }
             .nav-links a {
                 font-size: 0.72rem;
                 letter-spacing: 0.15em;
@@ -1255,12 +1274,19 @@
     <nav id="nav">
         <a href="#" class="logo">Yaroconsulting</a>
         <ul class="nav-links">
-            <li><a href="#vision">Vision</a></li>
-            <li><a href="#expertises">Expertises</a></li>
-            <li><a href="#methode">Méthode</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#vision" data-i18n="nav.vision">Vision</a></li>
+            <li><a href="#expertises" data-i18n="nav.expertises">Expertises</a></li>
+            <li><a href="#methode" data-i18n="nav.methode">Méthode</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
-        <a href="#contact" class="nav-cta">Démarrer un projet</a>
+        <div class="nav-right">
+            <div class="lang-switch" role="group" aria-label="Langue">
+                <button type="button" data-lang="fr">FR</button>
+                <button type="button" data-lang="en">EN</button>
+                <button type="button" data-lang="es">ES</button>
+            </div>
+            <a href="#contact" class="nav-cta" data-i18n="nav.cta">Démarrer un projet</a>
+        </div>
         <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
@@ -1271,15 +1297,22 @@
         <button class="menu-close" id="menuClose" aria-label="Fermer le menu">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
-        <a href="#vision">Vision</a>
-        <a href="#expertises">Expertises</a>
-        <a href="#methode">Méthode</a>
-        <a href="#contact">Contact</a>
-        <a href="#contact" class="menu-cta">Démarrer un projet</a>
+        <a href="#vision" data-i18n="nav.vision">Vision</a>
+        <a href="#expertises" data-i18n="nav.expertises">Expertises</a>
+        <a href="#methode" data-i18n="nav.methode">Méthode</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a href="#contact" class="menu-cta" data-i18n="nav.cta">Démarrer un projet</a>
         <div class="menu-contact">
             <a href="tel:+33608888768">06 08 88 87 68</a>
             <a href="https://wa.me/33608888768" target="_blank" rel="noopener">WhatsApp</a>
             <a href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>
+        </div>
+        <div class="menu-lang">
+            <div class="lang-switch" role="group" aria-label="Langue">
+                <button type="button" data-lang="fr">FR</button>
+                <button type="button" data-lang="en">EN</button>
+                <button type="button" data-lang="es">ES</button>
+            </div>
         </div>
         <p class="menu-footer">© 2026 Yaro Consulting</p>
     </div>
@@ -1290,24 +1323,24 @@
             <img src="images/portrait.jpg" alt="Portrait de Rodrin Bakala Mouengue, fondateur de Yaro Consulting" id="heroImg">
             <div class="hero-grain"></div>
         </div>
-        <p class="hero-eyebrow hero-eyebrow-top">Consultant · Stratégie · Transformation Digitale</p>
+        <p class="hero-eyebrow hero-eyebrow-top" data-i18n="hero.eyebrow">Consultant · Stratégie · Transformation Digitale</p>
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="line"><span>Transformer les idées</span></span>
-                <span class="line"><span>en <em>systèmes</em></span></span>
-                <span class="line"><span>qui performent.</span></span>
+                <span class="line"><span data-i18n="hero.title1">Transformer les idées</span></span>
+                <span class="line"><span data-i18n="hero.title2">en <em>systèmes</em></span></span>
+                <span class="line"><span data-i18n="hero.title3">qui performent.</span></span>
             </h1>
-            <p class="hero-sub">
+            <p class="hero-sub" data-i18n="hero.sub">
                 Rodrin Bakala Mouengue et Yaro Consulting accompagnent entreprises, institutions et organisations dans leurs projets de stratégie et de transformation digitale, du diagnostic jusqu'au déploiement.
             </p>
             <div class="hero-actions">
                 <a href="#expertises" class="btn-primary">
-                    <span>Nos expertises</span>
+                    <span data-i18n="hero.btnPrimary">Nos expertises</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </a>
-                <a href="#contact" class="btn-ghost">Prendre contact</a>
+                <a href="#contact" class="btn-ghost" data-i18n="hero.btnGhost">Prendre contact</a>
             </div>
         </div>
     </section>
@@ -1316,33 +1349,33 @@
     <div class="marquee-section">
         <div class="marquee-track">
             <div class="marquee-item">
-                <span class="marquee-text">Stratégie</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Transformation Digitale</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Automatisation</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Performance Opérationnelle</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Stratégie</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Transformation Digitale</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Automatisation</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Performance Opérationnelle</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.strategy">Stratégie</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.digital">Transformation Digitale</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.automation">Automatisation</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.performance">Performance Opérationnelle</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.strategy">Stratégie</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.digital">Transformation Digitale</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.automation">Automatisation</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.performance">Performance Opérationnelle</span><span class="marquee-dot"></span>
             </div>
             <div class="marquee-item" aria-hidden="true">
-                <span class="marquee-text">Stratégie</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Transformation Digitale</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Automatisation</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Performance Opérationnelle</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Stratégie</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Transformation Digitale</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Automatisation</span><span class="marquee-dot"></span>
-                <span class="marquee-text">Performance Opérationnelle</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.strategy">Stratégie</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.digital">Transformation Digitale</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.automation">Automatisation</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.performance">Performance Opérationnelle</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.strategy">Stratégie</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.digital">Transformation Digitale</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.automation">Automatisation</span><span class="marquee-dot"></span>
+                <span class="marquee-text" data-i18n="m.performance">Performance Opérationnelle</span><span class="marquee-dot"></span>
             </div>
         </div>
     </div>
 
     <!-- VISION -->
     <section id="vision">
-        <p class="section-label reveal">Notre vision</p>
-        <h2 class="vision-title reveal reveal-delay-1">La technologie n'a de valeur que si elle <em>change quelque chose</em>.</h2>
-        <p class="vision-body reveal reveal-delay-2">
+        <p class="section-label reveal" data-i18n="vision.label">Notre vision</p>
+        <h2 class="vision-title reveal reveal-delay-1" data-i18n="vision.title">La technologie n'a de valeur que si elle <em>change quelque chose</em>.</h2>
+        <p class="vision-body reveal reveal-delay-2" data-i18n="vision.body">
             Un outil, une plateforme ou un algorithme ne sont jamais une fin en soi. Ils n'ont de sens que lorsqu'ils améliorent une décision, fluidifient une organisation ou enrichissent une expérience. C'est cette exigence qui structure chaque mission menée par Yaro Consulting, du premier diagnostic jusqu'au déploiement final.
         </p>
     </section>
@@ -1350,30 +1383,30 @@
     <!-- FONDATEUR -->
     <section id="propos">
         <div>
-            <p class="section-label reveal">Le fondateur</p>
+            <p class="section-label reveal" data-i18n="founder.label">Le fondateur</p>
             <p class="section-number">01</p>
         </div>
         <div class="about-right">
-            <h2 class="reveal">Rodrin Bakala Mouengue, un profil <em>hybride</em>.</h2>
-            <p class="about-body reveal reveal-delay-1">
+            <h2 class="reveal" data-i18n="founder.title">Rodrin Bakala Mouengue, un profil <em>hybride</em>.</h2>
+            <p class="about-body reveal reveal-delay-1" data-i18n="founder.p1">
                 Avant de conseiller, j'ai dirigé sur le terrain : management opérationnel, commerce, distribution, logistique, pilotage d'équipes. Cette expérience m'a appris ce qu'aucune méthode ne peut enseigner : la performance d'une organisation se joue dans le détail de son exécution.
             </p>
-            <p class="about-body reveal reveal-delay-1">
+            <p class="about-body reveal reveal-delay-1" data-i18n="founder.p2">
                 J'ai porté cette exigence vers la stratégie et la transformation digitale, en concevant des solutions numériques répondant à des besoins réels. Cette double culture, terrain et digitale, est au cœur de la façon dont j'accompagne aujourd'hui les entreprises, institutions et organisations.
             </p>
             <p class="signature reveal reveal-delay-1">Rodrin Bakala Mouengue</p>
             <div class="stats-row reveal reveal-delay-2">
                 <div class="stat-item">
                     <div class="stat-number">360°</div>
-                    <div class="stat-label">vision terrain, business et digitale</div>
+                    <div class="stat-label" data-i18n="founder.stat1">vision terrain, business et digitale</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">5</div>
-                    <div class="stat-label">expertises réunies : stratégie, digital, automatisation, performance</div>
+                    <div class="stat-label" data-i18n="founder.stat2">expertises réunies : stratégie, digital, automatisation, performance</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">1</div>
-                    <div class="stat-label">interlocuteur unique, du diagnostic au déploiement</div>
+                    <div class="stat-label" data-i18n="founder.stat3">interlocuteur unique, du diagnostic au déploiement</div>
                 </div>
             </div>
         </div>
@@ -1382,8 +1415,8 @@
     <!-- EXPERTISES -->
     <section id="expertises">
         <div class="services-header">
-            <h2 class="services-title reveal">Quatre expertises, <em>une seule logique</em></h2>
-            <p class="section-label reveal">Ce que nous mobilisons à chaque mission</p>
+            <h2 class="services-title reveal" data-i18n="expertises.title">Quatre expertises, <em>une seule logique</em></h2>
+            <p class="section-label reveal" data-i18n="expertises.label">Ce que nous mobilisons à chaque mission</p>
         </div>
         <div class="services-grid">
             <div class="service-card reveal">
@@ -1391,12 +1424,12 @@
                 <div class="service-img-wrap">
                     <img src="images/conseil.jpg" loading="lazy" alt="Stratégie et performance opérationnelle">
                 </div>
-                <h3 class="service-name">Stratégie & Performance Opérationnelle</h3>
-                <p class="service-desc">Diagnostiquer une organisation, clarifier ses priorités et améliorer durablement sa performance sur le terrain.</p>
+                <h3 class="service-name" data-i18n="card1.name">Stratégie & Performance Opérationnelle</h3>
+                <p class="service-desc" data-i18n="card1.desc">Diagnostiquer une organisation, clarifier ses priorités et améliorer durablement sa performance sur le terrain.</p>
                 <ul class="service-list">
-                    <li>Diagnostic stratégique</li>
-                    <li>Pilotage de la performance</li>
-                    <li>Optimisation des processus</li>
+                    <li data-i18n="card1.li1">Diagnostic stratégique</li>
+                    <li data-i18n="card1.li2">Pilotage de la performance</li>
+                    <li data-i18n="card1.li3">Optimisation des processus</li>
                 </ul>
             </div>
             <div class="service-card reveal reveal-delay-1">
@@ -1404,12 +1437,12 @@
                 <div class="service-img-wrap">
                     <img src="images/digital.jpg" loading="lazy" alt="Transformation digitale">
                 </div>
-                <h3 class="service-name">Transformation Digitale</h3>
-                <p class="service-desc">Concevoir l'architecture numérique d'une organisation et structurer ses outils autour de ses besoins réels.</p>
+                <h3 class="service-name" data-i18n="card2.name">Transformation Digitale</h3>
+                <p class="service-desc" data-i18n="card2.desc">Concevoir l'architecture numérique d'une organisation et structurer ses outils autour de ses besoins réels.</p>
                 <ul class="service-list">
-                    <li>Audit digital</li>
-                    <li>Architecture des systèmes</li>
-                    <li>Conduite du changement</li>
+                    <li data-i18n="card2.li1">Audit digital</li>
+                    <li data-i18n="card2.li2">Architecture des systèmes</li>
+                    <li data-i18n="card2.li3">Conduite du changement</li>
                 </ul>
             </div>
             <div class="service-card reveal reveal-delay-2">
@@ -1417,12 +1450,12 @@
                 <div class="service-img-wrap">
                     <img src="images/ia-automatisation.svg" loading="lazy" alt="Automatisation et outils digitaux intelligents">
                 </div>
-                <h3 class="service-name">Automatisation & Outils Digitaux</h3>
-                <p class="service-desc">Identifier où l'automatisation crée une valeur réelle, puis l'intégrer aux processus existants avec des outils intelligents pensés pour durer.</p>
+                <h3 class="service-name" data-i18n="card3.name">Automatisation & Outils Digitaux</h3>
+                <p class="service-desc" data-i18n="card3.desc">Identifier où l'automatisation crée une valeur réelle, puis l'intégrer aux processus existants avec des outils intelligents pensés pour durer.</p>
                 <ul class="service-list">
-                    <li>Automatisation des processus</li>
-                    <li>Outils intelligents de pilotage</li>
-                    <li>Intégration aux systèmes existants</li>
+                    <li data-i18n="card3.li1">Automatisation des processus</li>
+                    <li data-i18n="card3.li2">Outils intelligents de pilotage</li>
+                    <li data-i18n="card3.li3">Intégration aux systèmes existants</li>
                 </ul>
             </div>
             <div class="service-card reveal reveal-delay-3">
@@ -1430,12 +1463,12 @@
                 <div class="service-img-wrap">
                     <img src="images/perf.jpg" loading="lazy" alt="Expérience utilisateur et produits digitaux">
                 </div>
-                <h3 class="service-name">Expérience Utilisateur & Produits Digitaux</h3>
-                <p class="service-desc">Concevoir des interfaces et des produits numériques pensés pour leurs usages, pas pour la démonstration.</p>
+                <h3 class="service-name" data-i18n="card4.name">Expérience Utilisateur & Produits Digitaux</h3>
+                <p class="service-desc" data-i18n="card4.desc">Concevoir des interfaces et des produits numériques pensés pour leurs usages, pas pour la démonstration.</p>
                 <ul class="service-list">
-                    <li>Conception UX/UI</li>
-                    <li>Interfaces web premium</li>
-                    <li>Produits digitaux sur mesure</li>
+                    <li data-i18n="card4.li1">Conception UX/UI</li>
+                    <li data-i18n="card4.li2">Interfaces web premium</li>
+                    <li data-i18n="card4.li3">Produits digitaux sur mesure</li>
                 </ul>
             </div>
         </div>
@@ -1444,42 +1477,42 @@
     <!-- SOLUTIONS -->
     <section id="solutions">
         <div class="services-header">
-            <h2 class="services-title reveal">Les solutions que nous <em>concevons</em></h2>
-            <p class="section-label reveal">Sans nom de projet, une seule logique : l'utilité</p>
+            <h2 class="services-title reveal" data-i18n="solutions.title">Les solutions que nous <em>concevons</em></h2>
+            <p class="section-label reveal" data-i18n="solutions.label">Sans nom de projet, une seule logique : l'utilité</p>
         </div>
-        <p class="about-body reveal">
+        <p class="about-body reveal" data-i18n="solutions.body">
             Nous ne livrons pas des sites vitrines. Nous concevons des systèmes qui structurent une activité, fiabilisent une relation client ou éclairent une décision, pour des entreprises, institutions et organisations africaines en transformation.
         </p>
         <div class="services-grid">
             <div class="service-card reveal">
                 <div class="service-num">01</div>
-                <h3 class="service-name">CRM & Outils Métiers</h3>
-                <p class="service-desc">Centraliser la relation client et fiabiliser le suivi commercial au quotidien.</p>
+                <h3 class="service-name" data-i18n="sol1.name">CRM & Outils Métiers</h3>
+                <p class="service-desc" data-i18n="sol1.desc">Centraliser la relation client et fiabiliser le suivi commercial au quotidien.</p>
             </div>
             <div class="service-card reveal reveal-delay-1">
                 <div class="service-num">02</div>
-                <h3 class="service-name">Tableaux de Bord Décisionnels</h3>
-                <p class="service-desc">Donner aux dirigeants une vision claire et chiffrée de leur activité.</p>
+                <h3 class="service-name" data-i18n="sol2.name">Tableaux de Bord Décisionnels</h3>
+                <p class="service-desc" data-i18n="sol2.desc">Donner aux dirigeants une vision claire et chiffrée de leur activité.</p>
             </div>
             <div class="service-card reveal reveal-delay-2">
                 <div class="service-num">03</div>
-                <h3 class="service-name">Plateformes Métiers</h3>
-                <p class="service-desc">Des outils sur mesure pour structurer un service, un réseau ou une institution.</p>
+                <h3 class="service-name" data-i18n="sol3.name">Plateformes Métiers</h3>
+                <p class="service-desc" data-i18n="sol3.desc">Des outils sur mesure pour structurer un service, un réseau ou une institution.</p>
             </div>
             <div class="service-card reveal reveal-delay-3">
                 <div class="service-num">04</div>
-                <h3 class="service-name">Automatisation des Processus</h3>
-                <p class="service-desc">Supprimer les tâches répétitives pour recentrer les équipes sur l'essentiel.</p>
+                <h3 class="service-name" data-i18n="sol4.name">Automatisation des Processus</h3>
+                <p class="service-desc" data-i18n="sol4.desc">Supprimer les tâches répétitives pour recentrer les équipes sur l'essentiel.</p>
             </div>
             <div class="service-card reveal">
                 <div class="service-num">05</div>
-                <h3 class="service-name">Systèmes de Données & Archives</h3>
-                <p class="service-desc">Organiser, sécuriser et exploiter l'information stratégique.</p>
+                <h3 class="service-name" data-i18n="sol5.name">Systèmes de Données & Archives</h3>
+                <p class="service-desc" data-i18n="sol5.desc">Organiser, sécuriser et exploiter l'information stratégique.</p>
             </div>
             <div class="service-card reveal reveal-delay-1">
                 <div class="service-num">06</div>
-                <h3 class="service-name">Interfaces Web Premium</h3>
-                <p class="service-desc">Des produits digitaux à la hauteur de l'ambition de la marque.</p>
+                <h3 class="service-name" data-i18n="sol6.name">Interfaces Web Premium</h3>
+                <p class="service-desc" data-i18n="sol6.desc">Des produits digitaux à la hauteur de l'ambition de la marque.</p>
             </div>
         </div>
     </section>
@@ -1488,39 +1521,39 @@
     <div class="process-section" id="methode">
         <div class="process-inner">
             <div class="process-header">
-                <p class="section-label">Notre méthode</p>
-                <h2>Une méthode <em>éprouvée</em>,<br>du diagnostic au résultat.</h2>
+                <p class="section-label" data-i18n="methode.label">Notre méthode</p>
+                <h2 data-i18n="methode.title">Une méthode <em>éprouvée</em>,<br>du diagnostic au résultat.</h2>
             </div>
             <div class="process-steps">
                 <div class="process-step reveal">
                     <div class="step-num">01</div>
-                    <h3 class="step-name">Diagnostic</h3>
-                    <p class="step-desc">Comprendre l'organisation, ses données et ses usages réels avant toute recommandation.</p>
+                    <h3 class="step-name" data-i18n="step1.name">Diagnostic</h3>
+                    <p class="step-desc" data-i18n="step1.desc">Comprendre l'organisation, ses données et ses usages réels avant toute recommandation.</p>
                 </div>
                 <div class="process-step reveal reveal-delay-1">
                     <div class="step-num">02</div>
-                    <h3 class="step-name">Cadrage</h3>
-                    <p class="step-desc">Définir des priorités claires, des objectifs mesurables et un périmètre de projet réaliste.</p>
+                    <h3 class="step-name" data-i18n="step2.name">Cadrage</h3>
+                    <p class="step-desc" data-i18n="step2.desc">Définir des priorités claires, des objectifs mesurables et un périmètre de projet réaliste.</p>
                 </div>
                 <div class="process-step reveal reveal-delay-2">
                     <div class="step-num">03</div>
-                    <h3 class="step-name">Conception</h3>
-                    <p class="step-desc">Dessiner la solution : architecture, parcours utilisateur, logique métier.</p>
+                    <h3 class="step-name" data-i18n="step3.name">Conception</h3>
+                    <p class="step-desc" data-i18n="step3.desc">Dessiner la solution : architecture, parcours utilisateur, logique métier.</p>
                 </div>
                 <div class="process-step reveal reveal-delay-3">
                     <div class="step-num">04</div>
-                    <h3 class="step-name">Développement</h3>
-                    <p class="step-desc">Construire l'outil ou la plateforme avec une exigence de robustesse et de qualité.</p>
+                    <h3 class="step-name" data-i18n="step4.name">Développement</h3>
+                    <p class="step-desc" data-i18n="step4.desc">Construire l'outil ou la plateforme avec une exigence de robustesse et de qualité.</p>
                 </div>
                 <div class="process-step reveal">
                     <div class="step-num">05</div>
-                    <h3 class="step-name">Déploiement</h3>
-                    <p class="step-desc">Mettre la solution en production et accompagner son adoption par les équipes.</p>
+                    <h3 class="step-name" data-i18n="step5.name">Déploiement</h3>
+                    <p class="step-desc" data-i18n="step5.desc">Mettre la solution en production et accompagner son adoption par les équipes.</p>
                 </div>
                 <div class="process-step reveal reveal-delay-1">
                     <div class="step-num">06</div>
-                    <h3 class="step-name">Amélioration continue</h3>
-                    <p class="step-desc">Suivre les résultats et faire évoluer la solution selon les usages réels.</p>
+                    <h3 class="step-name" data-i18n="step6.name">Amélioration continue</h3>
+                    <p class="step-desc" data-i18n="step6.desc">Suivre les résultats et faire évoluer la solution selon les usages réels.</p>
                 </div>
             </div>
         </div>
@@ -1529,27 +1562,27 @@
     <!-- POURQUOI -->
     <section id="pourquoi">
         <div class="services-header">
-            <h2 class="services-title reveal">Pourquoi <em>Yaro Consulting</em></h2>
-            <p class="section-label reveal">Une équation rare</p>
+            <h2 class="services-title reveal" data-i18n="pourquoi.title">Pourquoi <em>Yaro Consulting</em></h2>
+            <p class="section-label reveal" data-i18n="pourquoi.label">Une équation rare</p>
         </div>
-        <p class="about-body reveal">
+        <p class="about-body reveal" data-i18n="pourquoi.body">
             Beaucoup de cabinets pensent la stratégie sans le terrain. Beaucoup de prestataires développent sans comprendre l'organisation. Yaro Consulting réunit les deux.
         </p>
         <div class="why-grid">
             <div class="why-item reveal">
                 <div class="service-num">01</div>
-                <h3 class="service-name">Vision stratégique</h3>
-                <p class="service-desc">Une lecture claire des enjeux business, sans jargon ni complexité inutile.</p>
+                <h3 class="service-name" data-i18n="why1.name">Vision stratégique</h3>
+                <p class="service-desc" data-i18n="why1.desc">Une lecture claire des enjeux business, sans jargon ni complexité inutile.</p>
             </div>
             <div class="why-item reveal reveal-delay-1">
                 <div class="service-num">02</div>
-                <h3 class="service-name">Réalité terrain</h3>
-                <p class="service-desc">Une expérience opérationnelle directe du commerce, de la distribution et de la logistique.</p>
+                <h3 class="service-name" data-i18n="why2.name">Réalité terrain</h3>
+                <p class="service-desc" data-i18n="why2.desc">Une expérience opérationnelle directe du commerce, de la distribution et de la logistique.</p>
             </div>
             <div class="why-item reveal reveal-delay-2">
                 <div class="service-num">03</div>
-                <h3 class="service-name">Exécution digitale</h3>
-                <p class="service-desc">La capacité à concevoir et livrer des systèmes, pas seulement des recommandations.</p>
+                <h3 class="service-name" data-i18n="why3.name">Exécution digitale</h3>
+                <p class="service-desc" data-i18n="why3.desc">La capacité à concevoir et livrer des systèmes, pas seulement des recommandations.</p>
             </div>
         </div>
     </section>
@@ -1557,47 +1590,47 @@
     <!-- CONTACT -->
     <section id="contact">
         <div class="contact-left">
-            <h2 class="reveal">Échangeons sur<br>votre <em>projet.</em></h2>
-            <p class="reveal reveal-delay-1">Décrivez-nous votre contexte et vos enjeux : nous revenons vers vous rapidement avec une première lecture claire de votre projet, généralement dans la journée.</p>
+            <h2 class="reveal" data-i18n="contact.title">Échangeons sur<br>votre <em>projet.</em></h2>
+            <p class="reveal reveal-delay-1" data-i18n="contact.intro">Décrivez-nous votre contexte et vos enjeux : nous revenons vers vous rapidement avec une première lecture claire de votre projet, généralement dans la journée.</p>
             <div class="contact-info reveal reveal-delay-2">
                 <div class="contact-info-item">
-                    <span class="contact-info-label">Email</span>
+                    <span class="contact-info-label" data-i18n="contact.labelEmail">Email</span>
                     <a class="contact-info-val contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>
                 </div>
                 <div class="contact-info-item">
-                    <span class="contact-info-label">Tél.</span>
+                    <span class="contact-info-label" data-i18n="contact.labelTel">Tél.</span>
                     <a class="contact-info-val contact-link" href="tel:+33608888768">06 08 88 87 68</a>
                 </div>
                 <div class="contact-info-item">
                     <span class="contact-info-label">WhatsApp</span>
-                    <a class="contact-info-val contact-link" href="https://wa.me/33608888768" target="_blank" rel="noopener">Discuter sur WhatsApp</a>
+                    <a class="contact-info-val contact-link" href="https://wa.me/33608888768" target="_blank" rel="noopener" data-i18n="contact.waLink">Discuter sur WhatsApp</a>
                 </div>
             </div>
         </div>
         <div class="contact-form reveal">
             <div class="form-field">
-                <label class="form-label" for="name">Nom complet</label>
-                <input class="form-input" id="name" type="text" placeholder="Jean Dupont" autocomplete="name">
+                <label class="form-label" for="name" data-i18n="form.name">Nom complet</label>
+                <input class="form-input" id="name" type="text" placeholder="Jean Dupont" autocomplete="name" data-i18n-placeholder="form.namePlaceholder">
             </div>
             <div class="form-field">
-                <label class="form-label" for="email">Adresse email</label>
-                <input class="form-input" id="email" type="email" placeholder="jean@entreprise.fr" autocomplete="email" inputmode="email">
+                <label class="form-label" for="email" data-i18n="form.email">Adresse email</label>
+                <input class="form-input" id="email" type="email" placeholder="jean@entreprise.fr" autocomplete="email" inputmode="email" data-i18n-placeholder="form.emailPlaceholder">
             </div>
             <div class="form-field">
-                <label class="form-label" for="company">Entreprise</label>
-                <input class="form-input" id="company" type="text" placeholder="Votre société" autocomplete="organization">
+                <label class="form-label" for="company" data-i18n="form.company">Entreprise</label>
+                <input class="form-input" id="company" type="text" placeholder="Votre société" autocomplete="organization" data-i18n-placeholder="form.companyPlaceholder">
             </div>
             <div class="form-field">
-                <label class="form-label" for="message">Votre projet</label>
-                <textarea class="form-textarea" id="message" placeholder="Décrivez brièvement votre besoin…"></textarea>
+                <label class="form-label" for="message" data-i18n="form.message">Votre projet</label>
+                <textarea class="form-textarea" id="message" placeholder="Décrivez brièvement votre besoin…" data-i18n-placeholder="form.messagePlaceholder"></textarea>
             </div>
             <button class="form-submit" type="button" id="sendBtn">
-                <span>Envoyer via WhatsApp</span>
+                <span data-i18n="form.submit">Envoyer via WhatsApp</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
-            <p class="form-note">En cliquant, votre message s'ouvre dans WhatsApp, pré-rempli. Vous pouvez aussi écrire directement à <a class="contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>.</p>
+            <p class="form-note" data-i18n="form.note">En cliquant, votre message s'ouvre dans WhatsApp, pré-rempli. Vous pouvez aussi écrire directement à <a class="contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>.</p>
         </div>
     </section>
 
@@ -1605,12 +1638,12 @@
     <footer>
         <div class="footer-logo">Yaro<span>.</span></div>
         <ul class="footer-links">
-            <li><a href="#vision">Vision</a></li>
-            <li><a href="#expertises">Expertises</a></li>
-            <li><a href="#methode">Méthode</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#vision" data-i18n="nav.vision">Vision</a></li>
+            <li><a href="#expertises" data-i18n="nav.expertises">Expertises</a></li>
+            <li><a href="#methode" data-i18n="nav.methode">Méthode</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
-        <p class="footer-copy">© 2026 Yaro Consulting. Tous droits réservés.</p>
+        <p class="footer-copy" data-i18n="footer.copy">© 2026 Yaro Consulting. Tous droits réservés.</p>
     </footer>
 
     <!-- ASSISTANT GUIDÉ -->
@@ -1618,8 +1651,8 @@
         <div class="chat-header">
             <div class="chat-avatar">Y</div>
             <div class="chat-header-info">
-                <h4>Assistant Yaro</h4>
-                <span>En ligne</span>
+                <h4 data-i18n="chat.title">Assistant Yaro</h4>
+                <span data-i18n="chat.status">En ligne</span>
             </div>
         </div>
         <div class="chat-body" id="chatBody"></div>
@@ -1631,6 +1664,229 @@
     </button>
 
     <script>
+        // ===== Internationalisation (FR / EN / ES) =====
+        const I18N = {
+            en: {
+                'meta.title': 'Yaro Consulting | Rodrin Bakala Mouengue · Strategy & Digital Transformation',
+                'meta.desc': 'Yaro Consulting supports companies, institutions and organizations in their strategy, digital transformation and operational performance projects.',
+                'nav.vision': 'Vision', 'nav.expertises': 'Expertise', 'nav.methode': 'Method', 'nav.contact': 'Contact', 'nav.cta': 'Start a project',
+                'hero.eyebrow': 'Consultant · Strategy · Digital Transformation',
+                'hero.title1': 'Turning ideas', 'hero.title2': 'into <em>systems</em>', 'hero.title3': 'that perform.',
+                'hero.sub': 'Rodrin Bakala Mouengue and Yaro Consulting support companies, institutions and organizations in their strategy and digital transformation projects, from diagnosis to deployment.',
+                'hero.btnPrimary': 'Our expertise', 'hero.btnGhost': 'Get in touch',
+                'm.strategy': 'Strategy', 'm.digital': 'Digital Transformation', 'm.automation': 'Automation', 'm.performance': 'Operational Performance',
+                'vision.label': 'Our vision',
+                'vision.title': 'Technology only matters if it <em>changes something</em>.',
+                'vision.body': 'A tool, a platform or an algorithm is never an end in itself. They only make sense when they improve a decision, streamline an organization or enrich an experience. This is the requirement that shapes every engagement led by Yaro Consulting, from the very first diagnosis to the final deployment.',
+                'founder.label': 'The founder',
+                'founder.title': 'Rodrin Bakala Mouengue, a <em>hybrid</em> profile.',
+                'founder.p1': 'Before advising, I led in the field: operational management, sales, distribution, logistics, team leadership. This experience taught me what no method can: an organization’s performance is decided in the details of its execution.',
+                'founder.p2': 'I brought that demand to strategy and digital transformation, designing digital solutions that answer real needs. This dual culture, field and digital, is at the heart of how I support companies, institutions and organizations today.',
+                'founder.stat1': 'field, business and digital vision',
+                'founder.stat2': 'areas of expertise combined: strategy, digital, automation, performance',
+                'founder.stat3': 'single point of contact, from diagnosis to deployment',
+                'expertises.title': 'Four areas of expertise, <em>one single logic</em>',
+                'expertises.label': 'What we bring to every engagement',
+                'card1.name': 'Strategy & Operational Performance',
+                'card1.desc': 'Diagnose an organization, clarify its priorities and sustainably improve its performance in the field.',
+                'card1.li1': 'Strategic diagnosis', 'card1.li2': 'Performance management', 'card1.li3': 'Process optimization',
+                'card2.name': 'Digital Transformation',
+                'card2.desc': 'Design an organization’s digital architecture and structure its tools around its real needs.',
+                'card2.li1': 'Digital audit', 'card2.li2': 'Systems architecture', 'card2.li3': 'Change management',
+                'card3.name': 'Automation & Digital Tools',
+                'card3.desc': 'Identify where automation creates real value, then integrate it into existing processes with intelligent tools built to last.',
+                'card3.li1': 'Process automation', 'card3.li2': 'Smart management tools', 'card3.li3': 'Integration with existing systems',
+                'card4.name': 'User Experience & Digital Products',
+                'card4.desc': 'Design interfaces and digital products built for real use, not for show.',
+                'card4.li1': 'UX/UI design', 'card4.li2': 'Premium web interfaces', 'card4.li3': 'Custom digital products',
+                'solutions.title': 'The solutions we <em>design</em>',
+                'solutions.label': 'No project names, one single principle: usefulness',
+                'solutions.body': 'We don’t deliver showcase websites. We design systems that structure an activity, strengthen a customer relationship or inform a decision, for African companies, institutions and organizations in transformation.',
+                'sol1.name': 'CRM & Business Tools', 'sol1.desc': 'Centralize the customer relationship and make daily sales tracking reliable.',
+                'sol2.name': 'Decision Dashboards', 'sol2.desc': 'Give leaders a clear, data-driven view of their business.',
+                'sol3.name': 'Business Platforms', 'sol3.desc': 'Tailor-made tools to structure a department, a network or an institution.',
+                'sol4.name': 'Process Automation', 'sol4.desc': 'Remove repetitive tasks to refocus teams on what matters.',
+                'sol5.name': 'Data & Archive Systems', 'sol5.desc': 'Organize, secure and leverage strategic information.',
+                'sol6.name': 'Premium Web Interfaces', 'sol6.desc': 'Digital products worthy of the brand’s ambition.',
+                'methode.label': 'Our method',
+                'methode.title': 'A <em>proven</em> method,<br>from diagnosis to results.',
+                'step1.name': 'Diagnosis', 'step1.desc': 'Understand the organization, its data and its real uses before any recommendation.',
+                'step2.name': 'Scoping', 'step2.desc': 'Define clear priorities, measurable objectives and a realistic project scope.',
+                'step3.name': 'Design', 'step3.desc': 'Shape the solution: architecture, user journey, business logic.',
+                'step4.name': 'Development', 'step4.desc': 'Build the tool or platform with a demand for robustness and quality.',
+                'step5.name': 'Deployment', 'step5.desc': 'Put the solution into production and support its adoption by teams.',
+                'step6.name': 'Continuous improvement', 'step6.desc': 'Track results and evolve the solution according to real usage.',
+                'pourquoi.title': 'Why <em>Yaro Consulting</em>',
+                'pourquoi.label': 'A rare combination',
+                'pourquoi.body': 'Many firms think strategy without the field. Many providers build without understanding the organization. Yaro Consulting brings the two together.',
+                'why1.name': 'Strategic vision', 'why1.desc': 'A clear reading of business challenges, without jargon or needless complexity.',
+                'why2.name': 'Field reality', 'why2.desc': 'Direct operational experience of sales, distribution and logistics.',
+                'why3.name': 'Digital execution', 'why3.desc': 'The ability to design and deliver systems, not just recommendations.',
+                'contact.title': 'Let’s talk about<br>your <em>project.</em>',
+                'contact.intro': 'Tell us about your context and challenges: we’ll get back to you quickly with a first clear read of your project, usually within the day.',
+                'contact.labelEmail': 'Email', 'contact.labelTel': 'Phone', 'contact.waLink': 'Chat on WhatsApp',
+                'form.name': 'Full name', 'form.namePlaceholder': 'John Smith',
+                'form.email': 'Email address', 'form.emailPlaceholder': 'john@company.com',
+                'form.company': 'Company', 'form.companyPlaceholder': 'Your company',
+                'form.message': 'Your project', 'form.messagePlaceholder': 'Briefly describe your needs…',
+                'form.submit': 'Send via WhatsApp',
+                'form.note': 'When you click, your message opens in WhatsApp, pre-filled. You can also write directly to <a class="contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>.',
+                'footer.copy': '© 2026 Yaro Consulting. All rights reserved.',
+                'chat.title': 'Yaro Assistant', 'chat.status': 'Online'
+            },
+            es: {
+                'meta.title': 'Yaro Consulting | Rodrin Bakala Mouengue · Estrategia y Transformación Digital',
+                'meta.desc': 'Yaro Consulting acompaña a empresas, instituciones y organizaciones en sus proyectos de estrategia, transformación digital y rendimiento operativo.',
+                'nav.vision': 'Visión', 'nav.expertises': 'Especialidades', 'nav.methode': 'Método', 'nav.contact': 'Contacto', 'nav.cta': 'Iniciar un proyecto',
+                'hero.eyebrow': 'Consultor · Estrategia · Transformación Digital',
+                'hero.title1': 'Transformar las ideas', 'hero.title2': 'en <em>sistemas</em>', 'hero.title3': 'que rinden.',
+                'hero.sub': 'Rodrin Bakala Mouengue y Yaro Consulting acompañan a empresas, instituciones y organizaciones en sus proyectos de estrategia y transformación digital, del diagnóstico al despliegue.',
+                'hero.btnPrimary': 'Nuestras especialidades', 'hero.btnGhost': 'Contactar',
+                'm.strategy': 'Estrategia', 'm.digital': 'Transformación Digital', 'm.automation': 'Automatización', 'm.performance': 'Rendimiento Operativo',
+                'vision.label': 'Nuestra visión',
+                'vision.title': 'La tecnología solo vale si <em>cambia algo</em>.',
+                'vision.body': 'Una herramienta, una plataforma o un algoritmo nunca son un fin en sí mismos. Solo tienen sentido cuando mejoran una decisión, agilizan una organización o enriquecen una experiencia. Esta exigencia estructura cada misión que lleva a cabo Yaro Consulting, desde el primer diagnóstico hasta el despliegue final.',
+                'founder.label': 'El fundador',
+                'founder.title': 'Rodrin Bakala Mouengue, un perfil <em>híbrido</em>.',
+                'founder.p1': 'Antes de asesorar, dirigí sobre el terreno: gestión operativa, comercio, distribución, logística, liderazgo de equipos. Esa experiencia me enseñó lo que ningún método puede enseñar: el rendimiento de una organización se juega en el detalle de su ejecución.',
+                'founder.p2': 'Llevé esa exigencia hacia la estrategia y la transformación digital, diseñando soluciones digitales que responden a necesidades reales. Esta doble cultura, de terreno y digital, está en el centro de cómo acompaño hoy a empresas, instituciones y organizaciones.',
+                'founder.stat1': 'visión de terreno, negocio y digital',
+                'founder.stat2': 'áreas de especialidad combinadas: estrategia, digital, automatización, rendimiento',
+                'founder.stat3': 'interlocutor único, del diagnóstico al despliegue',
+                'expertises.title': 'Cuatro especialidades, <em>una sola lógica</em>',
+                'expertises.label': 'Lo que aportamos en cada misión',
+                'card1.name': 'Estrategia y Rendimiento Operativo',
+                'card1.desc': 'Diagnosticar una organización, clarificar sus prioridades y mejorar de forma duradera su rendimiento sobre el terreno.',
+                'card1.li1': 'Diagnóstico estratégico', 'card1.li2': 'Gestión del rendimiento', 'card1.li3': 'Optimización de procesos',
+                'card2.name': 'Transformación Digital',
+                'card2.desc': 'Diseñar la arquitectura digital de una organización y estructurar sus herramientas en torno a sus necesidades reales.',
+                'card2.li1': 'Auditoría digital', 'card2.li2': 'Arquitectura de sistemas', 'card2.li3': 'Gestión del cambio',
+                'card3.name': 'Automatización y Herramientas Digitales',
+                'card3.desc': 'Identificar dónde la automatización crea valor real y luego integrarla en los procesos existentes con herramientas inteligentes pensadas para durar.',
+                'card3.li1': 'Automatización de procesos', 'card3.li2': 'Herramientas inteligentes de gestión', 'card3.li3': 'Integración con sistemas existentes',
+                'card4.name': 'Experiencia de Usuario y Productos Digitales',
+                'card4.desc': 'Diseñar interfaces y productos digitales pensados para su uso real, no para la demostración.',
+                'card4.li1': 'Diseño UX/UI', 'card4.li2': 'Interfaces web premium', 'card4.li3': 'Productos digitales a medida',
+                'solutions.title': 'Las soluciones que <em>diseñamos</em>',
+                'solutions.label': 'Sin nombres de proyectos, un solo principio: la utilidad',
+                'solutions.body': 'No entregamos sitios escaparate. Diseñamos sistemas que estructuran una actividad, fiabilizan una relación con el cliente o esclarecen una decisión, para empresas, instituciones y organizaciones africanas en transformación.',
+                'sol1.name': 'CRM y Herramientas de Negocio', 'sol1.desc': 'Centralizar la relación con el cliente y fiabilizar el seguimiento comercial a diario.',
+                'sol2.name': 'Cuadros de Mando Decisionales', 'sol2.desc': 'Dar a los directivos una visión clara y cuantificada de su actividad.',
+                'sol3.name': 'Plataformas de Negocio', 'sol3.desc': 'Herramientas a medida para estructurar un servicio, una red o una institución.',
+                'sol4.name': 'Automatización de Procesos', 'sol4.desc': 'Eliminar las tareas repetitivas para que los equipos se centren en lo esencial.',
+                'sol5.name': 'Sistemas de Datos y Archivos', 'sol5.desc': 'Organizar, asegurar y explotar la información estratégica.',
+                'sol6.name': 'Interfaces Web Premium', 'sol6.desc': 'Productos digitales a la altura de la ambición de la marca.',
+                'methode.label': 'Nuestro método',
+                'methode.title': 'Un método <em>probado</em>,<br>del diagnóstico al resultado.',
+                'step1.name': 'Diagnóstico', 'step1.desc': 'Entender la organización, sus datos y sus usos reales antes de cualquier recomendación.',
+                'step2.name': 'Encuadre', 'step2.desc': 'Definir prioridades claras, objetivos medibles y un alcance de proyecto realista.',
+                'step3.name': 'Concepción', 'step3.desc': 'Diseñar la solución: arquitectura, recorrido de usuario, lógica de negocio.',
+                'step4.name': 'Desarrollo', 'step4.desc': 'Construir la herramienta o la plataforma con exigencia de robustez y calidad.',
+                'step5.name': 'Despliegue', 'step5.desc': 'Poner la solución en producción y acompañar su adopción por los equipos.',
+                'step6.name': 'Mejora continua', 'step6.desc': 'Seguir los resultados y hacer evolucionar la solución según los usos reales.',
+                'pourquoi.title': 'Por qué <em>Yaro Consulting</em>',
+                'pourquoi.label': 'Una ecuación poco común',
+                'pourquoi.body': 'Muchas consultoras piensan la estrategia sin el terreno. Muchos proveedores desarrollan sin entender la organización. Yaro Consulting reúne ambas.',
+                'why1.name': 'Visión estratégica', 'why1.desc': 'Una lectura clara de los retos de negocio, sin jerga ni complejidad inútil.',
+                'why2.name': 'Realidad de terreno', 'why2.desc': 'Una experiencia operativa directa del comercio, la distribución y la logística.',
+                'why3.name': 'Ejecución digital', 'why3.desc': 'La capacidad de diseñar y entregar sistemas, no solo recomendaciones.',
+                'contact.title': 'Hablemos de<br>su <em>proyecto.</em>',
+                'contact.intro': 'Cuéntenos su contexto y sus retos: le responderemos rápidamente con una primera lectura clara de su proyecto, normalmente en el mismo día.',
+                'contact.labelEmail': 'Email', 'contact.labelTel': 'Tel.', 'contact.waLink': 'Chatear por WhatsApp',
+                'form.name': 'Nombre completo', 'form.namePlaceholder': 'Juan Pérez',
+                'form.email': 'Correo electrónico', 'form.emailPlaceholder': 'juan@empresa.com',
+                'form.company': 'Empresa', 'form.companyPlaceholder': 'Su empresa',
+                'form.message': 'Su proyecto', 'form.messagePlaceholder': 'Describa brevemente su necesidad…',
+                'form.submit': 'Enviar por WhatsApp',
+                'form.note': 'Al hacer clic, su mensaje se abre en WhatsApp, ya rellenado. También puede escribir directamente a <a class="contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>.',
+                'footer.copy': '© 2026 Yaro Consulting. Todos los derechos reservados.',
+                'chat.title': 'Asistente Yaro', 'chat.status': 'En línea'
+            }
+        };
+
+        // Réponses du chatbot par langue
+        const WA = 'https://wa.me/33608888768', TEL = 'tel:+33608888768', MAIL = 'mailto:contact@yaroconsulting.fr';
+        const CHAT = {
+            fr: {
+                welcome: "Bonjour 👋 Je suis l'assistant de Yaro Consulting. Comment puis-je vous aider ?",
+                home: ['expertises', 'solutions', 'methode', 'contact'],
+                topics: {
+                    expertises: { label: 'Nos expertises', bot: "Nous mobilisons quatre expertises à chaque mission :\n\n• Stratégie & performance opérationnelle\n• Transformation digitale\n• Automatisation & outils digitaux\n• Expérience utilisateur & produits digitaux", quick: ['solutions', 'methode', 'contact'] },
+                    solutions: { label: 'Nos solutions', bot: "Nous concevons des systèmes utiles, pas des sites vitrines :\n\n• CRM & outils métiers\n• Tableaux de bord décisionnels\n• Plateformes métiers\n• Automatisation des processus\n• Systèmes de données & archives\n• Interfaces web premium", quick: ['expertises', 'methode', 'contact'] },
+                    methode: { label: 'Notre méthode', bot: "Une démarche claire, du diagnostic au déploiement : comprendre votre organisation, clarifier les priorités, concevoir la solution, puis la déployer et l'ancrer dans vos usages. Un interlocuteur unique tout au long.", quick: ['expertises', 'solutions', 'contact'] },
+                    contact: { label: 'Prendre contact', bot: 'Avec plaisir. Choisissez le canal qui vous convient :\n\n• WhatsApp : <a href="' + WA + '" target="_blank" rel="noopener">démarrer une discussion</a>\n• Téléphone : <a href="' + TEL + '">06 08 88 87 68</a>\n• Email : <a href="' + MAIL + '">contact@yaroconsulting.fr</a>\n\nOu remplissez le formulaire en bas de page.', quick: ['expertises', 'solutions', 'methode'] }
+                }
+            },
+            en: {
+                welcome: "Hello 👋 I'm the Yaro Consulting assistant. How can I help you?",
+                home: ['expertises', 'solutions', 'methode', 'contact'],
+                topics: {
+                    expertises: { label: 'Our expertise', bot: "We bring four areas of expertise to every engagement:\n\n• Strategy & operational performance\n• Digital transformation\n• Automation & digital tools\n• User experience & digital products", quick: ['solutions', 'methode', 'contact'] },
+                    solutions: { label: 'Our solutions', bot: "We design useful systems, not showcase websites:\n\n• CRM & business tools\n• Decision dashboards\n• Business platforms\n• Process automation\n• Data & archive systems\n• Premium web interfaces", quick: ['expertises', 'methode', 'contact'] },
+                    methode: { label: 'Our method', bot: "A clear approach, from diagnosis to deployment: understand your organization, clarify priorities, design the solution, then deploy it and embed it in your daily use. A single point of contact throughout.", quick: ['expertises', 'solutions', 'contact'] },
+                    contact: { label: 'Get in touch', bot: 'With pleasure. Choose the channel that suits you:\n\n• WhatsApp: <a href="' + WA + '" target="_blank" rel="noopener">start a chat</a>\n• Phone: <a href="' + TEL + '">06 08 88 87 68</a>\n• Email: <a href="' + MAIL + '">contact@yaroconsulting.fr</a>\n\nOr fill in the form at the bottom of the page.', quick: ['expertises', 'solutions', 'methode'] }
+                }
+            },
+            es: {
+                welcome: "Hola 👋 Soy el asistente de Yaro Consulting. ¿En qué puedo ayudarle?",
+                home: ['expertises', 'solutions', 'methode', 'contact'],
+                topics: {
+                    expertises: { label: 'Nuestras especialidades', bot: "Aportamos cuatro especialidades en cada misión:\n\n• Estrategia y rendimiento operativo\n• Transformación digital\n• Automatización y herramientas digitales\n• Experiencia de usuario y productos digitales", quick: ['solutions', 'methode', 'contact'] },
+                    solutions: { label: 'Nuestras soluciones', bot: "Diseñamos sistemas útiles, no sitios escaparate:\n\n• CRM y herramientas de negocio\n• Cuadros de mando decisionales\n• Plataformas de negocio\n• Automatización de procesos\n• Sistemas de datos y archivos\n• Interfaces web premium", quick: ['expertises', 'methode', 'contact'] },
+                    methode: { label: 'Nuestro método', bot: "Un enfoque claro, del diagnóstico al despliegue: entender su organización, clarificar prioridades, diseñar la solución y luego desplegarla e integrarla en sus usos. Un interlocutor único en todo momento.", quick: ['expertises', 'solutions', 'contact'] },
+                    contact: { label: 'Contactar', bot: 'Con mucho gusto. Elija el canal que prefiera:\n\n• WhatsApp: <a href="' + WA + '" target="_blank" rel="noopener">iniciar una conversación</a>\n• Teléfono: <a href="' + TEL + '">06 08 88 87 68</a>\n• Email: <a href="' + MAIL + '">contact@yaroconsulting.fr</a>\n\nO rellene el formulario al final de la página.', quick: ['expertises', 'solutions', 'methode'] }
+                }
+            }
+        };
+
+        const WA_MSG = {
+            fr: { greeting: 'Bonjour Yaro Consulting,', iam: 'Je suis', reach: 'Vous pouvez me joindre à :' },
+            en: { greeting: 'Hello Yaro Consulting,', iam: "I'm", reach: 'You can reach me at:' },
+            es: { greeting: 'Hola Yaro Consulting,', iam: 'Soy', reach: 'Puede contactarme en:' }
+        };
+
+        // Capture du texte FR d'origine (référence) puis application de la langue choisie
+        const FR_BASE = {};
+        document.querySelectorAll('[data-i18n]').forEach(el => { FR_BASE[el.getAttribute('data-i18n')] = el.innerHTML; });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { FR_BASE['ph:' + el.getAttribute('data-i18n-placeholder')] = el.getAttribute('placeholder') || ''; });
+        FR_BASE['meta.title'] = document.title;
+        const _metaDesc = document.querySelector('meta[name="description"]');
+        FR_BASE['meta.desc'] = _metaDesc ? _metaDesc.getAttribute('content') : '';
+
+        let LANG = 'fr';
+        function getStr(lang, key) { return lang === 'fr' ? FR_BASE[key] : ((I18N[lang] && I18N[lang][key] != null) ? I18N[lang][key] : FR_BASE[key]); }
+
+        function applyLang(lang) {
+            LANG = (lang === 'fr' || I18N[lang]) ? lang : 'fr';
+            document.documentElement.lang = LANG;
+            try { localStorage.setItem('yaro_lang', LANG); } catch (e) {}
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const v = getStr(LANG, el.getAttribute('data-i18n'));
+                if (v != null) el.innerHTML = v;
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const k = el.getAttribute('data-i18n-placeholder');
+                const v = LANG === 'fr' ? FR_BASE['ph:' + k] : ((I18N[LANG] && I18N[LANG][k] != null) ? I18N[LANG][k] : FR_BASE['ph:' + k]);
+                if (v != null) el.setAttribute('placeholder', v);
+            });
+            document.title = getStr(LANG, 'meta.title') || document.title;
+            if (_metaDesc) _metaDesc.setAttribute('content', getStr(LANG, 'meta.desc') || '');
+            document.querySelectorAll('.lang-switch button').forEach(b => b.classList.toggle('active', b.dataset.lang === LANG));
+            document.dispatchEvent(new CustomEvent('langchange', { detail: LANG }));
+        }
+
+        document.querySelectorAll('.lang-switch button').forEach(b => {
+            b.addEventListener('click', () => applyLang(b.dataset.lang));
+        });
+
+        (function initLang() {
+            let saved = null;
+            try { saved = localStorage.getItem('yaro_lang'); } catch (e) {}
+            const nav = (navigator.language || 'fr').slice(0, 2).toLowerCase();
+            const initial = saved || (['fr', 'en', 'es'].includes(nav) ? nav : 'fr');
+            applyLang(initial);
+        })();
+
         // Custom cursor (desktop only - pointer: fine)
         if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
             const cursor = document.getElementById('cursor');
@@ -1698,11 +1954,12 @@
                 return;
             }
 
-            let text = `Bonjour Yaro Consulting,\n\n`;
-            text += `Je suis ${name}`;
+            const wm = WA_MSG[LANG] || WA_MSG.fr;
+            let text = `${wm.greeting}\n\n`;
+            text += `${wm.iam} ${name}`;
             if (company) text += ` (${company})`;
             text += `.\n\n${message}`;
-            if (email) text += `\n\nVous pouvez me joindre à : ${email}`;
+            if (email) text += `\n\n${wm.reach} ${email}`;
 
             const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank', 'noopener');
@@ -1740,7 +1997,7 @@
             }
         }
 
-        // ===== Assistant guidé (chatbot) =====
+        // ===== Assistant guidé (chatbot) multilingue =====
         (function () {
             const launcher = document.getElementById('chatLauncher');
             const panel = document.getElementById('chatPanel');
@@ -1748,34 +2005,8 @@
             const quick = document.getElementById('chatQuick');
             if (!launcher || !panel) return;
 
-            const WA = 'https://wa.me/33608888768';
-            const TEL = 'tel:+33608888768';
-            const MAIL = 'mailto:contact@yaroconsulting.fr';
-
-            // Réponses scriptées
-            const topics = {
-                accueil: {
-                    quick: ['Vos expertises', 'Vos solutions', 'Votre méthode', 'Prendre contact']
-                },
-                'Vos expertises': {
-                    bot: "Nous mobilisons quatre expertises à chaque mission :\n\n• Stratégie & performance opérationnelle\n• Transformation digitale\n• Automatisation & outils digitaux\n• Expérience utilisateur & produits digitaux",
-                    quick: ['Vos solutions', 'Votre méthode', 'Prendre contact']
-                },
-                'Vos solutions': {
-                    bot: "Nous concevons des systèmes utiles, pas des sites vitrines :\n\n• CRM & outils métiers\n• Tableaux de bord décisionnels\n• Plateformes métiers\n• Automatisation des processus\n• Systèmes de données & archives\n• Interfaces web premium",
-                    quick: ['Vos expertises', 'Votre méthode', 'Prendre contact']
-                },
-                'Votre méthode': {
-                    bot: "Une démarche claire, du diagnostic au déploiement : comprendre votre organisation, clarifier les priorités, concevoir la solution, puis la déployer et l'ancrer dans vos usages. Un interlocuteur unique tout au long.",
-                    quick: ['Vos expertises', 'Vos solutions', 'Prendre contact']
-                },
-                'Prendre contact': {
-                    bot: "Avec plaisir. Choisissez le canal qui vous convient :\n\n• WhatsApp : <a href=\"" + WA + "\" target=\"_blank\" rel=\"noopener\">démarrer une discussion</a>\n• Téléphone : <a href=\"" + TEL + "\">06 08 88 87 68</a>\n• Email : <a href=\"" + MAIL + "\">contact@yaroconsulting.fr</a>\n\nOu remplissez le formulaire en bas de page.",
-                    quick: ['Vos expertises', 'Vos solutions', 'Votre méthode']
-                }
-            };
-
             let started = false;
+            function data() { return CHAT[LANG] || CHAT.fr; }
 
             function addMsg(html, who) {
                 const el = document.createElement('div');
@@ -1785,32 +2016,43 @@
                 body.scrollTop = body.scrollHeight;
             }
 
-            function renderQuick(labels) {
+            function renderQuick(ids) {
                 quick.innerHTML = '';
-                labels.forEach(label => {
+                const topics = data().topics;
+                ids.forEach(id => {
+                    const t = topics[id];
+                    if (!t) return;
                     const b = document.createElement('button');
                     b.type = 'button';
-                    b.textContent = label;
-                    b.addEventListener('click', () => handle(label));
+                    b.textContent = t.label;
+                    b.addEventListener('click', () => handle(id));
                     quick.appendChild(b);
                 });
             }
 
-            function handle(label) {
-                addMsg(label, 'user');
-                const t = topics[label];
+            function handle(id) {
+                const t = data().topics[id];
+                if (!t) return;
+                addMsg(t.label, 'user');
                 renderQuick([]);
                 setTimeout(() => {
-                    if (t && t.bot) addMsg(t.bot, 'bot');
-                    renderQuick((t && t.quick) || topics.accueil.quick);
+                    addMsg(t.bot, 'bot');
+                    renderQuick(t.quick || data().home);
                 }, 350);
             }
 
             function start() {
                 if (started) return;
                 started = true;
-                addMsg("Bonjour 👋 Je suis l'assistant de Yaro Consulting. Comment puis-je vous aider ?", 'bot');
-                renderQuick(topics.accueil.quick);
+                addMsg(data().welcome, 'bot');
+                renderQuick(data().home);
+            }
+
+            function resetChat() {
+                started = false;
+                body.innerHTML = '';
+                quick.innerHTML = '';
+                if (panel.classList.contains('open')) start();
             }
 
             function toggle() {
@@ -1825,6 +2067,7 @@
             document.addEventListener('keydown', e => {
                 if (e.key === 'Escape' && panel.classList.contains('open')) toggle();
             });
+            document.addEventListener('langchange', resetChat);
         })();
     </script>
 </body>
