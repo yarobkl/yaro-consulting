@@ -2105,12 +2105,12 @@
             if (e.key === 'Escape' && fullMenu.classList.contains('open')) toggleMenu(false);
         });
 
-        // Scroll reveal
+        // Scroll reveal : se rejoue à chaque entrée/sortie de l'écran
         const io = new IntersectionObserver((entries) => {
             entries.forEach(e => {
-                if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+                e.target.classList.toggle('visible', e.isIntersecting);
             });
-        }, { threshold: 0, rootMargin: '0px 0px 18% 0px' });
+        }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
         // Formulaire → WhatsApp
