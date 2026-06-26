@@ -1376,22 +1376,18 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            gap: 3px;
             box-shadow: -4px 0 16px rgba(0,0,0,0.3);
             transition: transform 0.45s var(--ease), background 0.3s ease;
         }
-        .edge-handle svg { width: 16px; height: 16px; transition: transform 0.45s var(--ease); }
-        .edge-handle::before {
+        .edge-handle::before, .edge-handle::after {
             content: '';
-            position: absolute;
-            left: 7px;
-            width: 3px;
-            height: 34px;
-            border-radius: 3px;
-            background: rgba(10,20,16,0.45);
+            width: 2px;
+            height: 30px;
+            border-radius: 2px;
+            background: rgba(10,20,16,0.5);
         }
         body.edge-open .edge-handle { transform: translateY(-50%) translateX(calc(-1 * var(--edge-w))); }
-        body.edge-open .edge-handle svg { transform: rotate(180deg); }
-        body.edge-open .edge-handle::before { display: none; }
 
         .edge-panel {
             position: fixed;
@@ -1450,7 +1446,7 @@
             .edge-links a:hover { color: var(--gold); padding-left: 0.4rem; }
         }
         @media (prefers-reduced-motion: reduce) {
-            .edge-handle, .edge-panel, .edge-overlay, .edge-handle svg { transition: none; }
+            .edge-handle, .edge-panel, .edge-overlay { transition: none; }
         }
     </style>
 </head>
@@ -1896,9 +1892,7 @@
 
     <!-- EDGE PANEL (raccourcis style Galaxy) -->
     <div class="edge-overlay" id="edgeOverlay"></div>
-    <button class="edge-handle" id="edgeHandle" aria-label="Raccourcis de navigation" aria-expanded="false">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4 6 8l4 4"/></svg>
-    </button>
+    <button class="edge-handle" id="edgeHandle" aria-label="Raccourcis de navigation" aria-expanded="false"></button>
     <aside class="edge-panel" id="edgePanel" aria-hidden="true" aria-label="Navigation rapide">
         <p class="edge-title" data-i18n="edge.title">Navigation rapide</p>
         <nav class="edge-links">
