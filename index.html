@@ -221,7 +221,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 6rem 1.5rem 4rem;
+            padding: 6rem 1.5rem 2.25rem;
             position: relative;
             overflow: hidden;
         }
@@ -278,9 +278,13 @@
             opacity: 0;
             animation: fadeUp 0.9s 0.3s var(--ease) forwards;
         }
-        .hero-eyebrow-bottom {
-            margin-bottom: 0;
-            margin-top: 2rem;
+        .hero-eyebrow-top {
+            position: absolute;
+            top: 5.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            z-index: 2;
+            margin: 0;
             animation-delay: 0.6s;
         }
 
@@ -951,6 +955,11 @@
                 justify-content: flex-end;
                 padding: 0 3rem 5rem;
             }
+            .hero-eyebrow-top {
+                top: 7rem;
+                left: 3rem;
+                right: auto;
+            }
             .hero-bg {
                 position: relative;
                 grid-column: 2;
@@ -1075,6 +1084,7 @@
             <img src="images/portrait.jpg" alt="Portrait de Rodrin Bakala, fondateur de Yaro Consulting's" id="heroImg">
             <div class="hero-grain"></div>
         </div>
+        <p class="hero-eyebrow hero-eyebrow-top">Consultant · Stratégie · Transformation Digitale</p>
         <div class="hero-content">
             <h1 class="hero-title">
                 <span class="line"><span>Transformer les idées</span></span>
@@ -1093,7 +1103,6 @@
                 </a>
                 <a href="#contact" class="btn-ghost">Prendre contact</a>
             </div>
-            <p class="hero-eyebrow hero-eyebrow-bottom">Consultant · Stratégie · Transformation Digitale</p>
         </div>
     </section>
 
