@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaro Consulting's | Rodrin Bakala — Stratégie, IA & Transformation Digitale</title>
+    <meta name="description" content="Yaro Consulting's accompagne entreprises, institutions et organisations dans leurs projets de stratégie, transformation digitale, intelligence artificielle et performance opérationnelle.">
+    <meta name="author" content="Rodrin Bakala">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink: #0a1410;
+            --cream: #eef2ea;
+            --gold: #7fa88a;
+            --gold-light: #b8d4bd;
+            --muted: #7d8c82;
+            --border: rgba(127,168,138,0.22);
+            --accent-deep: #2f5740;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+        }
+
+        html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--ink);
+            color: var(--cream);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ───────────────────────────────
+           BASE = MOBILE FIRST
+           ─────────────────────────────── */
+
+        /* Custom cursor — hidden by default, only enabled on fine pointers */
+        .cursor, .cursor-ring { display: none; }
+
+        /* Noise overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9997;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            background: rgba(10,20,16,0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: padding 0.4s var(--ease), background 0.4s ease;
+        }
+        nav.scrolled { padding: 0.85rem 1.5rem; background: rgba(10,20,16,0.85); }
+        nav::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 1.5rem; right: 1.5rem;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 1.4rem;
+            letter-spacing: 0.3em;
+            color: var(--cream);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .logo span { color: var(--gold); }
+
+        .nav-links, .nav-cta { display: none; }
+
+        /* Mobile menu button */
+        .menu-btn {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 200;
+            padding: 4px;
+        }
+        .menu-btn span {
+            display: block;
+            width: 26px;
+            height: 1.5px;
+            background: var(--cream);
+            transition: transform 0.5s var(--ease), opacity 0.3s ease, width 0.4s var(--ease);
+            transform-origin: center;
+        }
+        .menu-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .menu-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+        .menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        /* Full-screen menu */
+        .fullscreen-menu {
+            position: fixed;
+            inset: 0;
+            background: var(--ink);
+            z-index: 150;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 6rem 1.5rem 2.5rem;
+            overflow-y: auto;
+            clip-path: circle(0% at calc(100% - 2.5rem) 2.5rem);
+            transition: clip-path 0.8s var(--ease);
+            pointer-events: none;
+        }
+        .fullscreen-menu.open {
+            clip-path: circle(150% at calc(100% - 2.5rem) 2.5rem);
+            pointer-events: auto;
+        }
+        .fullscreen-menu > a:not(.menu-cta) {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 13vw, 4rem);
+            font-weight: 300;
+            color: var(--cream);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            display: block;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: color 0.3s, transform 0.6s var(--ease), opacity 0.6s ease;
+        }
+        .fullscreen-menu.open > a:not(.menu-cta) { opacity: 1; transform: translateY(0); }
+        .fullscreen-menu.open > a:nth-child(1) { transition-delay: 0.25s; }
+        .fullscreen-menu.open > a:nth-child(2) { transition-delay: 0.33s; }
+        .fullscreen-menu.open > a:nth-child(3) { transition-delay: 0.41s; }
+        .fullscreen-menu.open > a:nth-child(4) { transition-delay: 0.49s; }
+        .fullscreen-menu > a:not(.menu-cta):active { color: var(--gold); }
+
+        .menu-cta {
+            display: inline-block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--ink);
+            background: var(--gold);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: transform 0.6s var(--ease) 0.57s, opacity 0.6s ease 0.57s, background 0.3s;
+        }
+        .fullscreen-menu.open .menu-cta { opacity: 1; transform: translateY(0); }
+        .menu-cta:active { background: var(--gold-light); }
+
+        .menu-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin-top: 2.5rem;
+            opacity: 0;
+            transition: opacity 0.6s ease 0.65s;
+        }
+        .fullscreen-menu.open .menu-contact { opacity: 1; }
+        .menu-contact a {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            transition: color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .menu-contact a::before {
+            content: '';
+            width: 16px; height: 1px;
+            background: var(--gold);
+        }
+        .menu-contact a:active { color: var(--gold); }
+        @media (hover: hover) { .menu-contact a:hover { color: var(--gold); } }
+        .fullscreen-menu .menu-footer {
+            margin-top: auto;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            text-transform: uppercase;
+            opacity: 0;
+            transition: opacity 0.6s ease 0.5s;
+        }
+        .fullscreen-menu.open .menu-footer { opacity: 1; }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 6rem 1.5rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 22%;
+            opacity: 0;
+            filter: saturate(0.95) contrast(1.02);
+            transform: scale(1.12);
+            animation: heroIntro 2s 0.2s var(--ease) forwards;
+            transition: opacity 1.6s ease;
+            will-change: transform, opacity;
+        }
+        .hero-bg.loaded img { opacity: 0.75; }
+        /* Couche "vivante" : Ken Burns lent (lit --px/--py pour la parallaxe) */
+        .hero-bg.alive img {
+            animation: heroIntro 2s 0.2s var(--ease) forwards,
+                       kenBurns 28s ease-in-out 2.2s infinite alternate;
+        }
+        /* Grain animé très discret */
+        .hero-grain {
+            position: absolute;
+            inset: -50%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.06;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 180px 180px;
+            animation: grainShift 6s steps(6) infinite;
+            mix-blend-mode: overlay;
+        }
+        /* Reflet doré qui balaye lentement */
+        .hero-sheen {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: linear-gradient(115deg,
+                transparent 35%,
+                rgba(184,212,189,0.10) 48%,
+                rgba(184,212,189,0.18) 50%,
+                rgba(184,212,189,0.10) 52%,
+                transparent 65%);
+            background-size: 280% 280%;
+            background-position: 120% 120%;
+            animation: sheen 11s ease-in-out 3s infinite;
+            mix-blend-mode: screen;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(to top, var(--ink) 32%, rgba(10,20,16,0.25) 75%, rgba(10,20,16,0.45) 100%);
+        }
+
+        .hero-content { position: relative; z-index: 2; }
+
+        .hero-eyebrow {
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.9s 0.3s var(--ease) forwards;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.75rem, 13vw, 4rem);
+            font-weight: 300;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+        /* Word-by-word reveal */
+        .hero-title .line { display: block; overflow: hidden; }
+        .hero-title .line span {
+            display: inline-block;
+            transform: translateY(105%);
+            animation: lineUp 1s var(--ease) forwards;
+        }
+        .hero-title .line:nth-child(1) span { animation-delay: 0.4s; }
+        .hero-title .line:nth-child(2) span { animation-delay: 0.52s; }
+        .hero-title .line:nth-child(3) span { animation-delay: 0.64s; }
+        .hero-title em { font-style: italic; color: var(--gold); }
+
+        .hero-sub {
+            font-size: 0.92rem;
+            line-height: 1.7;
+            color: var(--muted);
+            max-width: 420px;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.9s 0.8s var(--ease) forwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.25rem;
+            opacity: 0;
+            animation: fadeUp 0.9s 1s var(--ease) forwards;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--ink);
+            background: var(--gold);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.4s var(--ease);
+            width: 100%;
+            justify-content: center;
+            isolation: isolate;
+        }
+        /* Halo doré conique qui tourne en boucle (bordure lumineuse) */
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 180%;
+            aspect-ratio: 1;
+            z-index: -2;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                rgba(184,212,189,0.08) 55deg,
+                rgba(184,212,189,0.55) 85deg,
+                rgba(214,235,217,0.7) 90deg,
+                rgba(184,212,189,0.55) 95deg,
+                rgba(184,212,189,0.08) 125deg,
+                transparent 180deg,
+                transparent 360deg
+            );
+            animation: goldSpin 5s linear infinite;
+        }
+        /* Masque intérieur : ne laisse briller qu'un fin contour (~1.5px) */
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: 1.5px;
+            z-index: -1;
+            background: var(--gold);
+            transition: background 0.4s var(--ease);
+        }
+        .btn-primary:active::after { background: var(--gold-light); }
+        @media (hover: hover) {
+            .btn-primary:hover::after { background: var(--gold-light); }
+        }
+        .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
+        .btn-primary svg { transition: transform 0.4s var(--ease); }
+        @media (hover: hover) {
+            .btn-primary:hover svg { transform: translateX(5px); }
+        }
+
+        .btn-ghost {
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cream);
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .btn-ghost::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 100%; height: 1px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s var(--ease);
+        }
+        @media (hover: hover) {
+            .btn-ghost:hover { color: var(--gold); }
+            .btn-ghost:hover::after { transform: scaleX(1); }
+        }
+
+        /* ─── MARQUEE ─── */
+        .marquee-section {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            overflow: hidden;
+        }
+        .marquee-track {
+            display: flex;
+            gap: 2.5rem;
+            animation: marquee 18s linear infinite;
+            width: max-content;
+        }
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            white-space: nowrap;
+        }
+        .marquee-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+        .marquee-dot {
+            width: 4px; height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        /* ─── SECTIONS GÉNÉRIQUES ─── */
+        .section-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        .section-number { display: none; }
+
+        /* ─── ABOUT ─── */
+        #propos {
+            padding: 5rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .about-right h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 8vw, 2.75rem);
+            font-weight: 300;
+            line-height: 1.2;
+            margin: 1rem 0 1.5rem;
+        }
+        .about-right h2 em { font-style: italic; color: var(--gold); }
+        .about-body {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 0.92rem;
+            max-width: 560px;
+            margin-bottom: 2.5rem;
+        }
+        .signature {
+            font-family: 'Caveat', cursive;
+            font-size: 2.4rem;
+            color: var(--gold-light);
+            line-height: 1;
+            margin: -1rem 0 2.5rem;
+            transform: rotate(-4deg);
+            transform-origin: left;
+            opacity: 0.9;
+        }
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.25rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* ─── VISION ─── */
+        #vision {
+            padding: 4rem 1.5rem 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .vision-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.85rem, 7vw, 2.5rem);
+            font-weight: 300;
+            line-height: 1.3;
+            margin: 1rem 0 1.5rem;
+        }
+        .vision-title em { font-style: italic; color: var(--gold); }
+        .vision-body {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 0.92rem;
+            max-width: 640px;
+        }
+
+        /* ─── WHY (Pourquoi) ─── */
+        .why-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2.5rem;
+        }
+        .why-item { max-width: 480px; }
+
+        /* ─── SERVICES ─── */
+        #expertises, #solutions, #pourquoi {
+            padding: 4rem 1.5rem 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        #solutions .about-body, #pourquoi .about-body { margin-bottom: 3rem; }
+        #solutions .service-card { padding-bottom: 2rem; }
+        .services-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+        .services-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 8vw, 2.75rem);
+            font-weight: 300;
+        }
+        .services-title em { font-style: italic; color: var(--gold); }
+
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--border);
+        }
+        .service-card {
+            background: var(--ink);
+            padding: 2.5rem 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.5s ease;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s var(--ease);
+        }
+        @media (hover: hover) {
+            .service-card:hover::before { transform: scaleX(1); }
+            .service-card:hover { background: rgba(127,168,138,0.04); }
+        }
+        .service-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-bottom: 1.25rem;
+            opacity: 0.7;
+        }
+        .service-img-wrap {
+            height: 180px;
+            overflow: hidden;
+            margin-bottom: 1.75rem;
+            border-radius: 2px;
+        }
+        .service-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.68) saturate(0.85) hue-rotate(-8deg);
+            transition: transform 0.9s var(--ease), filter 0.6s ease;
+        }
+        @media (hover: hover) {
+            .service-card:hover .service-img-wrap img {
+                transform: scale(1.07);
+                filter: brightness(0.92) saturate(0.95) hue-rotate(-8deg);
+            }
+        }
+        .service-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin-bottom: 0.85rem;
+        }
+        .service-desc {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: var(--muted);
+            margin-bottom: 1.75rem;
+        }
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .service-list li {
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .service-list li::before {
+            content: '';
+            width: 16px; height: 1px;
+            background: var(--gold);
+            flex-shrink: 0;
+        }
+
+        /* ─── PROCESS ─── */
+        .process-section {
+            background: var(--cream);
+            color: var(--ink);
+            padding: 5rem 1.5rem;
+        }
+        .process-section .section-label { color: var(--accent-deep); }
+        .process-inner { max-width: 1400px; margin: 0 auto; }
+        .process-header { margin-bottom: 3.5rem; }
+        .process-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 8vw, 2.75rem);
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--ink);
+            max-width: 600px;
+            margin-top: 1rem;
+        }
+        .process-header h2 em { font-style: italic; color: var(--accent-deep); }
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .process-step {
+            border-top: 1px solid rgba(10,20,16,0.15);
+            padding-top: 1.5rem;
+        }
+        .step-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            color: var(--accent-deep);
+            margin-bottom: 1rem;
+        }
+        .step-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 0.85rem;
+        }
+        .step-desc {
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: rgba(10,20,16,0.5);
+        }
+
+        /* ─── CONTACT ─── */
+        #contact {
+            padding: 5rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        .contact-left h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 11vw, 3.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .contact-left h2 em { font-style: italic; color: var(--gold); }
+        .contact-left p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: 2.5rem;
+        }
+        .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+        .contact-info-item { display: flex; gap: 1.25rem; font-size: 0.82rem; }
+        .contact-info-label {
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.62rem;
+            font-weight: 500;
+            width: 70px;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+        .contact-info-val { color: var(--muted); }
+        a.contact-link {
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s var(--ease);
+        }
+        a.contact-link::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: -2px;
+            width: 100%; height: 1px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s var(--ease);
+        }
+        a.contact-link:active { color: var(--gold); }
+        @media (hover: hover) {
+            a.contact-link:hover { color: var(--gold); }
+            a.contact-link:hover::after { transform: scaleX(1); }
+        }
+        .form-note {
+            font-size: 0.72rem;
+            line-height: 1.6;
+            color: var(--muted);
+            margin-top: 0.25rem;
+        }
+
+        .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+        .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
+        .form-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 500;
+        }
+        .form-input, .form-textarea {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 0;
+            color: var(--cream);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.4s var(--ease);
+            width: 100%;
+        }
+        .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
+        .form-textarea { resize: none; height: 100px; }
+        .form-input::placeholder, .form-textarea::placeholder { color: rgba(125,140,130,0.5); }
+
+        .form-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--ink);
+            background: var(--gold);
+            border: none;
+            padding: 1.1rem 2rem;
+            cursor: pointer;
+            transition: background 0.4s var(--ease);
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+        .form-submit:active { background: var(--gold-light); }
+        @media (hover: hover) { .form-submit:hover { background: var(--gold-light); } }
+
+        /* ─── FOOTER ─── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+        .footer-logo span { color: var(--gold); }
+        .footer-links { display: flex; gap: 1.75rem; list-style: none; }
+        .footer-links a {
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:active { color: var(--gold); }
+        @media (hover: hover) { .footer-links a:hover { color: var(--gold); } }
+        .footer-copy { font-size: 0.65rem; letter-spacing: 0.1em; color: var(--muted); }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes lineUp {
+            from { transform: translateY(105%); }
+            to { transform: translateY(0); }
+        }
+        @keyframes heroIntro {
+            from { transform: scale(1.12); }
+            to { transform: scale(1.06); }
+        }
+        @keyframes kenBurns {
+            0%   { transform: scale(1.06) translate(calc(var(--px,0) * -14px), calc(var(--py,0) * -14px)); }
+            100% { transform: scale(1.13) translate(calc(var(--px,0) * -14px - 10px), calc(var(--py,0) * -14px - 8px)); }
+        }
+        @keyframes grainShift {
+            0%   { transform: translate(0, 0); }
+            20%  { transform: translate(-4%, 3%); }
+            40%  { transform: translate(3%, -3%); }
+            60%  { transform: translate(-3%, -2%); }
+            80%  { transform: translate(2%, 4%); }
+            100% { transform: translate(0, 0); }
+        }
+        @keyframes sheen {
+            0%, 18%   { background-position: 120% 120%; }
+            55%, 100% { background-position: -20% -20%; }
+        }
+        @keyframes goldSpin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Reveal on scroll — refined cascade */
+        .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+            will-change: opacity, transform;
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+        .reveal-delay-1 { transition-delay: 0.08s; }
+        .reveal-delay-2 { transition-delay: 0.16s; }
+        .reveal-delay-3 { transition-delay: 0.24s; }
+
+        /* ───────────────────────────────
+           ≥ 640px — TABLETTE
+           ─────────────────────────────── */
+        @media (min-width: 640px) {
+            .hero-actions { flex-direction: row; align-items: center; gap: 2rem; }
+            .btn-primary { width: auto; }
+            .form-submit { width: auto; align-self: flex-start; }
+            .services-grid { display: grid; grid-template-columns: 1fr 1fr; }
+            .process-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+            .marquee-text { font-size: 1.1rem; }
+            .marquee-track, .marquee-item { gap: 4rem; }
+        }
+
+        /* ───────────────────────────────
+           ≥ 1024px — DESKTOP
+           ─────────────────────────────── */
+        @media (min-width: 1024px) {
+            html { font-size: 16px; }
+
+            body { cursor: none; }
+            .cursor {
+                display: block;
+                position: fixed;
+                width: 8px; height: 8px;
+                background: var(--gold);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                transform: translate(-50%, -50%);
+                mix-blend-mode: difference;
+            }
+            .cursor-ring {
+                display: block;
+                position: fixed;
+                width: 36px; height: 36px;
+                border: 1px solid rgba(127,168,138,0.5);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9998;
+                transform: translate(-50%, -50%);
+                transition: width 0.3s var(--ease), height 0.3s var(--ease);
+            }
+            body:has(a:hover) .cursor-ring,
+            body:has(button:hover) .cursor-ring,
+            body:has(input:hover) .cursor-ring,
+            body:has(textarea:hover) .cursor-ring {
+                width: 56px; height: 56px;
+            }
+            a, button, input, textarea { cursor: none; }
+
+            nav { padding: 2rem 3rem; }
+            nav.scrolled { padding: 1.25rem 3rem; }
+            nav::after { left: 3rem; right: 3rem; }
+            .logo { font-size: 1.5rem; }
+            .menu-btn { display: none; }
+
+            .nav-links {
+                display: flex;
+                gap: 2.25rem;
+                list-style: none;
+            }
+            .nav-links a {
+                font-size: 0.72rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                color: var(--muted);
+                text-decoration: none;
+                font-weight: 500;
+                position: relative;
+                padding-bottom: 3px;
+                transition: color 0.3s;
+            }
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                left: 0; bottom: 0;
+                width: 100%; height: 1px;
+                background: var(--gold);
+                transform: scaleX(0);
+                transform-origin: right;
+                transition: transform 0.4s var(--ease);
+            }
+            .nav-links a:hover { color: var(--gold); }
+            .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+            .nav-cta {
+                display: inline-block;
+                font-size: 0.72rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                font-weight: 500;
+                color: var(--ink);
+                background: var(--gold);
+                padding: 0.65rem 1.5rem;
+                text-decoration: none;
+                transition: background 0.3s;
+            }
+            .nav-cta:hover { background: var(--gold-light); }
+
+            /* Hero becomes split layout */
+            .hero {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding: 0;
+            }
+            .hero-content {
+                grid-column: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 0 3rem 5rem;
+            }
+            .hero-bg {
+                position: relative;
+                grid-column: 2;
+                inset: auto;
+            }
+            .hero-bg.loaded img { opacity: 0.9; }
+            .hero-bg img { object-position: 50% 18%; }
+            .hero-bg::after {
+                background: linear-gradient(to right, var(--ink) 0%, rgba(10,20,16,0.15) 35%, transparent 60%);
+            }
+            .hero-title { font-size: clamp(3rem, 5vw, 5rem); }
+            .hero-sub { font-size: 0.9rem; }
+
+            .section-number {
+                display: block;
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 6rem;
+                font-weight: 300;
+                color: rgba(127,168,138,0.08);
+                line-height: 1;
+                margin-top: -1rem;
+            }
+
+            #vision {
+                padding: 7rem 3rem 2rem;
+                max-width: 980px;
+            }
+            .vision-title { font-size: clamp(2.2rem, 3.5vw, 3rem); }
+
+            #propos {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                gap: 6rem;
+                padding: 6rem 3rem 10rem;
+                align-items: start;
+            }
+            .about-right h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); }
+            .stats-row { gap: 4rem; padding-top: 3rem; }
+            .stat-number { font-size: 2.5rem; }
+            .why-grid { flex-direction: row; gap: 4rem; }
+
+            #expertises, #solutions, #pourquoi { padding: 6rem 3rem 10rem; }
+            .services-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+                margin-bottom: 5rem;
+            }
+            .services-title { font-size: clamp(2.5rem, 4vw, 3.5rem); }
+            .services-grid { gap: 2px; }
+            .service-card { padding: 3.5rem; }
+            .service-img-wrap { height: 200px; }
+            .service-name { font-size: 1.8rem; }
+
+            .process-section { padding: 10rem 3rem; }
+            .process-header { margin-bottom: 6rem; }
+            .process-header h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); }
+            .process-steps { grid-template-columns: repeat(3, 1fr); gap: 3rem 2.5rem; }
+            .process-step { padding-top: 2rem; }
+            .step-name { font-size: 1.5rem; }
+
+            #contact {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8rem;
+                padding: 10rem 3rem;
+                align-items: center;
+            }
+            .contact-left h2 { font-size: clamp(3rem, 5vw, 4.5rem); }
+
+            footer {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 2.5rem 3rem;
+                text-align: left;
+            }
+            .footer-logo { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- NAV -->
+    <nav id="nav">
+        <a href="#" class="logo">Yaro<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#expertises">Expertises</a></li>
+            <li><a href="#methode">Méthode</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Démarrer un projet</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- FULLSCREEN MENU -->
+    <div class="fullscreen-menu" id="fullMenu">
+        <a href="#vision">Vision</a>
+        <a href="#expertises">Expertises</a>
+        <a href="#methode">Méthode</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="menu-cta">Démarrer un projet</a>
+        <div class="menu-contact">
+            <a href="tel:+33608888768">06 08 88 87 68</a>
+            <a href="https://wa.me/33608888768" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>
+        </div>
+        <p class="menu-footer">© 2026 Yaro Consulting's</p>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg" id="heroBg">
+            <img src="images/portrait.jpg" alt="Portrait de Rodrin Bakala, fondateur de Yaro Consulting's" id="heroImg">
+            <div class="hero-grain"></div>
+            <div class="hero-sheen"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Stratégie · Intelligence Artificielle · Transformation</p>
+            <h1 class="hero-title">
+                <span class="line"><span>Transformer les idées</span></span>
+                <span class="line"><span>en <em>systèmes</em></span></span>
+                <span class="line"><span>qui performent.</span></span>
+            </h1>
+            <p class="hero-sub">
+                Rodrin Bakala et Yaro Consulting's accompagnent entreprises, institutions et organisations dans leurs projets de stratégie, de transformation digitale et d'intelligence artificielle — du diagnostic jusqu'au déploiement.
+            </p>
+            <div class="hero-actions">
+                <a href="#expertises" class="btn-primary">
+                    <span>Nos expertises</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="#contact" class="btn-ghost">Prendre contact</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-item">
+                <span class="marquee-text">Stratégie</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Transformation Digitale</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Intelligence Artificielle</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Performance Opérationnelle</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Stratégie</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Transformation Digitale</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Intelligence Artificielle</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Performance Opérationnelle</span><span class="marquee-dot"></span>
+            </div>
+            <div class="marquee-item" aria-hidden="true">
+                <span class="marquee-text">Stratégie</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Transformation Digitale</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Intelligence Artificielle</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Performance Opérationnelle</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Stratégie</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Transformation Digitale</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Intelligence Artificielle</span><span class="marquee-dot"></span>
+                <span class="marquee-text">Performance Opérationnelle</span><span class="marquee-dot"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- VISION -->
+    <section id="vision">
+        <p class="section-label reveal">Notre vision</p>
+        <h2 class="vision-title reveal reveal-delay-1">La technologie n'a de valeur que si elle <em>change quelque chose</em>.</h2>
+        <p class="vision-body reveal reveal-delay-2">
+            Un outil, une plateforme ou un algorithme ne sont jamais une fin en soi. Ils n'ont de sens que lorsqu'ils améliorent une décision, fluidifient une organisation ou enrichissent une expérience. C'est cette exigence qui structure chaque mission menée par Yaro Consulting's, du premier diagnostic jusqu'au déploiement final.
+        </p>
+    </section>
+
+    <!-- FONDATEUR -->
+    <section id="propos">
+        <div>
+            <p class="section-label reveal">Le fondateur</p>
+            <p class="section-number">01</p>
+        </div>
+        <div class="about-right">
+            <h2 class="reveal">Rodrin Bakala, un profil <em>hybride</em>.</h2>
+            <p class="about-body reveal reveal-delay-1">
+                Avant de conseiller, j'ai dirigé sur le terrain : management opérationnel, commerce, distribution, logistique, pilotage d'équipes. Cette expérience m'a appris ce qu'aucune méthode ne peut enseigner — la performance d'une organisation se joue dans le détail de son exécution.
+            </p>
+            <p class="about-body reveal reveal-delay-1">
+                J'ai porté cette exigence vers la stratégie, la transformation digitale et l'intelligence artificielle, en concevant des solutions numériques répondant à des besoins réels. Cette double culture, terrain et digitale, est au cœur de la façon dont j'accompagne aujourd'hui les entreprises, institutions et organisations.
+            </p>
+            <p class="signature reveal reveal-delay-1">Rodrin Bakala</p>
+            <div class="stats-row reveal reveal-delay-2">
+                <div class="stat-item">
+                    <div class="stat-number">360°</div>
+                    <div class="stat-label">vision terrain, business et digitale</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">expertises réunies : stratégie, digital, IA, automatisation, performance</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">interlocuteur unique, du diagnostic au déploiement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERTISES -->
+    <section id="expertises">
+        <div class="services-header">
+            <h2 class="services-title reveal">Quatre expertises, <em>une seule logique</em></h2>
+            <p class="section-label reveal">Ce que nous mobilisons à chaque mission</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-num">01</div>
+                <div class="service-img-wrap">
+                    <img src="images/conseil.jpg" loading="lazy" alt="Stratégie et performance opérationnelle">
+                </div>
+                <h3 class="service-name">Stratégie & Performance Opérationnelle</h3>
+                <p class="service-desc">Diagnostiquer une organisation, clarifier ses priorités et améliorer durablement sa performance sur le terrain.</p>
+                <ul class="service-list">
+                    <li>Diagnostic stratégique</li>
+                    <li>Pilotage de la performance</li>
+                    <li>Optimisation des processus</li>
+                </ul>
+            </div>
+            <div class="service-card reveal reveal-delay-1">
+                <div class="service-num">02</div>
+                <div class="service-img-wrap">
+                    <img src="images/digital.jpg" loading="lazy" alt="Transformation digitale">
+                </div>
+                <h3 class="service-name">Transformation Digitale</h3>
+                <p class="service-desc">Concevoir l'architecture numérique d'une organisation et structurer ses outils autour de ses besoins réels.</p>
+                <ul class="service-list">
+                    <li>Audit digital</li>
+                    <li>Architecture des systèmes</li>
+                    <li>Conduite du changement</li>
+                </ul>
+            </div>
+            <div class="service-card reveal reveal-delay-2">
+                <div class="service-num">03</div>
+                <div class="service-img-wrap">
+                    <img src="images/ia-automatisation.svg" loading="lazy" alt="Intelligence artificielle et automatisation">
+                </div>
+                <h3 class="service-name">Intelligence Artificielle & Automatisation</h3>
+                <p class="service-desc">Identifier où l'IA et l'automatisation créent une valeur réelle, puis les intégrer aux processus existants.</p>
+                <ul class="service-list">
+                    <li>Cas d'usage IA</li>
+                    <li>Automatisation des processus</li>
+                    <li>Outils de pilotage</li>
+                </ul>
+            </div>
+            <div class="service-card reveal reveal-delay-3">
+                <div class="service-num">04</div>
+                <div class="service-img-wrap">
+                    <img src="images/perf.jpg" loading="lazy" alt="Expérience utilisateur et produits digitaux">
+                </div>
+                <h3 class="service-name">Expérience Utilisateur & Produits Digitaux</h3>
+                <p class="service-desc">Concevoir des interfaces et des produits numériques pensés pour leurs usages, pas pour la démonstration.</p>
+                <ul class="service-list">
+                    <li>Conception UX/UI</li>
+                    <li>Interfaces web premium</li>
+                    <li>Produits digitaux sur mesure</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTIONS -->
+    <section id="solutions">
+        <div class="services-header">
+            <h2 class="services-title reveal">Les solutions que nous <em>concevons</em></h2>
+            <p class="section-label reveal">Sans nom de projet, une seule logique : l'utilité</p>
+        </div>
+        <p class="about-body reveal">
+            Nous ne livrons pas des sites vitrines. Nous concevons des systèmes qui structurent une activité, fiabilisent une relation client ou éclairent une décision — pour des entreprises, institutions et organisations africaines en transformation.
+        </p>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-num">01</div>
+                <h3 class="service-name">CRM & Outils Métiers</h3>
+                <p class="service-desc">Centraliser la relation client et fiabiliser le suivi commercial au quotidien.</p>
+            </div>
+            <div class="service-card reveal reveal-delay-1">
+                <div class="service-num">02</div>
+                <h3 class="service-name">Tableaux de Bord Décisionnels</h3>
+                <p class="service-desc">Donner aux dirigeants une vision claire et chiffrée de leur activité.</p>
+            </div>
+            <div class="service-card reveal reveal-delay-2">
+                <div class="service-num">03</div>
+                <h3 class="service-name">Plateformes Métiers</h3>
+                <p class="service-desc">Des outils sur mesure pour structurer un service, un réseau ou une institution.</p>
+            </div>
+            <div class="service-card reveal reveal-delay-3">
+                <div class="service-num">04</div>
+                <h3 class="service-name">Automatisation des Processus</h3>
+                <p class="service-desc">Supprimer les tâches répétitives pour recentrer les équipes sur l'essentiel.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-num">05</div>
+                <h3 class="service-name">Systèmes de Données & Archives</h3>
+                <p class="service-desc">Organiser, sécuriser et exploiter l'information stratégique.</p>
+            </div>
+            <div class="service-card reveal reveal-delay-1">
+                <div class="service-num">06</div>
+                <h3 class="service-name">Interfaces Web Premium</h3>
+                <p class="service-desc">Des produits digitaux à la hauteur de l'ambition de la marque.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÉTHODE -->
+    <div class="process-section" id="methode">
+        <div class="process-inner">
+            <div class="process-header">
+                <p class="section-label">Notre méthode</p>
+                <h2>Une méthode <em>éprouvée</em>,<br>du diagnostic au résultat.</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step reveal">
+                    <div class="step-num">01</div>
+                    <h3 class="step-name">Diagnostic</h3>
+                    <p class="step-desc">Comprendre l'organisation, ses données et ses usages réels avant toute recommandation.</p>
+                </div>
+                <div class="process-step reveal reveal-delay-1">
+                    <div class="step-num">02</div>
+                    <h3 class="step-name">Cadrage</h3>
+                    <p class="step-desc">Définir des priorités claires, des objectifs mesurables et un périmètre de projet réaliste.</p>
+                </div>
+                <div class="process-step reveal reveal-delay-2">
+                    <div class="step-num">03</div>
+                    <h3 class="step-name">Conception</h3>
+                    <p class="step-desc">Dessiner la solution : architecture, parcours utilisateur, logique métier.</p>
+                </div>
+                <div class="process-step reveal reveal-delay-3">
+                    <div class="step-num">04</div>
+                    <h3 class="step-name">Développement</h3>
+                    <p class="step-desc">Construire l'outil ou la plateforme avec une exigence de robustesse et de qualité.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">05</div>
+                    <h3 class="step-name">Déploiement</h3>
+                    <p class="step-desc">Mettre la solution en production et accompagner son adoption par les équipes.</p>
+                </div>
+                <div class="process-step reveal reveal-delay-1">
+                    <div class="step-num">06</div>
+                    <h3 class="step-name">Amélioration continue</h3>
+                    <p class="step-desc">Suivre les résultats et faire évoluer la solution selon les usages réels.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POURQUOI -->
+    <section id="pourquoi">
+        <div class="services-header">
+            <h2 class="services-title reveal">Pourquoi <em>Yaro Consulting's</em></h2>
+            <p class="section-label reveal">Une équation rare</p>
+        </div>
+        <p class="about-body reveal">
+            Beaucoup de cabinets pensent la stratégie sans le terrain. Beaucoup de prestataires développent sans comprendre l'organisation. Yaro Consulting's réunit les deux.
+        </p>
+        <div class="why-grid">
+            <div class="why-item reveal">
+                <div class="service-num">01</div>
+                <h3 class="service-name">Vision stratégique</h3>
+                <p class="service-desc">Une lecture claire des enjeux business, sans jargon ni complexité inutile.</p>
+            </div>
+            <div class="why-item reveal reveal-delay-1">
+                <div class="service-num">02</div>
+                <h3 class="service-name">Réalité terrain</h3>
+                <p class="service-desc">Une expérience opérationnelle directe du commerce, de la distribution et de la logistique.</p>
+            </div>
+            <div class="why-item reveal reveal-delay-2">
+                <div class="service-num">03</div>
+                <h3 class="service-name">Exécution digitale</h3>
+                <p class="service-desc">La capacité à concevoir et livrer des systèmes, pas seulement des recommandations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-left">
+            <h2 class="reveal">Échangeons sur<br>votre <em>projet.</em></h2>
+            <p class="reveal reveal-delay-1">Décrivez-nous votre contexte et vos enjeux : nous revenons vers vous rapidement avec une première lecture claire de votre projet, généralement dans la journée.</p>
+            <div class="contact-info reveal reveal-delay-2">
+                <div class="contact-info-item">
+                    <span class="contact-info-label">Email</span>
+                    <a class="contact-info-val contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>
+                </div>
+                <div class="contact-info-item">
+                    <span class="contact-info-label">Tél.</span>
+                    <a class="contact-info-val contact-link" href="tel:+33608888768">06 08 88 87 68</a>
+                </div>
+                <div class="contact-info-item">
+                    <span class="contact-info-label">WhatsApp</span>
+                    <a class="contact-info-val contact-link" href="https://wa.me/33608888768" target="_blank" rel="noopener">Discuter sur WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form reveal">
+            <div class="form-field">
+                <label class="form-label" for="name">Nom complet</label>
+                <input class="form-input" id="name" type="text" placeholder="Jean Dupont" autocomplete="name">
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="email">Adresse email</label>
+                <input class="form-input" id="email" type="email" placeholder="jean@entreprise.fr" autocomplete="email" inputmode="email">
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="company">Entreprise</label>
+                <input class="form-input" id="company" type="text" placeholder="Votre société" autocomplete="organization">
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="message">Votre projet</label>
+                <textarea class="form-textarea" id="message" placeholder="Décrivez brièvement votre besoin…"></textarea>
+            </div>
+            <button class="form-submit" type="button" id="sendBtn">
+                <span>Envoyer via WhatsApp</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <p class="form-note">En cliquant, votre message s'ouvre dans WhatsApp, pré-rempli. Vous pouvez aussi écrire directement à <a class="contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">Yaro<span>.</span></div>
+        <ul class="footer-links">
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#expertises">Expertises</a></li>
+            <li><a href="#methode">Méthode</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Yaro Consulting's. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // Custom cursor (desktop only — pointer: fine)
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            const cursor = document.getElementById('cursor');
+            const ring = document.getElementById('cursorRing');
+            let rx = 0, ry = 0, cx = 0, cy = 0;
+            document.addEventListener('mousemove', e => {
+                cx = e.clientX; cy = e.clientY;
+                cursor.style.left = cx + 'px';
+                cursor.style.top = cy + 'px';
+            });
+            (function loop() {
+                rx += (cx - rx) * 0.15;
+                ry += (cy - ry) * 0.15;
+                ring.style.left = rx + 'px';
+                ring.style.top = ry + 'px';
+                requestAnimationFrame(loop);
+            })();
+        }
+
+        // Nav shrink on scroll
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const fullMenu = document.getElementById('fullMenu');
+        function toggleMenu(force) {
+            const open = force ?? !fullMenu.classList.contains('open');
+            menuBtn.classList.toggle('open', open);
+            fullMenu.classList.toggle('open', open);
+            menuBtn.setAttribute('aria-expanded', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
+        menuBtn.addEventListener('click', () => toggleMenu());
+        fullMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+        // Scroll reveal
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Formulaire → WhatsApp
+        const WHATSAPP_NUMBER = '33608888768';
+        const sendBtn = document.getElementById('sendBtn');
+        sendBtn.addEventListener('click', () => {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !message) {
+                const missing = !name ? document.getElementById('name') : document.getElementById('message');
+                missing.style.borderColor = '#c2603f';
+                missing.focus();
+                setTimeout(() => { missing.style.borderColor = ''; }, 2000);
+                return;
+            }
+
+            let text = `Bonjour Yaro Consulting's,\n\n`;
+            text += `Je suis ${name}`;
+            if (company) text += ` (${company})`;
+            text += `.\n\n${message}`;
+            if (email) text += `\n\nVous pouvez me joindre à : ${email}`;
+
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank', 'noopener');
+        });
+
+        // Hero "vivant" : fade-in + Ken Burns + parallaxe douce
+        const heroBg = document.getElementById('heroBg');
+        const heroImg = document.getElementById('heroImg');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (heroBg && heroImg) {
+            function activateHero() {
+                heroBg.classList.add('loaded');
+                if (!reduceMotion) heroBg.classList.add('alive');
+            }
+            if (heroImg.complete) activateHero();
+            else heroImg.addEventListener('load', activateHero);
+            // Filet de sécurité : afficher quoi qu'il arrive après 2,5s
+            setTimeout(() => heroBg.classList.add('loaded'), 2500);
+
+            // Parallaxe souris (desktop, pointeur fin) — très subtile
+            if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                let tx = 0, ty = 0, cxv = 0, cyv = 0;
+                window.addEventListener('mousemove', (e) => {
+                    tx = (e.clientX / window.innerWidth) - 0.5;
+                    ty = (e.clientY / window.innerHeight) - 0.5;
+                }, { passive: true });
+                (function drift() {
+                    cxv += (tx - cxv) * 0.04;
+                    cyv += (ty - cyv) * 0.04;
+                    heroBg.style.setProperty('--px', cxv.toFixed(4));
+                    heroBg.style.setProperty('--py', cyv.toFixed(4));
+                    requestAnimationFrame(drift);
+                })();
+            }
+        }
+    </script>
+</body>
+</html>
