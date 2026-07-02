@@ -1450,6 +1450,205 @@
         @media (prefers-reduced-motion: reduce) {
             .edge-handle, .edge-panel, .edge-overlay { transition: none; }
         }
+
+        /* ===== Actions carte projet + fiche technique ===== */
+        .project-actions {
+            margin-top: auto;
+            padding-top: 1.3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        .project-actions .project-link { margin-top: 0; padding-top: 0; }
+        .project-link-btn {
+            font-family: inherit;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            color: var(--gold-light);
+        }
+
+        .fiche-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 400;
+            background: rgba(6,12,9,0.82);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 1.5rem 1rem;
+            overflow-y: auto;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s var(--ease);
+        }
+        .fiche-overlay.open { opacity: 1; pointer-events: auto; }
+        .fiche-modal {
+            position: relative;
+            width: min(760px, 100%);
+            margin: auto;
+            background: linear-gradient(160deg, #10201880, #0a1410);
+            border: 1px solid rgba(127,168,138,0.3);
+            border-radius: 18px;
+            padding: 2.2rem 1.6rem 1.6rem;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            transform: translateY(16px) scale(0.99);
+            transition: transform 0.4s var(--ease);
+        }
+        .fiche-overlay.open .fiche-modal { transform: none; }
+        .fiche-close {
+            position: absolute;
+            top: 0.9rem;
+            right: 0.9rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--cream);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fiche-close svg { width: 20px; height: 20px; }
+        .fiche-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            margin-bottom: 1.4rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .fiche-brand {
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-size: 1.05rem;
+            color: var(--cream);
+        }
+        .fiche-brand-sub {
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 0.3rem;
+        }
+        .fiche-eyebrow {
+            font-size: 0.58rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-align: right;
+            max-width: 45%;
+        }
+        .fiche-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(2rem, 8vw, 2.6rem);
+            line-height: 1.05;
+            color: var(--cream);
+        }
+        .fiche-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin: 0.4rem 0 1.8rem;
+        }
+        .fiche-section-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .fiche-mission {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        .fiche-mission li {
+            display: flex;
+            gap: 0.7rem;
+            font-size: 0.86rem;
+            line-height: 1.5;
+            color: var(--cream);
+        }
+        .fiche-mission li::before {
+            content: '';
+            width: 5px; height: 5px;
+            margin-top: 0.55rem;
+            background: var(--gold);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+        .fiche-stack {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            margin-bottom: 1.8rem;
+        }
+        .fiche-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(127,168,138,0.1);
+        }
+        .fiche-key {
+            font-size: 0.6rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--cream);
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+        .fiche-val {
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-align: right;
+        }
+        .fiche-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(127,168,138,0.4);
+            border-radius: 999px;
+            padding: 0.55rem 1.1rem;
+            margin-bottom: 1.8rem;
+        }
+        .fiche-foot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--border);
+        }
+        .fiche-foot .fiche-brand { font-size: 0.9rem; }
+        .fiche-foot-right { font-size: 0.7rem; color: var(--muted); }
+        .fiche-foot-right em { font-style: italic; }
+
+        @media (min-width: 720px) {
+            .fiche-modal { padding: 2.8rem 2.6rem 2rem; }
+            .fiche-mission { grid-template-columns: 1fr 1fr; gap: 0.9rem 2.5rem; }
+            .fiche-stack { grid-template-columns: 1fr 1fr; column-gap: 3rem; }
+            .fiche-foot { flex-direction: row; justify-content: space-between; align-items: baseline; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .fiche-overlay, .fiche-modal { transition: none; }
+        }
     </style>
 </head>
 <body>
@@ -1720,7 +1919,7 @@
             Quelques réalisations conçues, développées et déployées. Découvrez-les directement en ligne.
         </p>
         <div class="services-grid">
-            <a class="service-card project-card reveal" href="https://gaspardnz.style" target="_blank" rel="noopener">
+            <div class="service-card project-card reveal">
                 <p class="service-cat" data-i18n="real3.cat">Image &amp; événementiel</p>
                 <h3 class="service-name" data-i18n="real3.name">Site vitrine premium</h3>
                 <ul class="service-list">
@@ -1729,10 +1928,15 @@
                     <li data-i18n="real3.f3">Expérience mobile-first</li>
                     <li data-i18n="real3.f4">Prise de contact directe</li>
                 </ul>
-                <span class="project-link"><span data-i18n="real.cta">Voir le site</span>
-                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-            </a>
+                <div class="project-actions">
+                    <a class="project-link" href="https://gaspardnz.style" target="_blank" rel="noopener"><span data-i18n="real.cta">Voir le site</span>
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <button type="button" class="project-link project-link-btn" id="openFicheBtn"><span data-i18n="real.sheet">Voir la fiche technique</span>
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2v9M4.5 7.5 8 11l3.5-3.5M3 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            </div>
             <div class="service-card project-card project-card-feature reveal reveal-delay-1">
                 <p class="service-cat" data-i18n="real1.cat">Communication stratégique</p>
                 <h3 class="service-name" data-i18n="real1.name">Plateforme citoyenne &amp; institutionnelle</h3>
@@ -1892,6 +2096,56 @@
         <p class="footer-copy" data-i18n="footer.copy">© 2026 Yaro Consulting. Tous droits réservés.</p>
     </footer>
 
+    <!-- FICHE TECHNIQUE (étude de cas, modal) -->
+    <div class="fiche-overlay" id="ficheOverlay" aria-hidden="true">
+        <div class="fiche-modal" role="dialog" aria-modal="true" aria-label="Fiche technique">
+            <button class="fiche-close" id="ficheClose" aria-label="Fermer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+            <div class="fiche-head">
+                <div>
+                    <p class="fiche-brand">Yaro Consulting</p>
+                    <p class="fiche-brand-sub" data-i18n="fiche.brandsub">Stratégie · Digital · Marque</p>
+                </div>
+                <p class="fiche-eyebrow" data-i18n="fiche.eyebrow">Étude de cas · Fiche technique</p>
+            </div>
+
+            <h3 class="fiche-title" data-i18n="real3.name">Site vitrine premium</h3>
+            <p class="fiche-sub" data-i18n="fiche.sub">Image & événementiel</p>
+
+            <p class="fiche-section-label" data-i18n="fiche.mission">Mission réalisée</p>
+            <ul class="fiche-mission">
+                <li data-i18n="fiche.m1">Repositionnement stratégique & branding premium</li>
+                <li data-i18n="fiche.m2">Application mobile native (Android & iOS)</li>
+                <li data-i18n="fiche.m3">Identité visuelle, direction artistique & UX</li>
+                <li data-i18n="fiche.m4">Site web sur-mesure (multilingue FR/EN/ES/ZH)</li>
+                <li data-i18n="fiche.m5">Référencement Google (SEO technique & contenu)</li>
+                <li data-i18n="fiche.m6">Présence digitale complète & développement de marque</li>
+            </ul>
+
+            <p class="fiche-section-label" data-i18n="fiche.stack">Stack technique</p>
+            <div class="fiche-stack">
+                <div class="fiche-row"><span class="fiche-key">Frontend</span><span class="fiche-val">React 18 · JavaScript ES6+ · HTML5 / CSS3</span></div>
+                <div class="fiche-row"><span class="fiche-key" data-i18n="fiche.hosting">Hébergement</span><span class="fiche-val">Vercel · CI/CD GitHub</span></div>
+                <div class="fiche-row"><span class="fiche-key">Build</span><span class="fiche-val">Vite</span></div>
+                <div class="fiche-row"><span class="fiche-key">SEO</span><span class="fiche-val">JSON-LD · Open Graph · Sitemap</span></div>
+                <div class="fiche-row"><span class="fiche-key" data-i18n="fiche.anim">Animations / UX</span><span class="fiche-val">Framer Motion</span></div>
+                <div class="fiche-row"><span class="fiche-key">Analytics</span><span class="fiche-val">Google Analytics 4</span></div>
+                <div class="fiche-row"><span class="fiche-key" data-i18n="fiche.appmobile">App mobile</span><span class="fiche-val">Capacitor (Android / iOS)</span></div>
+                <div class="fiche-row"><span class="fiche-key" data-i18n="fiche.security">Sécurité</span><span class="fiche-val">CSP · CSRF · Rate limiting</span></div>
+                <div class="fiche-row"><span class="fiche-key">Backend / API</span><span class="fiche-val">Node.js · Serverless Functions</span></div>
+                <div class="fiche-row"><span class="fiche-key">Versioning</span><span class="fiche-val">Git / GitHub</span></div>
+            </div>
+
+            <p class="fiche-badge" data-i18n="fiche.badge">Conception & architecture sur-mesure</p>
+
+            <div class="fiche-foot">
+                <span class="fiche-brand">Yaro Consulting</span>
+                <span class="fiche-foot-right">yaroconsulting.fr · <em data-i18n="fiche.tagline">Transformer les idées en systèmes qui performent</em></span>
+            </div>
+        </div>
+    </div>
+
     <!-- EDGE PANEL (raccourcis style Galaxy) -->
     <div class="edge-overlay" id="edgeOverlay"></div>
     <button class="edge-handle" id="edgeHandle" aria-label="Raccourcis de navigation" aria-expanded="false"></button>
@@ -1951,7 +2205,21 @@
                 'real.title': 'Completed <em>projects</em>',
                 'real.label': 'Live platforms and websites',
                 'real.body': 'A few projects designed, built and deployed. Explore them directly online.',
-                'real.cta': 'Visit site', 'real.soon': 'Coming soon',
+                'real.cta': 'Visit site', 'real.soon': 'Coming soon', 'real.sheet': 'View tech sheet',
+                'fiche.brandsub': 'Strategy · Digital · Brand',
+                'fiche.eyebrow': 'Case study · Tech sheet',
+                'fiche.sub': 'Image & events',
+                'fiche.mission': 'Project delivered',
+                'fiche.m1': 'Strategic repositioning & premium branding',
+                'fiche.m2': 'Native mobile app (Android & iOS)',
+                'fiche.m3': 'Visual identity, art direction & UX',
+                'fiche.m4': 'Custom website (multilingual FR/EN/ES/ZH)',
+                'fiche.m5': 'Google indexing (technical & content SEO)',
+                'fiche.m6': 'Full digital presence & brand development',
+                'fiche.stack': 'Tech stack',
+                'fiche.hosting': 'Hosting', 'fiche.anim': 'Animations / UX', 'fiche.appmobile': 'Mobile app', 'fiche.security': 'Security',
+                'fiche.badge': 'Custom design & architecture',
+                'fiche.tagline': 'Turning ideas into systems that perform',
                 'real1.cat': 'Strategic communication', 'real1.name': 'Citizen &amp; institutional platform',
                 'real1.desc': 'First and foremost a strategic, omnichannel communication tool: bringing a public figure’s entire presence and information together on a single platform, with an intelligent conversational assistant (AI) for ongoing dialogue.',
                 'real1.f1': 'Centralized omnichannel communication', 'real1.f2': 'All information on a single platform', 'real1.f3': 'Intelligent conversational assistant (AI)', 'real1.f4': 'Appointment booking &amp; request tracking', 'real1.f5': 'Contact &amp; press forms · multilingual', 'real1.f6': 'Admin back-office: tracking &amp; management', 'real1.f7': 'Geolocated citizen reports (photo + GPS location)',
@@ -2031,7 +2299,21 @@
                 'real.title': 'Proyectos <em>realizados</em>',
                 'real.label': 'Plataformas y sitios en línea',
                 'real.body': 'Algunos proyectos diseñados, desarrollados y desplegados. Descúbralos directamente en línea.',
-                'real.cta': 'Ver el sitio', 'real.soon': 'Próximamente',
+                'real.cta': 'Ver el sitio', 'real.soon': 'Próximamente', 'real.sheet': 'Ver la ficha técnica',
+                'fiche.brandsub': 'Estrategia · Digital · Marca',
+                'fiche.eyebrow': 'Estudio de caso · Ficha técnica',
+                'fiche.sub': 'Imagen y eventos',
+                'fiche.mission': 'Misión realizada',
+                'fiche.m1': 'Reposicionamiento estratégico y branding premium',
+                'fiche.m2': 'Aplicación móvil nativa (Android e iOS)',
+                'fiche.m3': 'Identidad visual, dirección artística y UX',
+                'fiche.m4': 'Sitio web a medida (multilingüe FR/EN/ES/ZH)',
+                'fiche.m5': 'Posicionamiento Google (SEO técnico y de contenido)',
+                'fiche.m6': 'Presencia digital completa y desarrollo de marca',
+                'fiche.stack': 'Stack técnico',
+                'fiche.hosting': 'Alojamiento', 'fiche.anim': 'Animaciones / UX', 'fiche.appmobile': 'App móvil', 'fiche.security': 'Seguridad',
+                'fiche.badge': 'Diseño y arquitectura a medida',
+                'fiche.tagline': 'Transformar las ideas en sistemas que rinden',
                 'real1.cat': 'Comunicación estratégica', 'real1.name': 'Plataforma ciudadana e institucional',
                 'real1.desc': 'Ante todo, una herramienta de comunicación estratégica y omnicanal: reunir toda la presencia y la información de una figura pública en una sola plataforma, con un asistente conversacional inteligente (IA) para un diálogo continuo.',
                 'real1.f1': 'Comunicación omnicanal centralizada', 'real1.f2': 'Toda la información en una sola plataforma', 'real1.f3': 'Asistente conversacional inteligente (IA)', 'real1.f4': 'Reserva de citas y seguimiento de solicitudes', 'real1.f5': 'Formularios de contacto y prensa · multilingüe', 'real1.f6': 'Back-office de administración: seguimiento y gestión', 'real1.f7': 'Reportes ciudadanos geolocalizados (foto + ubicación GPS)',
@@ -2255,6 +2537,22 @@
         edgePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleEdge(false)));
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape' && document.body.classList.contains('edge-open')) toggleEdge(false);
+        });
+
+        // Fiche technique (modal)
+        const ficheOverlay = document.getElementById('ficheOverlay');
+        const openFicheBtn = document.getElementById('openFicheBtn');
+        const ficheClose = document.getElementById('ficheClose');
+        function toggleFiche(open) {
+            ficheOverlay.classList.toggle('open', open);
+            ficheOverlay.setAttribute('aria-hidden', !open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
+        if (openFicheBtn) openFicheBtn.addEventListener('click', () => toggleFiche(true));
+        if (ficheClose) ficheClose.addEventListener('click', () => toggleFiche(false));
+        if (ficheOverlay) ficheOverlay.addEventListener('click', e => { if (e.target === ficheOverlay) toggleFiche(false); });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && ficheOverlay.classList.contains('open')) toggleFiche(false);
         });
 
         // Scroll reveal : se rejoue à chaque entrée/sortie de l'écran
