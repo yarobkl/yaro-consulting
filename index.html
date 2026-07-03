@@ -1649,6 +1649,53 @@
         @media (prefers-reduced-motion: reduce) {
             .fiche-overlay, .fiche-modal { transition: none; }
         }
+
+        /* ===== Bandeau cookies ===== */
+        .cookie-banner {
+            position: fixed;
+            left: 1rem;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 350;
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(13,26,20,0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.1rem 1.25rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+            transform: translateY(160%);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.5s var(--ease), opacity 0.5s var(--ease);
+        }
+        .cookie-banner.show { transform: none; opacity: 1; pointer-events: auto; }
+        .cookie-text {
+            font-size: 0.8rem;
+            line-height: 1.55;
+            color: var(--cream);
+            margin-bottom: 0.9rem;
+        }
+        .cookie-actions { display: flex; gap: 0.6rem; justify-content: flex-end; }
+        .cookie-btn {
+            font-family: inherit;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            padding: 0.5rem 1.15rem;
+            border-radius: 999px;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            transition: background 0.25s var(--ease), color 0.25s var(--ease);
+        }
+        .cookie-refuse { background: none; color: var(--muted); }
+        .cookie-accept { background: var(--gold); color: var(--ink); border-color: var(--gold); font-weight: 500; }
+        @media (hover: hover) {
+            .cookie-refuse:hover { color: var(--cream); }
+            .cookie-accept:hover { background: var(--gold-light); }
+        }
+        @media (prefers-reduced-motion: reduce) { .cookie-banner { transition: none; } }
     </style>
 </head>
 <body>
@@ -2096,6 +2143,15 @@
         <p class="footer-copy" data-i18n="footer.copy">© 2026 Yaro Consulting. Tous droits réservés.</p>
     </footer>
 
+    <!-- BANDEAU COOKIES (consentement Google Analytics) -->
+    <div class="cookie-banner" id="cookieBanner" aria-hidden="true" role="dialog" aria-label="Consentement cookies">
+        <p class="cookie-text" data-i18n="cookie.text">Nous utilisons des cookies de mesure d'audience (Google Analytics) pour améliorer le site. Vous pouvez accepter ou refuser.</p>
+        <div class="cookie-actions">
+            <button type="button" class="cookie-btn cookie-refuse" id="cookieRefuse" data-i18n="cookie.refuse">Refuser</button>
+            <button type="button" class="cookie-btn cookie-accept" id="cookieAccept" data-i18n="cookie.accept">Accepter</button>
+        </div>
+    </div>
+
     <!-- FICHE TECHNIQUE (étude de cas, modal) -->
     <div class="fiche-overlay" id="ficheOverlay" aria-hidden="true">
         <div class="fiche-modal" role="dialog" aria-modal="true" aria-label="Fiche technique">
@@ -2220,6 +2276,8 @@
                 'fiche.hosting': 'Hosting', 'fiche.anim': 'Animations / UX', 'fiche.appmobile': 'Mobile app', 'fiche.security': 'Security',
                 'fiche.badge': 'Custom design & architecture',
                 'fiche.tagline': 'Turning ideas into systems that perform',
+                'cookie.text': 'We use audience-measurement cookies (Google Analytics) to improve the site. You can accept or decline.',
+                'cookie.accept': 'Accept', 'cookie.refuse': 'Decline',
                 'real1.cat': 'Strategic communication', 'real1.name': 'Citizen &amp; institutional platform',
                 'real1.desc': 'First and foremost a strategic, omnichannel communication tool: bringing a public figure’s entire presence and information together on a single platform, with an intelligent conversational assistant (AI) for ongoing dialogue.',
                 'real1.f1': 'Centralized omnichannel communication', 'real1.f2': 'All information on a single platform', 'real1.f3': 'Intelligent conversational assistant (AI)', 'real1.f4': 'Appointment booking &amp; request tracking', 'real1.f5': 'Contact &amp; press forms · multilingual', 'real1.f6': 'Admin back-office: tracking &amp; management', 'real1.f7': 'Geolocated citizen reports (photo + GPS location)',
@@ -2314,6 +2372,8 @@
                 'fiche.hosting': 'Alojamiento', 'fiche.anim': 'Animaciones / UX', 'fiche.appmobile': 'App móvil', 'fiche.security': 'Seguridad',
                 'fiche.badge': 'Diseño y arquitectura a medida',
                 'fiche.tagline': 'Transformar las ideas en sistemas que rinden',
+                'cookie.text': 'Usamos cookies de medición de audiencia (Google Analytics) para mejorar el sitio. Puede aceptar o rechazar.',
+                'cookie.accept': 'Aceptar', 'cookie.refuse': 'Rechazar',
                 'real1.cat': 'Comunicación estratégica', 'real1.name': 'Plataforma ciudadana e institucional',
                 'real1.desc': 'Ante todo, una herramienta de comunicación estratégica y omnicanal: reunir toda la presencia y la información de una figura pública en una sola plataforma, con un asistente conversacional inteligente (IA) para un diálogo continuo.',
                 'real1.f1': 'Comunicación omnicanal centralizada', 'real1.f2': 'Toda la información en una sola plataforma', 'real1.f3': 'Asistente conversacional inteligente (IA)', 'real1.f4': 'Reserva de citas y seguimiento de solicitudes', 'real1.f5': 'Formularios de contacto y prensa · multilingüe', 'real1.f6': 'Back-office de administración: seguimiento y gestión', 'real1.f7': 'Reportes ciudadanos geolocalizados (foto + ubicación GPS)',
@@ -2554,6 +2614,42 @@
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape' && ficheOverlay.classList.contains('open')) toggleFiche(false);
         });
+
+        // Consentement cookies + Google Analytics (chargé seulement après acceptation)
+        (function cookieConsent() {
+            const GA_ID = 'G-7JM8GXB7M1';
+            const banner = document.getElementById('cookieBanner');
+            const accept = document.getElementById('cookieAccept');
+            const refuse = document.getElementById('cookieRefuse');
+            if (!banner) return;
+            function loadGA() {
+                if (window.__gaLoaded) return;
+                window.__gaLoaded = true;
+                const s = document.createElement('script');
+                s.async = true;
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+                document.head.appendChild(s);
+                window.dataLayer = window.dataLayer || [];
+                window.gtag = function () { dataLayer.push(arguments); };
+                gtag('js', new Date());
+                gtag('config', GA_ID, { anonymize_ip: true });
+            }
+            function hide() { banner.classList.remove('show'); banner.setAttribute('aria-hidden', 'true'); }
+            let consent = null;
+            try { consent = localStorage.getItem('yaro_cookie_consent'); } catch (e) {}
+            if (consent === 'granted') { loadGA(); }
+            else if (consent !== 'denied') {
+                setTimeout(() => { banner.classList.add('show'); banner.setAttribute('aria-hidden', 'false'); }, 1200);
+            }
+            accept.addEventListener('click', () => {
+                try { localStorage.setItem('yaro_cookie_consent', 'granted'); } catch (e) {}
+                loadGA(); hide();
+            });
+            refuse.addEventListener('click', () => {
+                try { localStorage.setItem('yaro_cookie_consent', 'denied'); } catch (e) {}
+                hide();
+            });
+        })();
 
         // Scroll reveal : se rejoue à chaque entrée/sortie de l'écran
         const io = new IntersectionObserver((entries) => {
