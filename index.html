@@ -1766,6 +1766,12 @@
         }
         .legal-modal .fiche-section-label { margin-top: 0; }
         .legal-update { font-size: 0.7rem; font-style: italic; color: var(--muted); }
+
+        /* ===== Formulaire WhatsApp ===== */
+        .wa-modal { width: min(460px, 100%); }
+        .wa-intro { font-size: 0.82rem; line-height: 1.55; color: var(--muted); margin-bottom: 1.5rem; }
+        .wa-modal .form-field { margin-bottom: 1.1rem; }
+        .wa-modal .form-submit { margin-top: 0.5rem; }
     </style>
 </head>
 <body>
@@ -1813,7 +1819,7 @@
         <a href="#contact" class="menu-cta" data-i18n="nav.cta">Démarrer un projet</a>
         <div class="menu-contact">
             <a href="tel:+33608888768">06 08 88 87 68</a>
-            <a href="https://wa.me/33608888768" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://wa.me/33608888768" target="_blank" rel="noopener" class="wa-trigger">WhatsApp</a>
             <a href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>
         </div>
         <div class="menu-lang">
@@ -2178,7 +2184,7 @@
                 </div>
                 <div class="contact-info-item">
                     <span class="contact-info-label">WhatsApp</span>
-                    <a class="contact-info-val contact-link" href="https://wa.me/33608888768" target="_blank" rel="noopener" data-i18n="contact.waLink">Discuter sur WhatsApp</a>
+                    <a class="contact-info-val contact-link wa-trigger" href="https://wa.me/33608888768" target="_blank" rel="noopener" data-i18n="contact.waLink">Discuter sur WhatsApp</a>
                 </div>
             </div>
             <button type="button" class="btn-rdv reveal reveal-delay-2" data-cal-link="yaroconsulting" data-cal-config='{"theme":"dark"}'>
@@ -2226,6 +2232,33 @@
         <p class="footer-copy" data-i18n="footer.copy">© 2026 Yaro Consulting. Tous droits réservés.</p>
         <button type="button" class="legal-trigger" id="openLegal" data-i18n="nav.legal">Mentions légales</button>
     </footer>
+
+    <!-- FORMULAIRE WHATSAPP (génère le message, modal) -->
+    <div class="fiche-overlay" id="waOverlay" aria-hidden="true">
+        <div class="fiche-modal wa-modal" role="dialog" aria-modal="true" aria-label="Message WhatsApp">
+            <button class="fiche-close" id="waClose" aria-label="Fermer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+            <p class="fiche-section-label" data-i18n="wa.title">Message WhatsApp</p>
+            <p class="wa-intro" data-i18n="wa.intro">Remplissez ces champs : on prépare votre message WhatsApp automatiquement.</p>
+            <div class="form-field">
+                <label class="form-label" for="waName" data-i18n="form.name">Nom complet</label>
+                <input class="form-input" id="waName" type="text" placeholder="Jean Dupont" autocomplete="name" data-i18n-placeholder="form.namePlaceholder">
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="waSubject" data-i18n="wa.subject">Sujet</label>
+                <input class="form-input" id="waSubject" type="text" placeholder="Votre besoin en un mot" data-i18n-placeholder="wa.subjectPlaceholder">
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="waMessage" data-i18n="form.message">Votre projet</label>
+                <textarea class="form-textarea" id="waMessage" placeholder="Décrivez brièvement votre besoin…" data-i18n-placeholder="form.messagePlaceholder"></textarea>
+            </div>
+            <button class="form-submit" type="button" id="waSend">
+                <span data-i18n="wa.send">Ouvrir WhatsApp</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+        </div>
+    </div>
 
     <!-- MENTIONS LÉGALES & CONFIDENTIALITÉ (modal) -->
     <div class="fiche-overlay" id="legalOverlay" aria-hidden="true">
@@ -2400,6 +2433,7 @@
                 'cookie.text': 'We use audience-measurement cookies (Google Analytics) to improve the site. You can accept or decline.',
                 'cookie.accept': 'Accept', 'cookie.refuse': 'Decline',
                 'nav.legal': 'Legal notice', 'contact.rdv': 'Book a meeting',
+                'wa.title': 'WhatsApp message', 'wa.intro': 'Fill in these fields: we prepare your WhatsApp message automatically.', 'wa.subject': 'Subject', 'wa.subjectPlaceholder': 'Your need in a word', 'wa.send': 'Open WhatsApp',
                 'real1.cat': 'Strategic communication', 'real1.name': 'Citizen &amp; institutional platform',
                 'real1.desc': 'First and foremost a strategic, omnichannel communication tool: bringing a public figure’s entire presence and information together on a single platform, with an intelligent conversational assistant (AI) for ongoing dialogue.',
                 'real1.f1': 'Centralized omnichannel communication', 'real1.f2': 'All information on a single platform', 'real1.f3': 'Intelligent conversational assistant (AI)', 'real1.f4': 'Appointment booking &amp; request tracking', 'real1.f5': 'Contact &amp; press forms · multilingual', 'real1.f6': 'Admin back-office: tracking &amp; management', 'real1.f7': 'Geolocated citizen reports (photo + GPS location)',
@@ -2497,6 +2531,7 @@
                 'cookie.text': 'Usamos cookies de medición de audiencia (Google Analytics) para mejorar el sitio. Puede aceptar o rechazar.',
                 'cookie.accept': 'Aceptar', 'cookie.refuse': 'Rechazar',
                 'nav.legal': 'Aviso legal', 'contact.rdv': 'Reservar una cita',
+                'wa.title': 'Mensaje de WhatsApp', 'wa.intro': 'Rellene estos campos: preparamos su mensaje de WhatsApp automáticamente.', 'wa.subject': 'Asunto', 'wa.subjectPlaceholder': 'Su necesidad en una palabra', 'wa.send': 'Abrir WhatsApp',
                 'real1.cat': 'Comunicación estratégica', 'real1.name': 'Plataforma ciudadana e institucional',
                 'real1.desc': 'Ante todo, una herramienta de comunicación estratégica y omnicanal: reunir toda la presencia y la información de una figura pública en una sola plataforma, con un asistente conversacional inteligente (IA) para un diálogo continuo.',
                 'real1.f1': 'Comunicación omnicanal centralizada', 'real1.f2': 'Toda la información en una sola plataforma', 'real1.f3': 'Asistente conversacional inteligente (IA)', 'real1.f4': 'Reserva de citas y seguimiento de solicitudes', 'real1.f5': 'Formularios de contacto y prensa · multilingüe', 'real1.f6': 'Back-office de administración: seguimiento y gestión', 'real1.f7': 'Reportes ciudadanos geolocalizados (foto + ubicación GPS)',
@@ -2581,7 +2616,7 @@
                     solutions: { label: 'Nos solutions', bot: "Nous concevons des systèmes utiles, pas des sites vitrines :\n\n• CRM & outils métiers\n• Tableaux de bord décisionnels\n• Plateformes métiers\n• Automatisation des processus\n• Systèmes de données & archives\n• Interfaces web premium", quick: ['expertises', 'methode', 'rdv'] },
                     methode: { label: 'Notre méthode', bot: "Une démarche claire, du diagnostic au déploiement : comprendre votre organisation, clarifier les priorités, concevoir la solution, puis la déployer et l'ancrer dans vos usages. Un interlocuteur unique tout au long.", quick: ['rdv', 'contact'] },
                     rdv: { label: 'Prendre rendez-vous', bot: "Avec plaisir 📅 Je vous ouvre l'agenda pour choisir un créneau…", quick: ['contact', 'expertises', 'solutions'] },
-                    contact: { label: 'Prendre contact', bot: 'Avec plaisir. Choisissez le canal qui vous convient :\n\n• Rendez-vous en ligne : cliquez sur « Prendre rendez-vous »\n• WhatsApp : <a href="' + WA + '" target="_blank" rel="noopener">démarrer une discussion</a>\n• Téléphone : <a href="' + TEL + '">06 08 88 87 68</a>\n• Email : <a href="' + MAIL + '">contact@yaroconsulting.fr</a>', quick: ['rdv', 'expertises', 'solutions'] }
+                    contact: { label: 'Prendre contact', bot: 'Avec plaisir. Choisissez le canal qui vous convient :\n\n• Rendez-vous en ligne : cliquez sur « Prendre rendez-vous »\n• WhatsApp : <a href="' + WA + '" target="_blank" rel="noopener" class="wa-trigger">démarrer une discussion</a>\n• Téléphone : <a href="' + TEL + '">06 08 88 87 68</a>\n• Email : <a href="' + MAIL + '">contact@yaroconsulting.fr</a>', quick: ['rdv', 'expertises', 'solutions'] }
                 }
             },
             en: {
@@ -2592,7 +2627,7 @@
                     solutions: { label: 'Our solutions', bot: "We design useful systems, not showcase websites:\n\n• CRM & business tools\n• Decision dashboards\n• Business platforms\n• Process automation\n• Data & archive systems\n• Premium web interfaces", quick: ['expertises', 'methode', 'rdv'] },
                     methode: { label: 'Our method', bot: "A clear approach, from diagnosis to deployment: understand your organization, clarify priorities, design the solution, then deploy it and embed it in your daily use. A single point of contact throughout.", quick: ['rdv', 'contact'] },
                     rdv: { label: 'Book a meeting', bot: "With pleasure 📅 I'm opening the calendar so you can pick a slot…", quick: ['contact', 'expertises', 'solutions'] },
-                    contact: { label: 'Get in touch', bot: 'With pleasure. Choose the channel that suits you:\n\n• Online booking: click “Book a meeting”\n• WhatsApp: <a href="' + WA + '" target="_blank" rel="noopener">start a chat</a>\n• Phone: <a href="' + TEL + '">06 08 88 87 68</a>\n• Email: <a href="' + MAIL + '">contact@yaroconsulting.fr</a>', quick: ['rdv', 'expertises', 'solutions'] }
+                    contact: { label: 'Get in touch', bot: 'With pleasure. Choose the channel that suits you:\n\n• Online booking: click “Book a meeting”\n• WhatsApp: <a href="' + WA + '" target="_blank" rel="noopener" class="wa-trigger">start a chat</a>\n• Phone: <a href="' + TEL + '">06 08 88 87 68</a>\n• Email: <a href="' + MAIL + '">contact@yaroconsulting.fr</a>', quick: ['rdv', 'expertises', 'solutions'] }
                 }
             },
             es: {
@@ -2603,7 +2638,7 @@
                     solutions: { label: 'Nuestras soluciones', bot: "Diseñamos sistemas útiles, no sitios escaparate:\n\n• CRM y herramientas de negocio\n• Cuadros de mando decisionales\n• Plataformas de negocio\n• Automatización de procesos\n• Sistemas de datos y archivos\n• Interfaces web premium", quick: ['expertises', 'methode', 'rdv'] },
                     methode: { label: 'Nuestro método', bot: "Un enfoque claro, del diagnóstico al despliegue: entender su organización, clarificar prioridades, diseñar la solución y luego desplegarla e integrarla en sus usos. Un interlocutor único en todo momento.", quick: ['rdv', 'contact'] },
                     rdv: { label: 'Reservar una cita', bot: "Con gusto 📅 Le abro la agenda para elegir un horario…", quick: ['contact', 'expertises', 'solutions'] },
-                    contact: { label: 'Contactar', bot: 'Con mucho gusto. Elija el canal que prefiera:\n\n• Reserva en línea: haga clic en «Reservar una cita»\n• WhatsApp: <a href="' + WA + '" target="_blank" rel="noopener">iniciar una conversación</a>\n• Teléfono: <a href="' + TEL + '">06 08 88 87 68</a>\n• Email: <a href="' + MAIL + '">contact@yaroconsulting.fr</a>', quick: ['rdv', 'expertises', 'solutions'] }
+                    contact: { label: 'Contactar', bot: 'Con mucho gusto. Elija el canal que prefiera:\n\n• Reserva en línea: haga clic en «Reservar una cita»\n• WhatsApp: <a href="' + WA + '" target="_blank" rel="noopener" class="wa-trigger">iniciar una conversación</a>\n• Teléfono: <a href="' + TEL + '">06 08 88 87 68</a>\n• Email: <a href="' + MAIL + '">contact@yaroconsulting.fr</a>', quick: ['rdv', 'expertises', 'solutions'] }
                 }
             }
         };
@@ -2755,6 +2790,42 @@
         if (legalOverlay) legalOverlay.addEventListener('click', e => { if (e.target === legalOverlay) toggleLegal(false); });
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape' && legalOverlay.classList.contains('open')) toggleLegal(false);
+        });
+
+        // Formulaire WhatsApp : les liens WhatsApp ouvrent un mini-formulaire qui génère le message
+        const waOverlay = document.getElementById('waOverlay');
+        function toggleWa(open) {
+            waOverlay.classList.toggle('open', open);
+            waOverlay.setAttribute('aria-hidden', !open);
+            document.body.style.overflow = open ? 'hidden' : '';
+            if (open) setTimeout(() => { const n = document.getElementById('waName'); if (n) n.focus(); }, 200);
+        }
+        document.addEventListener('click', e => {
+            const trigger = e.target.closest('.wa-trigger');
+            if (trigger) { e.preventDefault(); toggleWa(true); }
+        });
+        document.getElementById('waClose').addEventListener('click', () => toggleWa(false));
+        waOverlay.addEventListener('click', e => { if (e.target === waOverlay) toggleWa(false); });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && waOverlay.classList.contains('open')) toggleWa(false);
+        });
+        document.getElementById('waSend').addEventListener('click', () => {
+            const name = document.getElementById('waName').value.trim();
+            const subject = document.getElementById('waSubject').value.trim();
+            const message = document.getElementById('waMessage').value.trim();
+            if (!name || !message) {
+                const miss = !name ? document.getElementById('waName') : document.getElementById('waMessage');
+                miss.style.borderColor = '#c2603f';
+                miss.focus();
+                setTimeout(() => { miss.style.borderColor = ''; }, 2000);
+                return;
+            }
+            const wm = WA_MSG[LANG] || WA_MSG.fr;
+            let text = `${wm.greeting}\n\n${wm.iam} ${name}`;
+            if (subject) text += ` — ${subject}`;
+            text += `.\n\n${message}`;
+            window.open('https://wa.me/33608888768?text=' + encodeURIComponent(text), '_blank', 'noopener');
+            toggleWa(false);
         });
 
         // Consentement cookies + Google Analytics (chargé seulement après acceptation)
