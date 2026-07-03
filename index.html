@@ -2537,32 +2537,35 @@
         const CHAT = {
             fr: {
                 welcome: "Bonjour 👋 Je suis l'assistant de Yaro Consulting. Comment puis-je vous aider ?",
-                home: ['expertises', 'solutions', 'methode', 'contact'],
+                home: ['expertises', 'solutions', 'methode', 'rdv', 'contact'],
                 topics: {
-                    expertises: { label: 'Nos expertises', bot: "Nous mobilisons quatre expertises à chaque mission :\n\n• Stratégie & performance opérationnelle\n• Transformation digitale\n• Automatisation & outils digitaux\n• Expérience utilisateur & produits digitaux", quick: ['solutions', 'methode', 'contact'] },
-                    solutions: { label: 'Nos solutions', bot: "Nous concevons des systèmes utiles, pas des sites vitrines :\n\n• CRM & outils métiers\n• Tableaux de bord décisionnels\n• Plateformes métiers\n• Automatisation des processus\n• Systèmes de données & archives\n• Interfaces web premium", quick: ['expertises', 'methode', 'contact'] },
-                    methode: { label: 'Notre méthode', bot: "Une démarche claire, du diagnostic au déploiement : comprendre votre organisation, clarifier les priorités, concevoir la solution, puis la déployer et l'ancrer dans vos usages. Un interlocuteur unique tout au long.", quick: ['expertises', 'solutions', 'contact'] },
-                    contact: { label: 'Prendre contact', bot: 'Avec plaisir. Choisissez le canal qui vous convient :\n\n• WhatsApp : <a href="' + WA + '" target="_blank" rel="noopener">démarrer une discussion</a>\n• Téléphone : <a href="' + TEL + '">06 08 88 87 68</a>\n• Email : <a href="' + MAIL + '">contact@yaroconsulting.fr</a>\n\nOu remplissez le formulaire en bas de page.', quick: ['expertises', 'solutions', 'methode'] }
+                    expertises: { label: 'Nos expertises', bot: "Nous mobilisons quatre expertises à chaque mission :\n\n• Stratégie & performance opérationnelle\n• Transformation digitale\n• Automatisation & outils digitaux\n• Expérience utilisateur & produits digitaux", quick: ['solutions', 'methode', 'rdv'] },
+                    solutions: { label: 'Nos solutions', bot: "Nous concevons des systèmes utiles, pas des sites vitrines :\n\n• CRM & outils métiers\n• Tableaux de bord décisionnels\n• Plateformes métiers\n• Automatisation des processus\n• Systèmes de données & archives\n• Interfaces web premium", quick: ['expertises', 'methode', 'rdv'] },
+                    methode: { label: 'Notre méthode', bot: "Une démarche claire, du diagnostic au déploiement : comprendre votre organisation, clarifier les priorités, concevoir la solution, puis la déployer et l'ancrer dans vos usages. Un interlocuteur unique tout au long.", quick: ['rdv', 'contact'] },
+                    rdv: { label: 'Prendre rendez-vous', bot: "Avec plaisir 📅 Je vous ouvre l'agenda pour choisir un créneau…", quick: ['contact', 'expertises', 'solutions'] },
+                    contact: { label: 'Prendre contact', bot: 'Avec plaisir. Choisissez le canal qui vous convient :\n\n• Rendez-vous en ligne : cliquez sur « Prendre rendez-vous »\n• WhatsApp : <a href="' + WA + '" target="_blank" rel="noopener">démarrer une discussion</a>\n• Téléphone : <a href="' + TEL + '">06 08 88 87 68</a>\n• Email : <a href="' + MAIL + '">contact@yaroconsulting.fr</a>', quick: ['rdv', 'expertises', 'solutions'] }
                 }
             },
             en: {
                 welcome: "Hello 👋 I'm the Yaro Consulting assistant. How can I help you?",
-                home: ['expertises', 'solutions', 'methode', 'contact'],
+                home: ['expertises', 'solutions', 'methode', 'rdv', 'contact'],
                 topics: {
-                    expertises: { label: 'Our expertise', bot: "We bring four areas of expertise to every engagement:\n\n• Strategy & operational performance\n• Digital transformation\n• Automation & digital tools\n• User experience & digital products", quick: ['solutions', 'methode', 'contact'] },
-                    solutions: { label: 'Our solutions', bot: "We design useful systems, not showcase websites:\n\n• CRM & business tools\n• Decision dashboards\n• Business platforms\n• Process automation\n• Data & archive systems\n• Premium web interfaces", quick: ['expertises', 'methode', 'contact'] },
-                    methode: { label: 'Our method', bot: "A clear approach, from diagnosis to deployment: understand your organization, clarify priorities, design the solution, then deploy it and embed it in your daily use. A single point of contact throughout.", quick: ['expertises', 'solutions', 'contact'] },
-                    contact: { label: 'Get in touch', bot: 'With pleasure. Choose the channel that suits you:\n\n• WhatsApp: <a href="' + WA + '" target="_blank" rel="noopener">start a chat</a>\n• Phone: <a href="' + TEL + '">06 08 88 87 68</a>\n• Email: <a href="' + MAIL + '">contact@yaroconsulting.fr</a>\n\nOr fill in the form at the bottom of the page.', quick: ['expertises', 'solutions', 'methode'] }
+                    expertises: { label: 'Our expertise', bot: "We bring four areas of expertise to every engagement:\n\n• Strategy & operational performance\n• Digital transformation\n• Automation & digital tools\n• User experience & digital products", quick: ['solutions', 'methode', 'rdv'] },
+                    solutions: { label: 'Our solutions', bot: "We design useful systems, not showcase websites:\n\n• CRM & business tools\n• Decision dashboards\n• Business platforms\n• Process automation\n• Data & archive systems\n• Premium web interfaces", quick: ['expertises', 'methode', 'rdv'] },
+                    methode: { label: 'Our method', bot: "A clear approach, from diagnosis to deployment: understand your organization, clarify priorities, design the solution, then deploy it and embed it in your daily use. A single point of contact throughout.", quick: ['rdv', 'contact'] },
+                    rdv: { label: 'Book a meeting', bot: "With pleasure 📅 I'm opening the calendar so you can pick a slot…", quick: ['contact', 'expertises', 'solutions'] },
+                    contact: { label: 'Get in touch', bot: 'With pleasure. Choose the channel that suits you:\n\n• Online booking: click “Book a meeting”\n• WhatsApp: <a href="' + WA + '" target="_blank" rel="noopener">start a chat</a>\n• Phone: <a href="' + TEL + '">06 08 88 87 68</a>\n• Email: <a href="' + MAIL + '">contact@yaroconsulting.fr</a>', quick: ['rdv', 'expertises', 'solutions'] }
                 }
             },
             es: {
                 welcome: "Hola 👋 Soy el asistente de Yaro Consulting. ¿En qué puedo ayudarle?",
-                home: ['expertises', 'solutions', 'methode', 'contact'],
+                home: ['expertises', 'solutions', 'methode', 'rdv', 'contact'],
                 topics: {
-                    expertises: { label: 'Nuestras especialidades', bot: "Aportamos cuatro especialidades en cada misión:\n\n• Estrategia y rendimiento operativo\n• Transformación digital\n• Automatización y herramientas digitales\n• Experiencia de usuario y productos digitales", quick: ['solutions', 'methode', 'contact'] },
-                    solutions: { label: 'Nuestras soluciones', bot: "Diseñamos sistemas útiles, no sitios escaparate:\n\n• CRM y herramientas de negocio\n• Cuadros de mando decisionales\n• Plataformas de negocio\n• Automatización de procesos\n• Sistemas de datos y archivos\n• Interfaces web premium", quick: ['expertises', 'methode', 'contact'] },
-                    methode: { label: 'Nuestro método', bot: "Un enfoque claro, del diagnóstico al despliegue: entender su organización, clarificar prioridades, diseñar la solución y luego desplegarla e integrarla en sus usos. Un interlocutor único en todo momento.", quick: ['expertises', 'solutions', 'contact'] },
-                    contact: { label: 'Contactar', bot: 'Con mucho gusto. Elija el canal que prefiera:\n\n• WhatsApp: <a href="' + WA + '" target="_blank" rel="noopener">iniciar una conversación</a>\n• Teléfono: <a href="' + TEL + '">06 08 88 87 68</a>\n• Email: <a href="' + MAIL + '">contact@yaroconsulting.fr</a>\n\nO rellene el formulario al final de la página.', quick: ['expertises', 'solutions', 'methode'] }
+                    expertises: { label: 'Nuestras especialidades', bot: "Aportamos cuatro especialidades en cada misión:\n\n• Estrategia y rendimiento operativo\n• Transformación digital\n• Automatización y herramientas digitales\n• Experiencia de usuario y productos digitales", quick: ['solutions', 'methode', 'rdv'] },
+                    solutions: { label: 'Nuestras soluciones', bot: "Diseñamos sistemas útiles, no sitios escaparate:\n\n• CRM y herramientas de negocio\n• Cuadros de mando decisionales\n• Plataformas de negocio\n• Automatización de procesos\n• Sistemas de datos y archivos\n• Interfaces web premium", quick: ['expertises', 'methode', 'rdv'] },
+                    methode: { label: 'Nuestro método', bot: "Un enfoque claro, del diagnóstico al despliegue: entender su organización, clarificar prioridades, diseñar la solución y luego desplegarla e integrarla en sus usos. Un interlocutor único en todo momento.", quick: ['rdv', 'contact'] },
+                    rdv: { label: 'Reservar una cita', bot: "Con gusto 📅 Le abro la agenda para elegir un horario…", quick: ['contact', 'expertises', 'solutions'] },
+                    contact: { label: 'Contactar', bot: 'Con mucho gusto. Elija el canal que prefiera:\n\n• Reserva en línea: haga clic en «Reservar una cita»\n• WhatsApp: <a href="' + WA + '" target="_blank" rel="noopener">iniciar una conversación</a>\n• Teléfono: <a href="' + TEL + '">06 08 88 87 68</a>\n• Email: <a href="' + MAIL + '">contact@yaroconsulting.fr</a>', quick: ['rdv', 'expertises', 'solutions'] }
                 }
             }
         };
@@ -2860,6 +2863,10 @@
                 renderQuick([]);
                 setTimeout(() => {
                     addMsg(t.bot, 'bot');
+                    if (id === 'rdv') {
+                        const rb = document.querySelector('.btn-rdv');
+                        if (rb) setTimeout(() => rb.click(), 500);
+                    }
                     renderQuick(t.quick || data().home);
                 }, 350);
             }
