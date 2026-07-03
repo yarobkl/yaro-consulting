@@ -857,6 +857,24 @@
         }
         .contact-info { display: flex; flex-direction: column; gap: 1rem; }
         .contact-info-item { display: flex; gap: 1.25rem; font-size: 0.82rem; }
+        .btn-rdv {
+            margin-top: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: inherit;
+            font-size: 0.8rem;
+            letter-spacing: 0.04em;
+            color: var(--ink);
+            background: var(--gold);
+            border: none;
+            border-radius: 999px;
+            padding: 0.85rem 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+        }
+        .btn-rdv:active { transform: translateY(1px); background: var(--gold-light); }
+        @media (hover: hover) { .btn-rdv:hover { background: var(--gold-light); } }
         .contact-info-label {
             color: var(--gold);
             letter-spacing: 0.1em;
@@ -2125,6 +2143,10 @@
                     <a class="contact-info-val contact-link" href="https://wa.me/33608888768" target="_blank" rel="noopener" data-i18n="contact.waLink">Discuter sur WhatsApp</a>
                 </div>
             </div>
+            <button type="button" class="btn-rdv reveal reveal-delay-2" data-cal-link="yaro-bkl-raon3q" data-cal-config='{"theme":"dark"}'>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <span data-i18n="contact.rdv">Prendre rendez-vous</span>
+            </button>
         </div>
         <div class="contact-form reveal">
             <div class="form-field">
@@ -2339,7 +2361,7 @@
                 'fiche.tagline': 'Turning ideas into systems that perform',
                 'cookie.text': 'We use audience-measurement cookies (Google Analytics) to improve the site. You can accept or decline.',
                 'cookie.accept': 'Accept', 'cookie.refuse': 'Decline',
-                'nav.legal': 'Legal notice',
+                'nav.legal': 'Legal notice', 'contact.rdv': 'Book a meeting',
                 'real1.cat': 'Strategic communication', 'real1.name': 'Citizen &amp; institutional platform',
                 'real1.desc': 'First and foremost a strategic, omnichannel communication tool: bringing a public figure’s entire presence and information together on a single platform, with an intelligent conversational assistant (AI) for ongoing dialogue.',
                 'real1.f1': 'Centralized omnichannel communication', 'real1.f2': 'All information on a single platform', 'real1.f3': 'Intelligent conversational assistant (AI)', 'real1.f4': 'Appointment booking &amp; request tracking', 'real1.f5': 'Contact &amp; press forms · multilingual', 'real1.f6': 'Admin back-office: tracking &amp; management', 'real1.f7': 'Geolocated citizen reports (photo + GPS location)',
@@ -2436,7 +2458,7 @@
                 'fiche.tagline': 'Transformar las ideas en sistemas que rinden',
                 'cookie.text': 'Usamos cookies de medición de audiencia (Google Analytics) para mejorar el sitio. Puede aceptar o rechazar.',
                 'cookie.accept': 'Aceptar', 'cookie.refuse': 'Rechazar',
-                'nav.legal': 'Aviso legal',
+                'nav.legal': 'Aviso legal', 'contact.rdv': 'Reservar una cita',
                 'real1.cat': 'Comunicación estratégica', 'real1.name': 'Plataforma ciudadana e institucional',
                 'real1.desc': 'Ante todo, una herramienta de comunicación estratégica y omnicanal: reunir toda la presencia y la información de una figura pública en una sola plataforma, con un asistente conversacional inteligente (IA) para un diálogo continuo.',
                 'real1.f1': 'Comunicación omnicanal centralizada', 'real1.f2': 'Toda la información en una sola plataforma', 'real1.f3': 'Asistente conversacional inteligente (IA)', 'real1.f4': 'Reserva de citas y seguimiento de solicitudes', 'real1.f5': 'Formularios de contacto y prensa · multilingüe', 'real1.f6': 'Back-office de administración: seguimiento y gestión', 'real1.f7': 'Reportes ciudadanos geolocalizados (foto + ubicación GPS)',
@@ -2870,6 +2892,13 @@
             });
             document.addEventListener('langchange', resetChat);
         })();
+    </script>
+
+    <!-- Cal.com — prise de rendez-vous -->
+    <script>
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", { origin: "https://cal.com" });
+        Cal("ui", { theme: "dark", cssVarsPerTheme: { dark: { "cal-brand": "#7fa88a" } }, hideEventTypeDetails: false, layout: "month_view" });
     </script>
 
     <!-- Vercel Web Analytics (sans cookies : visites, pays, pages) -->
