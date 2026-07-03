@@ -1696,6 +1696,29 @@
             .cookie-accept:hover { background: var(--gold-light); }
         }
         @media (prefers-reduced-motion: reduce) { .cookie-banner { transition: none; } }
+
+        /* ===== Mentions légales ===== */
+        .legal-trigger {
+            font-family: inherit;
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: color 0.25s var(--ease);
+        }
+        .legal-trigger:hover { color: var(--gold); }
+        .legal-modal .legal-p {
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: var(--muted);
+            margin-bottom: 1.6rem;
+        }
+        .legal-modal .fiche-section-label { margin-top: 0; }
+        .legal-update { font-size: 0.7rem; font-style: italic; color: var(--muted); }
     </style>
 </head>
 <body>
@@ -2141,7 +2164,45 @@
             <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
         <p class="footer-copy" data-i18n="footer.copy">© 2026 Yaro Consulting. Tous droits réservés.</p>
+        <button type="button" class="legal-trigger" id="openLegal" data-i18n="nav.legal">Mentions légales</button>
     </footer>
+
+    <!-- MENTIONS LÉGALES & CONFIDENTIALITÉ (modal) -->
+    <div class="fiche-overlay" id="legalOverlay" aria-hidden="true">
+        <div class="fiche-modal legal-modal" role="dialog" aria-modal="true" aria-label="Mentions légales et confidentialité">
+            <button class="fiche-close" id="legalClose" aria-label="Fermer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+            <div class="fiche-head">
+                <div>
+                    <p class="fiche-brand">Yaro Consulting</p>
+                    <p class="fiche-brand-sub">Mentions légales · Confidentialité</p>
+                </div>
+            </div>
+
+            <p class="fiche-section-label">Éditeur du site</p>
+            <p class="legal-p">Yaro Consulting — Rodrin Bakala Mouengue.<br>
+                Contact : <a class="contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a> · <a class="contact-link" href="tel:+33608888768">06 08 88 87 68</a>.<br>
+                Immatriculation (SIRET) : en cours.</p>
+
+            <p class="fiche-section-label">Hébergement</p>
+            <p class="legal-p">Site hébergé par Vercel Inc. — 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis — vercel.com.</p>
+
+            <p class="fiche-section-label">Données personnelles</p>
+            <p class="legal-p">Ce site ne crée pas de compte et ne conserve aucune base de données de visiteurs. Les informations saisies dans le formulaire de contact sont uniquement transmises, à votre initiative, via WhatsApp ou email, dans le seul but de répondre à votre demande. Elles ne sont ni revendues ni partagées.</p>
+
+            <p class="fiche-section-label">Cookies & mesure d'audience</p>
+            <p class="legal-p">Avec votre consentement, Google Analytics dépose des cookies pour mesurer l'audience (pages vues, pays, provenance), avec adresse IP anonymisée. Si vous refusez, aucun cookie de mesure n'est déposé. Une mesure d'audience sans cookie (Vercel Web Analytics) peut être utilisée de manière anonyme et agrégée. Vous pouvez modifier votre choix à tout moment en effaçant les données du site dans votre navigateur.</p>
+
+            <p class="fiche-section-label">Vos droits (RGPD)</p>
+            <p class="legal-p">Conformément au Règlement général sur la protection des données, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour l'exercer, écrivez à <a class="contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>.</p>
+
+            <p class="fiche-section-label">Propriété intellectuelle</p>
+            <p class="legal-p">L'ensemble des contenus de ce site (textes, visuels, code) est la propriété de Yaro Consulting, sauf mention contraire. Toute reproduction, même partielle, sans autorisation préalable est interdite.</p>
+
+            <p class="legal-update">Dernière mise à jour : juillet 2026.</p>
+        </div>
+    </div>
 
     <!-- BANDEAU COOKIES (consentement Google Analytics) -->
     <div class="cookie-banner" id="cookieBanner" aria-hidden="true" role="dialog" aria-label="Consentement cookies">
@@ -2278,6 +2339,7 @@
                 'fiche.tagline': 'Turning ideas into systems that perform',
                 'cookie.text': 'We use audience-measurement cookies (Google Analytics) to improve the site. You can accept or decline.',
                 'cookie.accept': 'Accept', 'cookie.refuse': 'Decline',
+                'nav.legal': 'Legal notice',
                 'real1.cat': 'Strategic communication', 'real1.name': 'Citizen &amp; institutional platform',
                 'real1.desc': 'First and foremost a strategic, omnichannel communication tool: bringing a public figure’s entire presence and information together on a single platform, with an intelligent conversational assistant (AI) for ongoing dialogue.',
                 'real1.f1': 'Centralized omnichannel communication', 'real1.f2': 'All information on a single platform', 'real1.f3': 'Intelligent conversational assistant (AI)', 'real1.f4': 'Appointment booking &amp; request tracking', 'real1.f5': 'Contact &amp; press forms · multilingual', 'real1.f6': 'Admin back-office: tracking &amp; management', 'real1.f7': 'Geolocated citizen reports (photo + GPS location)',
@@ -2374,6 +2436,7 @@
                 'fiche.tagline': 'Transformar las ideas en sistemas que rinden',
                 'cookie.text': 'Usamos cookies de medición de audiencia (Google Analytics) para mejorar el sitio. Puede aceptar o rechazar.',
                 'cookie.accept': 'Aceptar', 'cookie.refuse': 'Rechazar',
+                'nav.legal': 'Aviso legal',
                 'real1.cat': 'Comunicación estratégica', 'real1.name': 'Plataforma ciudadana e institucional',
                 'real1.desc': 'Ante todo, una herramienta de comunicación estratégica y omnicanal: reunir toda la presencia y la información de una figura pública en una sola plataforma, con un asistente conversacional inteligente (IA) para un diálogo continuo.',
                 'real1.f1': 'Comunicación omnicanal centralizada', 'real1.f2': 'Toda la información en una sola plataforma', 'real1.f3': 'Asistente conversacional inteligente (IA)', 'real1.f4': 'Reserva de citas y seguimiento de solicitudes', 'real1.f5': 'Formularios de contacto y prensa · multilingüe', 'real1.f6': 'Back-office de administración: seguimiento y gestión', 'real1.f7': 'Reportes ciudadanos geolocalizados (foto + ubicación GPS)',
@@ -2613,6 +2676,22 @@
         if (ficheOverlay) ficheOverlay.addEventListener('click', e => { if (e.target === ficheOverlay) toggleFiche(false); });
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape' && ficheOverlay.classList.contains('open')) toggleFiche(false);
+        });
+
+        // Mentions légales (modal)
+        const legalOverlay = document.getElementById('legalOverlay');
+        function toggleLegal(open) {
+            legalOverlay.classList.toggle('open', open);
+            legalOverlay.setAttribute('aria-hidden', !open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
+        const openLegalBtn = document.getElementById('openLegal');
+        const legalCloseBtn = document.getElementById('legalClose');
+        if (openLegalBtn) openLegalBtn.addEventListener('click', () => toggleLegal(true));
+        if (legalCloseBtn) legalCloseBtn.addEventListener('click', () => toggleLegal(false));
+        if (legalOverlay) legalOverlay.addEventListener('click', e => { if (e.target === legalOverlay) toggleLegal(false); });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && legalOverlay.classList.contains('open')) toggleLegal(false);
         });
 
         // Consentement cookies + Google Analytics (chargé seulement après acceptation)
