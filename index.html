@@ -334,7 +334,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 6rem 1.5rem 2.25rem;
+            padding: 6rem 1.5rem 4.5rem;
             position: relative;
             overflow: hidden;
         }
@@ -1285,8 +1285,10 @@
             justify-content: center;
             cursor: pointer;
             box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-            transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+            transition: transform 0.3s var(--ease), background 0.3s var(--ease), bottom 0.4s var(--ease);
         }
+        /* Remonte la bulle au-dessus du bandeau cookies tant qu'il est affiché */
+        body.cookie-banner-visible .chat-launcher { bottom: 10.5rem; }
         .chat-launcher:hover { transform: translateY(-2px); background: var(--gold-light, #9ec3aa); }
         .chat-launcher svg { width: 24px; height: 24px; }
         .chat-launcher .icon-close { display: none; }
@@ -2847,12 +2849,12 @@
                 gtag('js', new Date());
                 gtag('config', GA_ID, { anonymize_ip: true });
             }
-            function hide() { banner.classList.remove('show'); banner.setAttribute('aria-hidden', 'true'); }
+            function hide() { banner.classList.remove('show'); banner.setAttribute('aria-hidden', 'true'); document.body.classList.remove('cookie-banner-visible'); }
             let consent = null;
             try { consent = localStorage.getItem('yaro_cookie_consent'); } catch (e) {}
             if (consent === 'granted') { loadGA(); }
             else if (consent !== 'denied') {
-                setTimeout(() => { banner.classList.add('show'); banner.setAttribute('aria-hidden', 'false'); }, 1200);
+                setTimeout(() => { banner.classList.add('show'); banner.setAttribute('aria-hidden', 'false'); document.body.classList.add('cookie-banner-visible'); }, 1200);
             }
             accept.addEventListener('click', () => {
                 try { localStorage.setItem('yaro_cookie_consent', 'granted'); } catch (e) {}
