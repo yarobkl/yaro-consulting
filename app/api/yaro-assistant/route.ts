@@ -1,4 +1,3 @@
-import OpenAI from 'openai';
 import { NextResponse } from 'next/server';
 import { YARO_BUSINESS_ASSISTANT_PROMPT } from '@/lib/prompts/yaro-business-assistant';
 import { saveLead } from '@/lib/leads/save-lead';
@@ -10,21 +9,10 @@ type AssistantRequestBody = {
   messages?: ChatMessage[];
 };
 
-let openaiClient: OpenAI | null = null;
-
-function getOpenAIClient() {
-  const apiKey = process.env.OPENAI_API_KEY;
-
-  if (!apiKey) {
-    throw new Error('OPENAI_API_KEY est manquante.');
-  }
-
-  if (!openaiClient) {
-    openaiClient = new OpenAI({ apiKey });
-  }
-
-  return openaiClient;
-}
+type OpenAIResponse = {
+  output_text?: string;
+  error?: { message?: string };
+};
 
 function isValidMessage(message: unknown): message is ChatMessage {
   if (!message || typeof message !== 'object') return false;
@@ -43,7 +31,7 @@ function extractPriority(text: string): PriorityLevel | undefined {
 function extractOffer(text: string) {
   const normalized = text.toLowerCase();
   if (normalized.includes('présence digitale premium') || normalized.includes('presence digitale premium')) return 'presence_digitale_premium' as const;
-  if (normalized.includes('système business digital') || normalized.includes('systeme business digital')) return 'systeme_business_digital' as const;
+  if (normalized.includes('système business digital') || normalized.includes('systeme_business_digital')) return 'systeme_business_digital' as const;
   if (normalized.includes('agent ia sur mesure')) return 'agent_ia_sur_mesure' as const;
   if (normalized.includes('maintenance')) return 'maintenance_optimisation' as const;
   return 'diagnostic' as const;
@@ -59,18 +47,34 @@ function formatMessages(messages: ChatMessage[]) {
 }
 
 async function getAssistantText(messages: ChatMessage[]) {
-  const client = getOpenAIClient();
+  const apiKey = process.env.OPENAI_API_KEY;
   const model = process.env.OPENAI_MODEL ?? 'gpt-4.1-mini';
 
-  const response = await client.responses.create({
-    model,
-    instructions: YARO_BUSINESS_ASSISTANT_PROMPT,
-    input: formatMessages(messages),
-    temperature: 0.4,
+  if (!apiKey) {
+    throw new Error('OPENAI_API_KEY est manquante.');
+  }
+
+  const response = await fetch('https://api.openai.com/v1/responses', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model,
+      instructions: YARO_BUSINESS_ASSISTANT_PROMPT,
+      input: formatMessages(messages),
+      temperature: 0.4,
+    }),
   });
 
-  const output = response as unknown as { output_text?: string };
-  return output.output_text ?? 'Je n’ai pas pu générer de réponse. Pouvez-vous reformuler votre demande ?';
+  const data = (await response.json()) as OpenAIResponse;
+
+  if (!response.ok) {
+    throw new Error(data.error?.message ?? 'Erreur OpenAI.');
+  }
+
+  return data.output_text ?? 'Je n’ai pas pu générer de réponse. Pouvez-vous reformuler votre demande ?';
 }
 
 export async function POST(request: Request) {
