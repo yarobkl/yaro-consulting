@@ -288,33 +288,6 @@
         .fullscreen-menu.open .menu-cta { opacity: 1; transform: translateY(0); }
         .menu-cta:active { background: var(--gold-light); }
 
-        .menu-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 0.85rem;
-            margin-top: 2.5rem;
-            opacity: 0;
-            transition: opacity 0.6s ease 0.65s;
-        }
-        .fullscreen-menu.open .menu-contact { opacity: 1; }
-        .menu-contact a {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.9rem;
-            color: var(--muted);
-            text-decoration: none;
-            letter-spacing: 0.03em;
-            transition: color 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .menu-contact a::before {
-            content: '';
-            width: 16px; height: 1px;
-            background: var(--gold);
-        }
-        .menu-contact a:active { color: var(--gold); }
-        @media (hover: hover) { .menu-contact a:hover { color: var(--gold); } }
         .fullscreen-menu .menu-footer {
             margin-top: auto;
             font-size: 0.7rem;
@@ -1827,11 +1800,6 @@
         <a href="#methode" data-i18n="nav.methode">Méthode</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
         <a href="#contact" class="menu-cta" data-i18n="nav.cta">Démarrer un projet</a>
-        <div class="menu-contact">
-            <a href="tel:+33608888768">06 08 88 87 68</a>
-            <a href="https://wa.me/33608888768" target="_blank" rel="noopener" class="wa-trigger">WhatsApp</a>
-            <a href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>
-        </div>
         <div class="menu-lang">
             <div class="lang-switch" role="group" aria-label="Langue">
                 <button type="button" data-lang="fr">FR</button>
