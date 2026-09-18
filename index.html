@@ -1114,7 +1114,11 @@
                 flex-wrap: nowrap;
                 overflow-x: auto;
                 overscroll-behavior-x: contain;
-                scroll-snap-type: x mandatory;
+                /* proximity et non mandatory : un calage forcé ré-accroche la
+                   position horizontale pendant le défilement vertical de la page */
+                scroll-snap-type: x proximity;
+                scroll-padding-left: 1.5rem;
+                touch-action: pan-x pan-y;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
             }
@@ -1122,7 +1126,9 @@
             .why-grid::-webkit-scrollbar { display: none; }
             .services-grid > *, .why-grid > * {
                 flex: 0 0 84%;
-                scroll-snap-align: center;
+                /* start et non center : les cartes des extrémités ne peuvent pas
+                   être centrées, le calage rebondissait contre les bords */
+                scroll-snap-align: start;
             }
             .why-grid { gap: 1px; background: var(--border); padding-top: 0; }
             .why-item { max-width: none; background: var(--ink); padding: 2rem 1.5rem; }
