@@ -320,6 +320,9 @@
             inset: 0;
             z-index: 0;
         }
+        /* <picture> ne doit pas créer de boîte : sans cela l'image dimensionnée
+           en 100% se calerait sur lui et non sur son conteneur. */
+        .hero-bg picture, .service-img-wrap picture { display: contents; }
         .hero-bg img {
             width: 100%;
             height: 100%;
@@ -1813,7 +1816,11 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-bg" id="heroBg">
-            <img src="images/portrait.jpg" alt="Portrait de Rodrin Bakala Mouengue, fondateur de Yaro Consulting" id="heroImg">
+            <picture>
+                <source srcset="images/portrait.avif" type="image/avif">
+                <source srcset="images/portrait.webp" type="image/webp">
+                <img src="images/portrait.jpg" alt="Portrait de Rodrin Bakala Mouengue, fondateur de Yaro Consulting" id="heroImg">
+            </picture>
             <div class="hero-grain"></div>
         </div>
         <p class="hero-eyebrow hero-eyebrow-top" data-i18n="hero.eyebrow">Consultant · Stratégie · Transformation Digitale</p>
@@ -1925,7 +1932,11 @@
             <div class="service-card reveal">
                 <div class="service-num">01</div>
                 <div class="service-img-wrap">
-                    <img src="images/conseil.jpg" loading="lazy" alt="Stratégie et performance opérationnelle">
+                    <picture>
+                        <source srcset="images/conseil.avif" type="image/avif">
+                        <source srcset="images/conseil.webp" type="image/webp">
+                        <img src="images/conseil.jpg" loading="lazy" alt="Stratégie et performance opérationnelle">
+                    </picture>
                 </div>
                 <h3 class="service-name" data-i18n="card1.name">Stratégie & Performance Opérationnelle</h3>
                 <p class="service-desc" data-i18n="card1.desc">Diagnostiquer une organisation, clarifier ses priorités et améliorer durablement sa performance sur le terrain.</p>
@@ -1938,7 +1949,11 @@
             <div class="service-card reveal reveal-delay-1">
                 <div class="service-num">02</div>
                 <div class="service-img-wrap">
-                    <img src="images/digital.jpg" loading="lazy" alt="Transformation digitale">
+                    <picture>
+                        <source srcset="images/digital.avif" type="image/avif">
+                        <source srcset="images/digital.webp" type="image/webp">
+                        <img src="images/digital.jpg" loading="lazy" alt="Transformation digitale">
+                    </picture>
                 </div>
                 <h3 class="service-name" data-i18n="card2.name">Transformation Digitale</h3>
                 <p class="service-desc" data-i18n="card2.desc">Concevoir l'architecture numérique d'une organisation et structurer ses outils autour de ses besoins réels.</p>
@@ -1964,7 +1979,11 @@
             <div class="service-card reveal reveal-delay-3">
                 <div class="service-num">04</div>
                 <div class="service-img-wrap">
-                    <img src="images/perf.jpg" loading="lazy" alt="Expérience utilisateur et produits digitaux">
+                    <picture>
+                        <source srcset="images/perf.avif" type="image/avif">
+                        <source srcset="images/perf.webp" type="image/webp">
+                        <img src="images/perf.jpg" loading="lazy" alt="Expérience utilisateur et produits digitaux">
+                    </picture>
                 </div>
                 <h3 class="service-name" data-i18n="card4.name">Expérience Utilisateur & Produits Digitaux</h3>
                 <p class="service-desc" data-i18n="card4.desc">Concevoir des interfaces et des produits numériques pensés pour leurs usages, pas pour la démonstration.</p>
