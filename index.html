@@ -1139,6 +1139,17 @@
             }
             .services-grid > *:last-child,
             .why-grid > *:last-child { border-right: 0; }
+            /* Les cartes d'un défilement horizontal entrent et sortent de l'écran
+               à chaque glissement. L'animation de révélation, qui se rejoue à
+               chaque passage, les faisait bouger sous le doigt : on la neutralise
+               ici, sans toucher au reste de la page. */
+            .services-grid > .reveal,
+            .why-grid > .reveal {
+                opacity: 1;
+                transform: none;
+                filter: none;
+                transition: none;
+            }
             .why-grid { padding-top: 0; }
             .why-item { max-width: none; background: var(--ink); padding: 2rem 1.5rem; }
             .service-img-wrap { height: 150px; margin-bottom: 1.25rem; }
