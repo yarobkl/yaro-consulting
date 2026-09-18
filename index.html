@@ -2823,10 +2823,14 @@
             });
         })();
 
-        // Scroll reveal : se rejoue à chaque entrée/sortie de l'écran
+        // Scroll reveal : chaque élément n'apparaît qu'une fois, puis reste en place.
+        // Le rejouer à la sortie de l'écran remettait le contenu à zéro dès qu'on
+        // remontait, et la page semblait remuer sous le doigt.
         const io = new IntersectionObserver((entries) => {
             entries.forEach(e => {
-                e.target.classList.toggle('visible', e.isIntersecting);
+                if (!e.isIntersecting) return;
+                e.target.classList.add('visible');
+                io.unobserve(e.target);
             });
         }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
