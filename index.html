@@ -62,7 +62,6 @@
             --accent-deep: #6b5420;
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
-            --edge-w: min(208px, 56vw);
         }
 
         html { font-size: 16px; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
@@ -1222,7 +1221,6 @@
             }
             .nav-right { display: flex; align-items: center; gap: 1.5rem; }
             .lang-shortcut { display: none; }
-            .edge-handle, .edge-panel, .edge-overlay { display: none; }
             .nav-links a {
                 font-size: 0.72rem;
                 letter-spacing: 0.15em;
@@ -1506,98 +1504,6 @@
 
         @media (prefers-reduced-motion: reduce) {
             .chat-panel, .chat-launcher, .chat-msg { transition: none; animation: none; }
-        }
-
-        /* ===== Edge panel (raccourcis style Galaxy) ===== */
-        .edge-handle {
-            position: fixed;
-            top: 34%;
-            right: 0;
-            transform: translateY(-50%);
-            z-index: 260;
-            width: 24px;
-            height: 92px;
-            border: none;
-            border-radius: 12px 0 0 12px;
-            background: var(--gold);
-            color: var(--ink);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            gap: 3px;
-            box-shadow: -4px 0 16px rgba(0,0,0,0.3);
-            transition: transform 0.45s var(--ease), background 0.3s ease;
-        }
-        .edge-handle::before, .edge-handle::after {
-            content: '';
-            width: 2px;
-            height: 30px;
-            border-radius: 2px;
-            background: rgba(16,23,38,0.5);
-        }
-        body.edge-open .edge-handle { transform: translateY(-50%) translateX(calc(-1 * var(--edge-w))); }
-
-        .edge-panel {
-            position: fixed;
-            top: 34%;
-            right: 0;
-            width: var(--edge-w);
-            max-height: 80vh;
-            overflow-y: auto;
-            background: linear-gradient(150deg, rgba(212,184,119,0.14), rgba(13,26,20,0.16));
-            backdrop-filter: blur(26px) saturate(1.5);
-            -webkit-backdrop-filter: blur(26px) saturate(1.5);
-            border: 1px solid rgba(255,255,255,0.16);
-            border-right: none;
-            border-radius: 16px 0 0 16px;
-            z-index: 259;
-            transform: translateY(-50%) translateX(110%);
-            transition: transform 0.45s var(--ease);
-            display: block;
-            padding: 1.3rem 1.4rem;
-            box-shadow: -12px 0 40px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.18);
-        }
-        body.edge-open .edge-panel { transform: translateY(-50%) translateX(0); }
-        .edge-title {
-            font-size: 0.58rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 0.6rem;
-            text-shadow: 0 1px 10px rgba(0,0,0,0.75);
-        }
-        .edge-links { display: flex; flex-direction: column; }
-        .edge-links a {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.18rem;
-            font-weight: 300;
-            color: var(--cream);
-            text-decoration: none;
-            padding: 0.4rem 0;
-            border-bottom: 1px solid rgba(212,184,119,0.1);
-            text-shadow: 0 1px 10px rgba(0,0,0,0.75);
-            transition: color 0.25s var(--ease), padding-left 0.25s var(--ease);
-        }
-        .edge-links a:last-child { border-bottom: none; }
-        .edge-links a:active { color: var(--gold); padding-left: 0.4rem; }
-
-        /* Capte le tap "à côté" pour refermer, sans assombrir l'écran */
-        .edge-overlay {
-            position: fixed;
-            inset: 0;
-            background: transparent;
-            pointer-events: none;
-            z-index: 258;
-        }
-        body.edge-open .edge-overlay { pointer-events: auto; }
-
-        @media (hover: hover) {
-            .edge-handle:hover { background: var(--gold-light); }
-            .edge-links a:hover { color: var(--gold); padding-left: 0.4rem; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .edge-handle, .edge-panel, .edge-overlay { transition: none; }
         }
 
         /* ===== Actions carte projet + fiche technique ===== */
@@ -2470,23 +2376,6 @@
         </div>
     </div>
 
-    <!-- EDGE PANEL (raccourcis style Galaxy) -->
-    <div class="edge-overlay" id="edgeOverlay"></div>
-    <button class="edge-handle" id="edgeHandle" aria-label="Raccourcis de navigation" aria-expanded="false"></button>
-    <aside class="edge-panel" id="edgePanel" aria-hidden="true" aria-label="Navigation rapide">
-        <p class="edge-title" data-i18n="edge.title">Navigation rapide</p>
-        <div class="edge-links">
-            <a href="#vision" data-i18n="nav.vision">Vision</a>
-            <a href="#propos" data-i18n="nav.founder">Fondateur</a>
-            <a href="#expertises" data-i18n="nav.expertises">Expertises</a>
-            <a href="#solutions" data-i18n="nav.solutions">Solutions</a>
-            <a href="#realisations" data-i18n="nav.realisations">Réalisations</a>
-            <a href="#methode" data-i18n="nav.methode">Méthode</a>
-            <a href="#pourquoi" data-i18n="nav.pourquoi">Pourquoi nous</a>
-            <a href="#contact" data-i18n="nav.contact">Contact</a>
-        </div>
-    </aside>
-
     <!-- ASSISTANT GUIDÉ -->
     <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant Yaro Consulting" aria-hidden="true">
         <div class="chat-header">
@@ -2525,7 +2414,7 @@
                 'meta.title': 'Yaro Consulting | Rodrin Bakala Mouengue · Strategy & Digital Transformation',
                 'meta.desc': 'Yaro Consulting supports companies, institutions and organizations in their strategy, digital transformation and operational performance projects.',
                 'nav.vision': 'Vision', 'nav.expertises': 'Expertise', 'nav.realisations': 'Projects', 'nav.methode': 'Method', 'nav.contact': 'Contact', 'nav.cta': 'Start a project', 'nav.menuLabel': 'Menu',
-                'nav.founder': 'Founder', 'nav.solutions': 'Solutions', 'nav.realisations': 'Projects', 'nav.pourquoi': 'Why us', 'edge.title': 'Quick navigation',
+                'nav.founder': 'Founder', 'nav.solutions': 'Solutions', 'nav.realisations': 'Projects', 'nav.pourquoi': 'Why us',
                 'real.title': 'Completed <em>projects</em>',
                 'real.label': 'Live platforms and websites',
                 'real.body': 'A few projects designed, built and deployed. Explore them directly online.',
@@ -2624,7 +2513,7 @@
                 'meta.title': 'Yaro Consulting | Rodrin Bakala Mouengue · Estrategia y Transformación Digital',
                 'meta.desc': 'Yaro Consulting acompaña a empresas, instituciones y organizaciones en sus proyectos de estrategia, transformación digital y rendimiento operativo.',
                 'nav.vision': 'Visión', 'nav.expertises': 'Especialidades', 'nav.realisations': 'Proyectos', 'nav.methode': 'Método', 'nav.contact': 'Contacto', 'nav.cta': 'Iniciar un proyecto', 'nav.menuLabel': 'Menú',
-                'nav.founder': 'Fundador', 'nav.solutions': 'Soluciones', 'nav.realisations': 'Proyectos', 'nav.pourquoi': 'Por qué', 'edge.title': 'Navegación rápida',
+                'nav.founder': 'Fundador', 'nav.solutions': 'Soluciones', 'nav.realisations': 'Proyectos', 'nav.pourquoi': 'Por qué',
                 'real.title': 'Proyectos <em>realizados</em>',
                 'real.label': 'Plataformas y sitios en línea',
                 'real.body': 'Algunos proyectos diseñados, desarrollados y desplegados. Descúbralos directamente en línea.',
@@ -2860,23 +2749,6 @@
         fullMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape' && fullMenu.classList.contains('open')) toggleMenu(false);
-        });
-
-        // Edge panel (raccourcis style Galaxy)
-        const edgeHandle = document.getElementById('edgeHandle');
-        const edgePanel = document.getElementById('edgePanel');
-        const edgeOverlay = document.getElementById('edgeOverlay');
-        function toggleEdge(force) {
-            const open = force ?? !document.body.classList.contains('edge-open');
-            document.body.classList.toggle('edge-open', open);
-            edgeHandle.setAttribute('aria-expanded', open);
-            edgePanel.setAttribute('aria-hidden', !open);
-        }
-        edgeHandle.addEventListener('click', () => toggleEdge());
-        edgeOverlay.addEventListener('click', () => toggleEdge(false));
-        edgePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleEdge(false)));
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && document.body.classList.contains('edge-open')) toggleEdge(false);
         });
 
         // Fiche technique (modal)
