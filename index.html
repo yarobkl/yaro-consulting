@@ -8,7 +8,7 @@
     <meta name="author" content="Rodrin Bakala Mouengue">
     <meta name="keywords" content="Yaro Consulting, Rodrin Bakala Mouengue, conseil stratégie, transformation digitale, consultant digital, performance opérationnelle, automatisation, conseil entreprise Afrique">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0a1410">
+    <meta name="theme-color" content="#100f0d">
     <link rel="canonical" href="https://yaroconsulting.fr/">
 
     <!-- Open Graph -->
@@ -53,13 +53,13 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --ink: #0a1410;
-            --cream: #eef2ea;
-            --gold: #7fa88a;
-            --gold-light: #b8d4bd;
-            --muted: #7d8c82;
-            --border: rgba(127,168,138,0.22);
-            --accent-deep: #2f5740;
+            --ink: #100f0d;
+            --cream: #f2efe8;
+            --gold: #c7a252;
+            --gold-light: #e0c585;
+            --muted: #8d8778;
+            --border: rgba(199,162,82,0.22);
+            --accent-deep: #6b5420;
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
             --edge-w: min(208px, 56vw);
@@ -112,12 +112,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.25rem 1.5rem;
-            background: rgba(10,20,16,0.6);
+            background: rgba(16,15,13,0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             transition: padding 0.4s var(--ease), background 0.4s ease;
         }
-        nav.scrolled { padding: 0.85rem 1.5rem; background: rgba(10,20,16,0.85); }
+        nav.scrolled { padding: 0.85rem 1.5rem; background: rgba(16,15,13,0.85); }
         nav::after {
             content: '';
             position: absolute;
@@ -382,7 +382,7 @@
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: linear-gradient(to top, var(--ink) 32%, rgba(10,20,16,0.25) 75%, rgba(10,20,16,0.45) 100%);
+            background: linear-gradient(to top, var(--ink) 32%, rgba(16,15,13,0.25) 75%, rgba(16,15,13,0.45) 100%);
         }
 
         .hero-content { position: relative; z-index: 2; }
@@ -413,7 +413,7 @@
             line-height: 1.05;
             letter-spacing: -0.02em;
             margin-bottom: 1.5rem;
-            color: rgba(238, 242, 234, 0.55);
+            color: rgba(242, 239, 232, 0.55);
         }
         /* Word-by-word reveal */
         .hero-title .line { display: block; overflow: hidden; }
@@ -689,8 +689,8 @@
         }
         a.project-card:hover .project-link { gap: 0.8rem; }
         .project-card-feature {
-            border: 1px solid rgba(127,168,138,0.45);
-            background: linear-gradient(160deg, rgba(127,168,138,0.07), var(--ink) 70%);
+            border: 1px solid rgba(199,162,82,0.45);
+            background: linear-gradient(160deg, rgba(199,162,82,0.07), var(--ink) 70%);
         }
         .project-soon {
             margin-top: auto;
@@ -749,7 +749,7 @@
         }
         @media (hover: hover) {
             .service-card:hover::before { transform: scaleX(1); }
-            .service-card:hover { background: rgba(127,168,138,0.04); }
+            .service-card:hover { background: rgba(199,162,82,0.04); }
         }
         .service-num {
             font-family: 'Cormorant Garamond', serif;
@@ -837,7 +837,7 @@
             gap: 2rem;
         }
         .process-step {
-            border-top: 1px solid rgba(10,20,16,0.15);
+            border-top: 1px solid rgba(16,15,13,0.15);
             padding-top: 1.5rem;
         }
         .step-num {
@@ -856,7 +856,7 @@
         .step-desc {
             font-size: 0.82rem;
             line-height: 1.7;
-            color: rgba(10,20,16,0.5);
+            color: rgba(16,15,13,0.5);
         }
 
         /* ─── CONTACT ─── */
@@ -963,7 +963,7 @@
         }
         .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
         .form-textarea { resize: none; height: 100px; }
-        .form-input::placeholder, .form-textarea::placeholder { color: rgba(125,140,130,0.5); }
+        .form-input::placeholder, .form-textarea::placeholder { color: rgba(141,135,120,0.5); }
 
         .form-submit {
             display: inline-flex;
@@ -1074,7 +1074,7 @@
         }
 
         /* ─── MÉTHODE REPLIABLE ─── */
-        .process-fold { border-top: 1px solid rgba(10,20,16,0.15); }
+        .process-fold { border-top: 1px solid rgba(16,15,13,0.15); }
         .process-fold > summary {
             list-style: none;
             cursor: pointer;
@@ -1167,7 +1167,7 @@
                 display: block;
                 position: fixed;
                 width: 36px; height: 36px;
-                border: 1px solid rgba(127,168,138,0.5);
+                border: 1px solid rgba(199,162,82,0.5);
                 border-radius: 50%;
                 pointer-events: none;
                 z-index: 9998;
@@ -1267,7 +1267,7 @@
             /* Sortir l'image du flux : la hauteur du hero reste pilotée par 100vh */
             .hero-bg img { position: absolute; inset: 0; object-position: 50% 20%; }
             .hero-bg::after {
-                background: linear-gradient(to right, var(--ink) 0%, rgba(10,20,16,0.15) 35%, transparent 60%);
+                background: linear-gradient(to right, var(--ink) 0%, rgba(16,15,13,0.15) 35%, transparent 60%);
             }
             .hero-title { font-size: clamp(3rem, 5vw, 5rem); }
             .hero-sub { font-size: 0.9rem; }
@@ -1277,7 +1277,7 @@
                 font-family: 'Cormorant Garamond', serif;
                 font-size: 6rem;
                 font-weight: 300;
-                color: rgba(127,168,138,0.08);
+                color: rgba(199,162,82,0.08);
                 line-height: 1;
                 margin-top: -1rem;
             }
@@ -1362,7 +1362,7 @@
         }
         /* Remonte la bulle au-dessus du bandeau cookies tant qu'il est affiché */
         body.cookie-banner-visible .chat-launcher { bottom: 10.5rem; }
-        .chat-launcher:hover { transform: translateY(-2px); background: var(--gold-light, #9ec3aa); }
+        .chat-launcher:hover { transform: translateY(-2px); background: var(--gold-light, #e0c585); }
         .chat-launcher svg { width: 24px; height: 24px; }
         .chat-launcher .icon-close { display: none; }
         .chat-launcher.open .icon-open { display: none; }
@@ -1375,7 +1375,7 @@
             z-index: 300;
             width: min(360px, calc(100vw - 3rem));
             height: min(540px, calc(100vh - 8rem));
-            background: #0d1a14;
+            background: #16140f;
             border: 1px solid var(--border, rgba(255,255,255,0.1));
             border-radius: 18px;
             display: flex;
@@ -1507,7 +1507,7 @@
             width: 2px;
             height: 30px;
             border-radius: 2px;
-            background: rgba(10,20,16,0.5);
+            background: rgba(16,15,13,0.5);
         }
         body.edge-open .edge-handle { transform: translateY(-50%) translateX(calc(-1 * var(--edge-w))); }
 
@@ -1518,7 +1518,7 @@
             width: var(--edge-w);
             max-height: 80vh;
             overflow-y: auto;
-            background: linear-gradient(150deg, rgba(127,168,138,0.14), rgba(13,26,20,0.16));
+            background: linear-gradient(150deg, rgba(199,162,82,0.14), rgba(13,26,20,0.16));
             backdrop-filter: blur(26px) saturate(1.5);
             -webkit-backdrop-filter: blur(26px) saturate(1.5);
             border: 1px solid rgba(255,255,255,0.16);
@@ -1548,7 +1548,7 @@
             color: var(--cream);
             text-decoration: none;
             padding: 0.4rem 0;
-            border-bottom: 1px solid rgba(127,168,138,0.1);
+            border-bottom: 1px solid rgba(199,162,82,0.1);
             text-shadow: 0 1px 10px rgba(0,0,0,0.75);
             transition: color 0.25s var(--ease), padding-left 0.25s var(--ease);
         }
@@ -1612,8 +1612,8 @@
             position: relative;
             width: min(760px, 100%);
             margin: auto;
-            background: linear-gradient(160deg, #10201880, #0a1410);
-            border: 1px solid rgba(127,168,138,0.3);
+            background: linear-gradient(160deg, #1a171280, #100f0d);
+            border: 1px solid rgba(199,162,82,0.3);
             border-radius: 18px;
             padding: 2.2rem 1.6rem 1.6rem;
             box-shadow: 0 30px 80px rgba(0,0,0,0.5);
@@ -1725,7 +1725,7 @@
             align-items: baseline;
             gap: 1rem;
             padding: 0.7rem 0;
-            border-bottom: 1px solid rgba(127,168,138,0.1);
+            border-bottom: 1px solid rgba(199,162,82,0.1);
         }
         .fiche-key {
             font-size: 0.6rem;
@@ -1746,7 +1746,7 @@
             letter-spacing: 0.16em;
             text-transform: uppercase;
             color: var(--gold);
-            border: 1px solid rgba(127,168,138,0.4);
+            border: 1px solid rgba(199,162,82,0.4);
             border-radius: 999px;
             padding: 0.55rem 1.1rem;
             margin-bottom: 1.8rem;
@@ -3106,7 +3106,7 @@
     <script>
         (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.eu/embed/embed.js", "init");
         Cal("init", { origin: "https://cal.eu" });
-        Cal("ui", { theme: "dark", cssVarsPerTheme: { dark: { "cal-brand": "#7fa88a" } }, hideEventTypeDetails: false, layout: "month_view" });
+        Cal("ui", { theme: "dark", cssVarsPerTheme: { dark: { "cal-brand": "#c7a252" } }, hideEventTypeDetails: false, layout: "month_view" });
     </script>
 
     <!-- Vercel Web Analytics (sans cookies : visites, pays, pages) -->
