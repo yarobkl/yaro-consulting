@@ -1787,6 +1787,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
  .hero-bg img, .hero-bg.alive img { animation: none !important; transform: none !important; opacity: .8 !important; }
  .fullscreen-menu { transition: none !important; }
 }
+
+/* Portfolio refinement: short, mobile-first, accessible */
+#vision, #solutions, #pourquoi, .stats-row { display:none !important; }
+#expertises .service-card { border-top:1px solid var(--border); border-radius:0 !important; background:transparent !important; box-shadow:none !important; }
+#expertises .service-card:hover { transform:none !important; }
+#expertises .services-header, #realisations .services-header { margin-bottom:1.5rem !important; }
+.yaro-mobile-offer { margin:1.5rem auto 0; padding:1.3rem 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+.yaro-mobile-offer strong { font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,3vw,2rem); font-weight:400; }
+.yaro-mobile-offer p { font-size:.85rem; color:var(--muted); line-height:1.6; max-width:540px; }
+.yaro-mobile-offer a { white-space:nowrap; color:var(--gold); font-size:.8rem; text-underline-offset:5px; }
+@media(max-width:767px) { .yaro-mobile-offer { align-items:flex-start; flex-direction:column; } #propos, #expertises, #realisations, #contact { padding-top:3.25rem !important; padding-bottom:3.25rem !important; } }
 </style>
 </head>
 <body>
@@ -1800,10 +1811,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
     <nav id="nav">
         <a href="#" class="logo">Yaroconsulting</a>
         <ul class="nav-links">
-            <li><a href="#vision" data-i18n="nav.vision">Vision</a></li>
+            <li><a href="#propos" data-i18n="nav.founder">À propos</a></li>
             <li><a href="#expertises" data-i18n="nav.expertises">Expertises</a></li>
             <li><a href="#realisations" data-i18n="nav.realisations">Réalisations</a></li>
-            <li><a href="#methode" data-i18n="nav.methode">Méthode</a></li>
+            
             <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
         <div class="nav-right">
@@ -1828,10 +1839,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
         <button class="menu-close" id="menuClose" aria-label="Fermer le menu">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
-        <a href="#vision" data-i18n="nav.vision">Vision</a>
+        <a href="#propos" data-i18n="nav.founder">À propos</a>
         <a href="#expertises" data-i18n="nav.expertises">Expertises</a>
         <a href="#realisations" data-i18n="nav.realisations">Réalisations</a>
-        <a href="#methode" data-i18n="nav.methode">Méthode</a>
+        
         <a href="#contact" data-i18n="nav.contact">Contact</a>
         <a href="#contact" class="menu-cta" data-i18n="nav.cta">Démarrer un projet</a>
         <div class="menu-lang">
@@ -1862,11 +1873,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
                 <span class="line"><span data-i18n="hero.title3">concrètes.</span></span>
             </h1>
             <p class="hero-sub" data-i18n="hero.sub">
-                Yaro Consulting accompagne entreprises, institutions et organisations dans leurs projets de stratégie et de transformation digitale, du diagnostic jusqu'au déploiement.
+                Stratégie, sites web et applications mobiles : je conçois des solutions numériques utiles, de l’idée à la mise en ligne.
             </p>
             <div class="hero-actions">
-                <a href="#expertises" class="btn-primary">
-                    <span data-i18n="hero.btnPrimary">Nos expertises</span>
+                <a href="#propos" class="btn-primary">
+                    <span data-i18n="hero.btnPrimary">Découvrir mon approche</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -2025,7 +2036,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
                 </ul>
             </div>
         </div>
-    </section>
+    <div class="yaro-mobile-offer"><div><strong>Sites web &amp; applications mobiles iOS / Android</strong><p>Du site vitrine à la plateforme métier, conception d'expériences rapides, accessibles et adaptées à chaque écran.</p></div><a href="#contact">Discuter d'un projet</a></div>
+</section>
 
     <!-- SOLUTIONS -->
     <section id="solutions">
@@ -2078,7 +2090,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
             <p class="section-label reveal" data-i18n="real.label">Un projet opérationnel, présenté sans exagération</p>
         </div>
         <p class="about-body reveal" data-i18n="real.body">
-            Quelques réalisations conçues, développées et déployées. Découvrez-les directement en ligne.
+            GaspardNZ est une réalisation concrète. Les autres produits sont encore en développement.
         </p>
         <p class="swipe-hint"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="swipe.hint">Faites glisser</span></p>
         <div class="services-grid">
@@ -2262,10 +2274,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
     <footer>
         <div class="footer-logo">Yaro<span>.</span></div>
         <ul class="footer-links">
-            <li><a href="#vision" data-i18n="nav.vision">Vision</a></li>
+            <li><a href="#propos" data-i18n="nav.founder">À propos</a></li>
             <li><a href="#expertises" data-i18n="nav.expertises">Expertises</a></li>
             <li><a href="#realisations" data-i18n="nav.realisations">Réalisations</a></li>
-            <li><a href="#methode" data-i18n="nav.methode">Méthode</a></li>
+            
             <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
         <p class="footer-copy" data-i18n="footer.copy">© 2026 Yaro Consulting. Tous droits réservés.</p>
@@ -2434,9 +2446,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
                 'meta.desc': 'Yaro Consulting supports companies, institutions and organizations in their strategy, digital transformation and operational performance projects.',
                 'nav.vision': 'Vision', 'nav.expertises': 'Expertise', 'nav.realisations': 'Projects', 'nav.methode': 'Method', 'nav.contact': 'Contact', 'nav.cta': 'Start a project', 'nav.menuLabel': 'Menu',
                 'nav.founder': 'Founder', 'nav.solutions': 'Solutions', 'nav.realisations': 'Projects', 'nav.pourquoi': 'Why us',
-                'real.title': 'Completed <em>projects</em>',
-                'real.label': 'Live platforms and websites',
-                'real.body': 'A few projects designed, built and deployed. Explore them directly online.',
+                'real.title': 'One <em>real project</em>',
+                'real.label': 'A concrete delivery',
+                'real.body': 'GaspardNZ is a real delivery. Other products are still in development.',
                 'real.cta': 'Visit site', 'real.soon': 'Coming soon', 'real.sheet': 'View tech sheet',
                 'fiche.brandsub': 'Strategy · Digital · Brand',
                 'fiche.eyebrow': 'Case study · Tech sheet',
@@ -2464,9 +2476,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
                 'real3.cat': 'Image &amp; events', 'real3.name': 'Premium showcase website',
                 'real3.f1': 'Services presentation', 'real3.f2': 'Refined visual identity', 'real3.f3': 'Mobile-first experience', 'real3.f4': 'Direct contact',
                 'hero.eyebrow': 'Consultant · Strategy · Digital Transformation',
-                'hero.title1': 'Turning ideas', 'hero.title2': 'into <em>systems</em>', 'hero.title3': 'that perform.',
-                'hero.sub': 'Yaro Consulting supports companies, institutions and organizations in their strategy and digital transformation projects, from diagnosis to deployment.',
-                'hero.btnPrimary': 'Our expertise', 'hero.btnGhost': 'Get in touch',
+                'hero.title1': 'I turn ideas', 'hero.title2': 'into <em>practical</em>', 'hero.title3': 'solutions.',
+                'hero.sub': 'Strategy, websites and mobile apps: I design useful digital solutions, from idea to launch.',
+                'hero.btnPrimary': 'Discover my approach', 'hero.btnGhost': 'Get in touch',
                 'm.strategy': 'Strategy', 'm.digital': 'Digital Transformation', 'm.automation': 'Automation', 'm.performance': 'Operational Performance',
                 'vision.label': 'Our vision',
                 'vision.title': 'Technology only matters if it <em>changes something</em>.',
@@ -2489,7 +2501,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
                 'card3.name': 'Automation & Digital Tools',
                 'card3.desc': 'Identify where automation creates real value, then integrate it into existing processes with intelligent tools built to last.',
                 'card3.li1': 'Process automation', 'card3.li2': 'Smart management tools', 'card3.li3': 'Integration with existing systems',
-                'card4.name': 'User Experience & Digital Products',
+                'card4.name': 'iOS & Android mobile apps',
                 'card4.desc': 'Design interfaces and digital products built for real use, not for show.',
                 'card4.li1': 'UX/UI design', 'card4.li2': 'Premium web interfaces', 'card4.li3': 'Custom digital products',
                 'solutions.title': 'The solutions we <em>design</em>',
@@ -2533,9 +2545,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
                 'meta.desc': 'Yaro Consulting acompaña a empresas, instituciones y organizaciones en sus proyectos de estrategia, transformación digital y rendimiento operativo.',
                 'nav.vision': 'Visión', 'nav.expertises': 'Especialidades', 'nav.realisations': 'Proyectos', 'nav.methode': 'Método', 'nav.contact': 'Contacto', 'nav.cta': 'Iniciar un proyecto', 'nav.menuLabel': 'Menú',
                 'nav.founder': 'Fundador', 'nav.solutions': 'Soluciones', 'nav.realisations': 'Proyectos', 'nav.pourquoi': 'Por qué',
-                'real.title': 'Proyectos <em>realizados</em>',
-                'real.label': 'Plataformas y sitios en línea',
-                'real.body': 'Algunos proyectos diseñados, desarrollados y desplegados. Descúbralos directamente en línea.',
+                'real.title': 'Un proyecto <em>real</em>',
+                'real.label': 'Una realización concreta',
+                'real.body': 'GaspardNZ es una realización concreta. Los demás productos siguen en desarrollo.',
                 'real.cta': 'Ver el sitio', 'real.soon': 'Próximamente', 'real.sheet': 'Ver la ficha técnica',
                 'fiche.brandsub': 'Estrategia · Digital · Marca',
                 'fiche.eyebrow': 'Estudio de caso · Ficha técnica',
@@ -2563,9 +2575,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
                 'real3.cat': 'Imagen y eventos', 'real3.name': 'Sitio escaparate premium',
                 'real3.f1': 'Presentación de servicios', 'real3.f2': 'Identidad visual cuidada', 'real3.f3': 'Experiencia mobile-first', 'real3.f4': 'Contacto directo',
                 'hero.eyebrow': 'Consultor · Estrategia · Transformación Digital',
-                'hero.title1': 'Transformar las ideas', 'hero.title2': 'en <em>sistemas</em>', 'hero.title3': 'que rinden.',
-                'hero.sub': 'Yaro Consulting acompaña a empresas, instituciones y organizaciones en sus proyectos de estrategia y transformación digital, del diagnóstico al despliegue.',
-                'hero.btnPrimary': 'Nuestras especialidades', 'hero.btnGhost': 'Contactar',
+                'hero.title1': 'Transformo las ideas', 'hero.title2': 'en <em>soluciones</em>', 'hero.title3': 'concretas.',
+                'hero.sub': 'Estrategia, sitios web y aplicaciones móviles: diseño soluciones digitales útiles, desde la idea hasta su lanzamiento.',
+                'hero.btnPrimary': 'Descubrir mi enfoque', 'hero.btnGhost': 'Contactar',
                 'm.strategy': 'Estrategia', 'm.digital': 'Transformación Digital', 'm.automation': 'Automatización', 'm.performance': 'Rendimiento Operativo',
                 'vision.label': 'Nuestra visión',
                 'vision.title': 'La tecnología solo vale si <em>cambia algo</em>.',
@@ -2588,7 +2600,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
                 'card3.name': 'Automatización y Herramientas Digitales',
                 'card3.desc': 'Identificar dónde la automatización crea valor real y luego integrarla en los procesos existentes con herramientas inteligentes pensadas para durar.',
                 'card3.li1': 'Automatización de procesos', 'card3.li2': 'Herramientas inteligentes de gestión', 'card3.li3': 'Integración con sistemas existentes',
-                'card4.name': 'Experiencia de Usuario y Productos Digitales',
+                'card4.name': 'Aplicaciones móviles iOS y Android',
                 'card4.desc': 'Diseñar interfaces y productos digitales pensados para su uso real, no para la demostración.',
                 'card4.li1': 'Diseño UX/UI', 'card4.li2': 'Interfaces web premium', 'card4.li3': 'Productos digitales a medida',
                 'solutions.title': 'Las soluciones que <em>diseñamos</em>',
