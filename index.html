@@ -1756,7 +1756,38 @@
         .wa-intro { font-size: 0.82rem; line-height: 1.55; color: var(--muted); margin-bottom: 1.5rem; }
         .wa-modal .form-field { margin-bottom: 1.1rem; }
         .wa-modal .form-submit { margin-top: 0.5rem; }
-    </style>
+    
+/* Refonte éditoriale 2026 — parcours court, transitions mesurées */
+html { scroll-padding-top: 78px; }
+#solutions, #pourquoi { display: none !important; }
+#realisations .project-card:not(:first-child) { display: none !important; }
+#expertises .service-img-wrap { display: none !important; }
+#expertises .service-card { min-height: auto !important; }
+#expertises .service-list { display: none !important; }
+#expertises .services-grid { gap: 1rem !important; }
+#expertises .service-card { padding-block: 1.5rem !important; }
+.hero-bg img { animation-duration: 1.1s !important; }
+.hero-bg.alive img { animation: heroIntro 1.1s .1s var(--ease) forwards !important; }
+.hero-grain { display: none !important; }
+.hero-actions a, .hero-actions button, .nav-cta, .menu-cta { border-radius: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+@media (max-width: 767px) {
+ .hero { min-height: min(780px, 100svh); padding-bottom: 2.5rem; }
+ .hero-title { font-size: clamp(2.65rem, 11vw, 3.65rem); margin-bottom: 1rem; }
+ .hero-sub { line-height: 1.5; margin-bottom: 1.25rem; }
+ .hero-actions { gap: .8rem; }
+ .hero-bg img { object-position: 50% 20%; }
+ .fullscreen-menu { transition-duration: .45s; }
+ #expertises .services-grid, #realisations .services-grid { display: grid !important; grid-template-columns: 1fr !important; overflow: visible !important; }
+ #expertises .service-card, #realisations .service-card { width: auto !important; min-width: 0 !important; scroll-snap-align: none !important; }
+ .swipe-hint { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+ html { scroll-behavior: auto !important; }
+ .hero-bg img, .hero-bg.alive img { animation: none !important; transform: none !important; opacity: .8 !important; }
+ .fullscreen-menu { transition: none !important; }
+}
+</style>
 </head>
 <body>
 
@@ -1826,9 +1857,9 @@
         <p class="hero-eyebrow hero-eyebrow-top" data-i18n="hero.eyebrow">Consultant · Stratégie · Transformation Digitale</p>
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="line"><span data-i18n="hero.title1">Transformer les idées</span></span>
-                <span class="line"><span data-i18n="hero.title2">en <em>systèmes</em></span></span>
-                <span class="line"><span data-i18n="hero.title3">qui performent.</span></span>
+                <span class="line"><span data-i18n="hero.title1">Je transforme les idées</span></span>
+                <span class="line"><span data-i18n="hero.title2">en <em>solutions</em></span></span>
+                <span class="line"><span data-i18n="hero.title3">concrètes.</span></span>
             </h1>
             <p class="hero-sub" data-i18n="hero.sub">
                 Yaro Consulting accompagne entreprises, institutions et organisations dans leurs projets de stratégie et de transformation digitale, du diagnostic jusqu'au déploiement.
@@ -1924,7 +1955,7 @@
     <!-- EXPERTISES -->
     <section id="expertises">
         <div class="services-header">
-            <h2 class="services-title reveal" data-i18n="expertises.title">Quatre expertises, <em>une seule logique</em></h2>
+            <h2 class="services-title reveal" data-i18n="expertises.title">Des expertises, <em>une approche concrète</em></h2>
             <p class="section-label reveal" data-i18n="expertises.label">Ce que nous mobilisons à chaque mission</p>
         </div>
         <p class="swipe-hint"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="swipe.hint">Faites glisser</span></p>
@@ -1985,7 +2016,7 @@
                         <img src="images/perf.jpg" loading="lazy" alt="Expérience utilisateur et produits digitaux">
                     </picture>
                 </div>
-                <h3 class="service-name" data-i18n="card4.name">Expérience Utilisateur & Produits Digitaux</h3>
+                <h3 class="service-name" data-i18n="card4.name">Applications mobiles iOS & Android</h3>
                 <p class="service-desc" data-i18n="card4.desc">Concevoir des interfaces et des produits numériques pensés pour leurs usages, pas pour la démonstration.</p>
                 <ul class="service-list">
                     <li data-i18n="card4.li1">Conception UX/UI</li>
@@ -2003,7 +2034,7 @@
             <p class="section-label reveal" data-i18n="solutions.label">Sans nom de projet, une seule logique : l'utilité</p>
         </div>
         <p class="about-body reveal" data-i18n="solutions.body">
-            Nous ne livrons pas des sites vitrines. Nous concevons des systèmes qui structurent une activité, fiabilisent une relation client ou éclairent une décision, pour des entreprises, institutions et organisations africaines en transformation.
+            Nous concevons aussi des sites web et des applications mobiles. Nous concevons des systèmes qui structurent une activité, fiabilisent une relation client ou éclairent une décision, pour des entreprises, institutions et organisations africaines en transformation.
         </p>
         <p class="swipe-hint"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="swipe.hint">Faites glisser</span></p>
         <div class="services-grid">
@@ -2043,8 +2074,8 @@
     <!-- RÉALISATIONS -->
     <section id="realisations">
         <div class="services-header">
-            <h2 class="services-title reveal" data-i18n="real.title">Projets <em>réalisés</em></h2>
-            <p class="section-label reveal" data-i18n="real.label">Des plateformes et sites en ligne</p>
+            <h2 class="services-title reveal" data-i18n="real.title">Une réalisation <em>concrète</em></h2>
+            <p class="section-label reveal" data-i18n="real.label">Un projet opérationnel, présenté sans exagération</p>
         </div>
         <p class="about-body reveal" data-i18n="real.body">
             Quelques réalisations conçues, développées et déployées. Découvrez-les directement en ligne.
@@ -2053,7 +2084,7 @@
         <div class="services-grid">
             <div class="service-card project-card reveal">
                 <p class="service-cat" data-i18n="real3.cat">Image &amp; événementiel</p>
-                <h3 class="service-name" data-i18n="real3.name">Site vitrine premium</h3>
+                <h3 class="service-name" data-i18n="real3.name">GaspardNZ · Site web & application iOS</h3>
                 <ul class="service-list">
                     <li data-i18n="real3.f1">Présentation des prestations</li>
                     <li data-i18n="real3.f2">Identité visuelle soignée</li>
@@ -2096,7 +2127,8 @@
                 <span class="project-soon" data-i18n="real.soon">À venir</span>
             </div>
         </div>
-    </section>
+    <p class="about-body reveal" style="margin-top:1.5rem;max-width:760px">En développement : <strong>COVI</strong>, solution de gestion pour les commerces, et <strong>CIVERA</strong>, projet de relation citoyenne à vocation panafricaine. Ces produits ne sont pas présentés comme des réalisations commercialisées.</p>
+</section>
 
     <!-- MÉTHODE -->
     <div class="process-section" id="methode">
@@ -2327,7 +2359,7 @@
                 <p class="fiche-eyebrow" data-i18n="fiche.eyebrow">Étude de cas · Fiche technique</p>
             </div>
 
-            <h3 class="fiche-title" data-i18n="real3.name">Site vitrine premium</h3>
+            <h3 class="fiche-title" data-i18n="real3.name">GaspardNZ · Site web & application iOS</h3>
             <p class="fiche-sub" data-i18n="fiche.sub">Image & événementiel</p>
 
             <p class="fiche-section-label" data-i18n="fiche.mission">Mission réalisée</p>
@@ -2358,7 +2390,7 @@
 
             <div class="fiche-foot">
                 <span class="fiche-brand">Yaro Consulting</span>
-                <span class="fiche-foot-right">yaroconsulting.fr · <em data-i18n="fiche.tagline">Transformer les idées en systèmes qui performent</em></span>
+                <span class="fiche-foot-right">yaroconsulting.fr · <em data-i18n="fiche.tagline">Je transforme les idées en systèmes qui performent</em></span>
             </div>
         </div>
     </div>
