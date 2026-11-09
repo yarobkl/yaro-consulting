@@ -650,6 +650,13 @@
             flex-direction: column;
         }
         .project-card .service-list { margin-bottom: 0; }
+        /* GaspardNZ : les liens restent directement sous la dernière prestation,
+           même si les autres cartes rendent la grille plus haute. */
+        #realisations .project-card:first-child { justify-content: flex-start; }
+        #realisations .project-card:first-child .project-actions {
+            margin-top: 1rem;
+            margin-bottom: auto;
+        }
         .project-link {
             margin-top: auto;
             padding-top: 1.4rem;
