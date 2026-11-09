@@ -412,6 +412,27 @@
             animation: fadeUp 0.9s 0.8s var(--ease) forwards;
         }
 
+        .hero-featured-project {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.65rem;
+            color: var(--cream);
+            text-decoration: none;
+            margin: 0 0 1.25rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(212,184,119,0.55);
+            font-size: 0.8rem;
+            opacity: 0;
+            animation: fadeUp 0.9s 0.9s var(--ease) forwards;
+        }
+        .hero-featured-project span:first-child {
+            color: var(--gold);
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+        }
+        .hero-featured-project strong { font-weight: 500; }
+        .hero-featured-project:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
         .hero-actions {
             display: flex;
             flex-direction: column;
@@ -1867,9 +1888,14 @@
             <p class="hero-sub" data-i18n="hero.sub">
                 Yaro Consulting accompagne entreprises, institutions et organisations dans leurs projets de stratégie et de transformation digitale, du diagnostic jusqu'au déploiement.
             </p>
+            <a class="hero-featured-project" href="#realisations" aria-label="Découvrir nos réalisations, dont GaspardNZ">
+                <span>PROJET À LA UNE</span>
+                <strong>GaspardNZ Paris</strong>
+                <span aria-hidden="true">↗</span>
+            </a>
             <div class="hero-actions">
-                <a href="#expertises" class="btn-primary">
-                    <span data-i18n="hero.btnPrimary">Nos expertises</span>
+                <a href="#realisations" class="btn-primary">
+                    <span data-i18n="hero.btnPrimary">Découvrir nos réalisations</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -1884,6 +1910,67 @@
                         <span data-i18n="contact.rdv">Prendre rendez-vous</span>
                     </button>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RÉALISATIONS -->
+    <section id="realisations">
+        <div class="services-header">
+            <h2 class="services-title reveal" data-i18n="real.title">Projets <em>réalisés</em></h2>
+            <p class="section-label reveal" data-i18n="real.label">Des plateformes et sites en ligne</p>
+        </div>
+        <p class="about-body reveal" data-i18n="real.body">
+            Quelques réalisations conçues, développées et déployées. Découvrez-les directement en ligne.
+        </p>
+        <p class="swipe-hint"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="swipe.hint">Faites glisser</span></p>
+        <div class="services-grid">
+            <div class="service-card project-card reveal">
+                <p class="service-cat" data-i18n="real3.cat">Image &amp; événementiel</p>
+                <h3 class="service-name" data-i18n="real3.name">Site vitrine premium</h3>
+                <ul class="service-list">
+                    <li data-i18n="real3.f1">Présentation des prestations</li>
+                    <li data-i18n="real3.f2">Identité visuelle soignée</li>
+                    <li data-i18n="real3.f3">Expérience mobile-first</li>
+                    <li data-i18n="real3.f4">Prise de contact directe</li>
+                </ul>
+                <div class="project-actions">
+                    <a class="project-link" href="https://gaspardnz.style" target="_blank" rel="noopener"><span data-i18n="real.cta">Voir le site web</span>
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a class="project-link" href="https://apps.apple.com/fr/app/gaspardnz/id6829908641" target="_blank" rel="noopener noreferrer"><span data-i18n="real.appCta">Voir l'application sur l'App Store</span>
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <button type="button" class="project-link project-link-btn" id="openFicheBtn"><span data-i18n="real.sheet">Voir la fiche technique</span>
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2v9M4.5 7.5 8 11l3.5-3.5M3 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="service-card project-card project-card-feature reveal reveal-delay-1">
+                <p class="service-cat" data-i18n="real1.cat">Communication stratégique</p>
+                <h3 class="service-name" data-i18n="real1.name">Plateforme citoyenne &amp; institutionnelle</h3>
+                <p class="service-desc" data-i18n="real1.desc">Avant tout un outil de communication stratégique et omnicanal : réunir toute la présence et les informations d'une personnalité publique sur une seule plateforme, avec un assistant conversationnel intelligent (IA) pour dialoguer en continu.</p>
+                <ul class="service-list">
+                    <li data-i18n="real1.f1">Communication omnicanale centralisée</li>
+                    <li data-i18n="real1.f2">Toute l'information sur une seule plateforme</li>
+                    <li data-i18n="real1.f3">Assistant conversationnel intelligent (IA)</li>
+                    <li data-i18n="real1.f4">Prise de rendez-vous &amp; suivi des demandes</li>
+                    <li data-i18n="real1.f7">Signalement citoyen géolocalisé (photo + position GPS)</li>
+                    <li data-i18n="real1.f5">Formulaires contact &amp; presse · multilingue</li>
+                    <li data-i18n="real1.f6">Back-office d'administration : suivi &amp; gestion</li>
+                </ul>
+                <span class="project-soon" data-i18n="real.soon">À venir</span>
+            </div>
+            <div class="service-card project-card reveal reveal-delay-2">
+                <p class="service-cat" data-i18n="real2.cat">Emploi &amp; recrutement</p>
+                <h3 class="service-name" data-i18n="real2.name">Plateforme d'emploi</h3>
+                <ul class="service-list">
+                    <li data-i18n="real2.f1">Publication d'offres d'emploi</li>
+                    <li data-i18n="real2.f2">Candidatures en ligne</li>
+                    <li data-i18n="real2.f3">Recherche par filtres</li>
+                    <li data-i18n="real2.f4">Mise en relation recruteurs / candidats</li>
+                </ul>
+                <span class="project-soon" data-i18n="real.soon">À venir</span>
             </div>
         </div>
     </section>
@@ -2070,67 +2157,6 @@
                 <div class="service-num">06</div>
                 <h3 class="service-name" data-i18n="sol6.name">Interfaces Web Premium</h3>
                 <p class="service-desc" data-i18n="sol6.desc">Des produits digitaux à la hauteur de l'ambition de la marque.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- RÉALISATIONS -->
-    <section id="realisations">
-        <div class="services-header">
-            <h2 class="services-title reveal" data-i18n="real.title">Projets <em>réalisés</em></h2>
-            <p class="section-label reveal" data-i18n="real.label">Des plateformes et sites en ligne</p>
-        </div>
-        <p class="about-body reveal" data-i18n="real.body">
-            Quelques réalisations conçues, développées et déployées. Découvrez-les directement en ligne.
-        </p>
-        <p class="swipe-hint"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="swipe.hint">Faites glisser</span></p>
-        <div class="services-grid">
-            <div class="service-card project-card reveal">
-                <p class="service-cat" data-i18n="real3.cat">Image &amp; événementiel</p>
-                <h3 class="service-name" data-i18n="real3.name">Site vitrine premium</h3>
-                <ul class="service-list">
-                    <li data-i18n="real3.f1">Présentation des prestations</li>
-                    <li data-i18n="real3.f2">Identité visuelle soignée</li>
-                    <li data-i18n="real3.f3">Expérience mobile-first</li>
-                    <li data-i18n="real3.f4">Prise de contact directe</li>
-                </ul>
-                <div class="project-actions">
-                    <a class="project-link" href="https://gaspardnz.style" target="_blank" rel="noopener"><span data-i18n="real.cta">Voir le site web</span>
-                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <a class="project-link" href="https://apps.apple.com/fr/app/gaspardnz/id6829908641" target="_blank" rel="noopener noreferrer"><span data-i18n="real.appCta">Voir l'application sur l'App Store</span>
-                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <button type="button" class="project-link project-link-btn" id="openFicheBtn"><span data-i18n="real.sheet">Voir la fiche technique</span>
-                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2v9M4.5 7.5 8 11l3.5-3.5M3 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </button>
-                </div>
-            </div>
-            <div class="service-card project-card project-card-feature reveal reveal-delay-1">
-                <p class="service-cat" data-i18n="real1.cat">Communication stratégique</p>
-                <h3 class="service-name" data-i18n="real1.name">Plateforme citoyenne &amp; institutionnelle</h3>
-                <p class="service-desc" data-i18n="real1.desc">Avant tout un outil de communication stratégique et omnicanal : réunir toute la présence et les informations d'une personnalité publique sur une seule plateforme, avec un assistant conversationnel intelligent (IA) pour dialoguer en continu.</p>
-                <ul class="service-list">
-                    <li data-i18n="real1.f1">Communication omnicanale centralisée</li>
-                    <li data-i18n="real1.f2">Toute l'information sur une seule plateforme</li>
-                    <li data-i18n="real1.f3">Assistant conversationnel intelligent (IA)</li>
-                    <li data-i18n="real1.f4">Prise de rendez-vous &amp; suivi des demandes</li>
-                    <li data-i18n="real1.f7">Signalement citoyen géolocalisé (photo + position GPS)</li>
-                    <li data-i18n="real1.f5">Formulaires contact &amp; presse · multilingue</li>
-                    <li data-i18n="real1.f6">Back-office d'administration : suivi &amp; gestion</li>
-                </ul>
-                <span class="project-soon" data-i18n="real.soon">À venir</span>
-            </div>
-            <div class="service-card project-card reveal reveal-delay-2">
-                <p class="service-cat" data-i18n="real2.cat">Emploi &amp; recrutement</p>
-                <h3 class="service-name" data-i18n="real2.name">Plateforme d'emploi</h3>
-                <ul class="service-list">
-                    <li data-i18n="real2.f1">Publication d'offres d'emploi</li>
-                    <li data-i18n="real2.f2">Candidatures en ligne</li>
-                    <li data-i18n="real2.f3">Recherche par filtres</li>
-                    <li data-i18n="real2.f4">Mise en relation recruteurs / candidats</li>
-                </ul>
-                <span class="project-soon" data-i18n="real.soon">À venir</span>
             </div>
         </div>
     </section>
@@ -2471,7 +2497,7 @@
                 'hero.eyebrow': 'Consultant · Strategy · Digital Transformation',
                 'hero.title1': 'Turning ideas', 'hero.title2': 'into <em>systems</em>', 'hero.title3': 'that perform.',
                 'hero.sub': 'Yaro Consulting supports companies, institutions and organizations in their strategy and digital transformation projects, from diagnosis to deployment.',
-                'hero.btnPrimary': 'Our expertise', 'hero.btnGhost': 'Get in touch',
+                'hero.btnPrimary': 'View our projects', 'hero.btnGhost': 'Get in touch',
                 'm.strategy': 'Strategy', 'm.digital': 'Digital Transformation', 'm.automation': 'Automation', 'm.performance': 'Operational Performance',
                 'vision.label': 'Our vision',
                 'vision.title': 'Technology only matters if it <em>changes something</em>.',
@@ -2570,7 +2596,7 @@
                 'hero.eyebrow': 'Consultor · Estrategia · Transformación Digital',
                 'hero.title1': 'Transformar las ideas', 'hero.title2': 'en <em>sistemas</em>', 'hero.title3': 'que rinden.',
                 'hero.sub': 'Yaro Consulting acompaña a empresas, instituciones y organizaciones en sus proyectos de estrategia y transformación digital, del diagnóstico al despliegue.',
-                'hero.btnPrimary': 'Nuestras especialidades', 'hero.btnGhost': 'Contactar',
+                'hero.btnPrimary': 'Ver proyectos', 'hero.btnGhost': 'Contactar',
                 'm.strategy': 'Estrategia', 'm.digital': 'Transformación Digital', 'm.automation': 'Automatización', 'm.performance': 'Rendimiento Operativo',
                 'vision.label': 'Nuestra visión',
                 'vision.title': 'La tecnología solo vale si <em>cambia algo</em>.',
