@@ -224,11 +224,78 @@ main section { scroll-margin-top: 6rem; }
 }
 .project-actions .project-link:hover,
 .project-actions .project-link:focus-visible { background: #eee1d5; border-color: var(--accent-deep); }
+/* Les interfaces secondaires conservent le même langage visuel que l'accueil. */
+.fiche-overlay { color: var(--text); }
+.fiche-overlay::backdrop { background: rgba(40, 32, 26, .57); }
+.fiche-modal {
+  background: #fffcf8;
+  color: var(--text);
+  border: 1px solid #b5a596;
+  border-radius: 10px;
+  box-shadow: 0 30px 80px rgba(41, 32, 25, .24);
+}
+.fiche-modal .fiche-brand, .fiche-modal .fiche-title,
+.fiche-modal .fiche-key, .fiche-modal .fiche-mission li, .fiche-close { color: var(--text); }
 .fiche-modal .fiche-brand-sub, .fiche-modal .fiche-sub, .fiche-modal .fiche-val,
-.fiche-modal .fiche-foot-right, .legal-modal .legal-p, .legal-modal .legal-update { color: #c7c2bd; }
-.fiche-modal .fiche-eyebrow, .fiche-modal .fiche-section-label { color: #dfb895; }
-.chat-panel { color: #f0eee9; }
-.chat-quick button { color: #f0eee9; }
+.fiche-modal .fiche-foot-right, .legal-modal .legal-p, .legal-modal .legal-update,
+.wa-modal .wa-intro { color: #61564d; }
+.fiche-modal .fiche-eyebrow, .fiche-modal .fiche-section-label,
+.fiche-modal .fiche-badge { color: var(--accent-deep); }
+.fiche-modal .fiche-head, .fiche-modal .fiche-section-label,
+.fiche-modal .fiche-foot, .fiche-modal .fiche-row { border-color: #c9bdb1; }
+.fiche-modal .fiche-badge, .fiche-close { border-color: #a99786; }
+.fiche-modal .fiche-mission li::before { background: var(--accent-deep); }
+.fiche-modal .form-input, .fiche-modal .form-textarea { background: white; }
+
+.cookie-banner {
+  background: #fffaf3;
+  color: var(--text);
+  border: 1px solid #ac9b8a;
+  border-radius: 10px;
+  box-shadow: 0 18px 50px rgba(41, 32, 25, .2);
+}
+.cookie-banner .cookie-text { color: var(--text); }
+.cookie-banner .cookie-refuse {
+  color: var(--text);
+  background: transparent;
+  border-color: #9b8a79;
+}
+.cookie-banner .cookie-accept {
+  color: #fffaf3;
+  background: var(--text);
+  border-color: var(--text);
+}
+@media (hover: hover) {
+  .cookie-banner .cookie-refuse:hover { color: var(--text); background: #eee5da; }
+  .cookie-banner .cookie-accept:hover { background: var(--accent-deep); }
+}
+
+.chat-panel {
+  color: var(--text);
+  background: #fffaf3;
+  border: 1px solid #ac9b8a;
+  border-radius: 10px;
+  box-shadow: 0 18px 50px rgba(41, 32, 25, .22);
+}
+.chat-panel .chat-header { border-color: #c9bdb1; }
+.chat-panel .chat-header-info h4 { color: var(--text); }
+.chat-panel .chat-header-info span { color: var(--accent-deep); }
+.chat-panel .chat-msg.bot { color: var(--text); background: #f0e9df; }
+.chat-panel .chat-msg.user { color: #fffaf3; background: #5a4131; }
+.chat-panel .chat-msg a { color: #67432b; }
+.chat-panel .chat-msg.user a { color: #fffaf3; }
+.chat-panel .chat-quick button {
+  color: var(--text);
+  border-color: #a99786;
+  min-height: 34px;
+}
+.chat-panel .chat-quick button:hover { color: #fffaf3; background: var(--text); }
+@media (forced-colors: active) {
+  .fiche-modal, .cookie-banner, .chat-panel,
+  .fiche-close, .cookie-btn, .chat-quick button { border: 1px solid CanvasText; }
+  .cookie-btn:focus-visible, .fiche-close:focus-visible,
+  .chat-quick button:focus-visible { outline-color: Highlight; }
+}
 .process-section { background: #eae0d3; color: var(--text); padding: 6rem 1.35rem; }
 .process-header h2, .step-name { color: var(--text); }
 .step-desc { color: var(--text-soft); }
