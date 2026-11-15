@@ -8,7 +8,7 @@
     <meta name="author" content="Rodrin Bakala Mouengue">
     <meta name="keywords" content="Yaro Consulting, Rodrin Bakala Mouengue, conseil stratégie, transformation digitale, consultant digital, performance opérationnelle, automatisation, conseil entreprise Afrique">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#101726">
+    <meta name="theme-color" content="#faf8f4">
     <link rel="canonical" href="https://yaroconsulting.fr/">
 
     <!-- Open Graph -->
@@ -93,10 +93,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
+            html:focus-within { scroll-behavior: auto; }
         }
 
         /* ───────────────────────────────
@@ -1853,19 +1850,17 @@
         .wa-modal .form-field { margin-bottom: 1.1rem; }
         .wa-modal .form-submit { margin-top: 0.5rem; }
     </style>
+    <link rel="stylesheet" href="editorial.css">
 </head>
 <body>
 
     <a class="skip-link" href="#main-content" data-i18n="nav.skip">Aller au contenu</a>
 
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
-
     <!-- NAV -->
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
     <nav id="nav">
-        <a href="#" class="logo">Yaroconsulting</a>
+        <a href="#main-content" class="logo" aria-label="Yaro Consulting — accueil"><img src="images/logo-yaro-consulting.webp" width="1774" height="887" alt="Yaro Consulting"></a>
         <ul class="nav-links">
             <li><a href="#vision" data-i18n="nav.vision">Vision</a></li>
             <li><a href="#expertises" data-i18n="nav.expertises">Expertises</a></li>
@@ -1923,34 +1918,28 @@
             </picture>
             <div class="hero-grain"></div>
         </div>
-        <p class="hero-eyebrow hero-eyebrow-top" data-i18n="hero.eyebrow">Consultant · Stratégie · Transformation Digitale</p>
+        <p class="hero-eyebrow hero-eyebrow-top" data-i18n="hero.eyebrow">Conseil — Performance — Transformation</p>
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="line"><span data-i18n="hero.title1">Transformer les idées</span></span>
-                <span class="line"><span data-i18n="hero.title2">en <em>systèmes</em></span></span>
-                <span class="line"><span data-i18n="hero.title3">qui performent.</span></span>
+                <span class="line"><span data-i18n="hero.title1">Faire avancer</span></span>
+                <span class="line"><span data-i18n="hero.title2">les organisations,</span></span>
+                <span class="line"><span data-i18n="hero.title3"><em>concrètement.</em></span></span>
             </h1>
             <p class="hero-sub" data-i18n="hero.sub">
-                Yaro Consulting accompagne entreprises, institutions et organisations dans leurs projets de stratégie et de transformation digitale, du diagnostic jusqu'au déploiement.
+                Stratégie, transformation digitale et performance : nous accompagnons les entreprises et les institutions de la réflexion à la mise en œuvre, en France et en Afrique.
             </p>
-            <a class="hero-featured-project" href="#realisations">
-                <span data-i18n="hero.featureLabel">PROJET À LA UNE</span>
-                <strong>GaspardNZ Paris</strong>
-                <span aria-hidden="true">↗</span>
-            </a>
             <div class="hero-actions">
-                <a href="#realisations" class="btn-primary">
-                    <span data-i18n="hero.btnPrimary">Découvrir nos réalisations</span>
+                <a href="#contact" class="btn-primary">
+                    <span data-i18n="hero.btnPrimary">Parlons de votre projet</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </a>
                 <div class="hero-ghost-row">
-                    <a href="#contact" class="btn-ghost btn-ghost-ico">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                        <span data-i18n="hero.btnGhost">Prendre contact</span>
+                    <a href="#expertises" class="btn-ghost btn-ghost-ico">
+                        <span data-i18n="hero.btnGhost">Explorer nos expertises</span>
                     </a>
-                    <button type="button" class="btn-ghost btn-ghost-ico btn-ghost-rdv" data-cal-link="yaroconsulting" data-cal-config='{"theme":"dark"}'>
+                    <button type="button" class="btn-ghost btn-ghost-ico btn-ghost-rdv" data-cal-link="yaroconsulting" data-cal-config='{"theme":"light"}'>
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
                         <span data-i18n="contact.rdv">Prendre rendez-vous</span>
                     </button>
@@ -1959,93 +1948,6 @@
         </div>
     </section>
 
-    <!-- RÉALISATIONS -->
-    <section id="realisations">
-        <div class="services-header">
-            <h2 class="services-title reveal" data-i18n="real.title">Projets <em>réalisés</em></h2>
-            <p class="section-label reveal" data-i18n="real.label">Des plateformes et sites en ligne</p>
-        </div>
-        <p class="about-body reveal" data-i18n="real.body">
-            Quelques réalisations conçues, développées et déployées. Découvrez-les directement en ligne.
-        </p>
-        <p class="swipe-hint"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="swipe.hint">Faites glisser</span></p>
-        <div class="services-grid">
-            <div class="service-card project-card reveal">
-                <p class="service-cat" data-i18n="real3.cat">Image &amp; événementiel</p>
-                <h3 class="service-name" data-i18n="real3.name">Site vitrine premium</h3>
-                <ul class="service-list">
-                    <li data-i18n="real3.f1">Présentation des prestations</li>
-                    <li data-i18n="real3.f2">Identité visuelle soignée</li>
-                    <li data-i18n="real3.f3">Expérience mobile-first</li>
-                    <li data-i18n="real3.f4">Prise de contact directe</li>
-                </ul>
-                <div class="project-actions">
-                    <a class="project-link" href="https://gaspardnz.style" target="_blank" rel="noopener"><span data-i18n="real.cta">Voir le site web</span>
-                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <a class="project-link" href="https://apps.apple.com/fr/app/gaspardnz/id6829908641" target="_blank" rel="noopener noreferrer"><span data-i18n="real.appCta">Voir l'application sur l'App Store</span>
-                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <button type="button" class="project-link project-link-btn" id="openFicheBtn"><span data-i18n="real.sheet">Voir la fiche technique</span>
-                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2v9M4.5 7.5 8 11l3.5-3.5M3 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </button>
-                </div>
-            </div>
-            <div class="service-card project-card project-card-feature reveal reveal-delay-1">
-                <p class="service-cat" data-i18n="real1.cat">Communication stratégique</p>
-                <h3 class="service-name" data-i18n="real1.name">Plateforme citoyenne &amp; institutionnelle</h3>
-                <p class="service-desc" data-i18n="real1.desc">Avant tout un outil de communication stratégique et omnicanal : réunir toute la présence et les informations d'une personnalité publique sur une seule plateforme, avec un assistant conversationnel intelligent (IA) pour dialoguer en continu.</p>
-                <ul class="service-list">
-                    <li data-i18n="real1.f1">Communication omnicanale centralisée</li>
-                    <li data-i18n="real1.f2">Toute l'information sur une seule plateforme</li>
-                    <li data-i18n="real1.f3">Assistant conversationnel intelligent (IA)</li>
-                    <li data-i18n="real1.f4">Prise de rendez-vous &amp; suivi des demandes</li>
-                    <li data-i18n="real1.f7">Signalement citoyen géolocalisé (photo + position GPS)</li>
-                    <li data-i18n="real1.f5">Formulaires contact &amp; presse · multilingue</li>
-                    <li data-i18n="real1.f6">Back-office d'administration : suivi &amp; gestion</li>
-                </ul>
-                <span class="project-soon" data-i18n="real.soon">À venir</span>
-            </div>
-            <div class="service-card project-card reveal reveal-delay-2">
-                <p class="service-cat" data-i18n="real2.cat">Emploi &amp; recrutement</p>
-                <h3 class="service-name" data-i18n="real2.name">Plateforme d'emploi</h3>
-                <ul class="service-list">
-                    <li data-i18n="real2.f1">Publication d'offres d'emploi</li>
-                    <li data-i18n="real2.f2">Candidatures en ligne</li>
-                    <li data-i18n="real2.f3">Recherche par filtres</li>
-                    <li data-i18n="real2.f4">Mise en relation recruteurs / candidats</li>
-                </ul>
-                <span class="project-soon" data-i18n="real.soon">À venir</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- MARQUEE -->
-    <div class="marquee-section">
-        <div class="marquee-track">
-            <div class="marquee-item">
-                <span class="marquee-text" data-i18n="m.strategy">Stratégie</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.digital">Transformation Digitale</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.automation">Automatisation</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.performance">Performance Opérationnelle</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.strategy">Stratégie</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.digital">Transformation Digitale</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.automation">Automatisation</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.performance">Performance Opérationnelle</span><span class="marquee-dot"></span>
-            </div>
-            <div class="marquee-item" aria-hidden="true">
-                <span class="marquee-text" data-i18n="m.strategy">Stratégie</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.digital">Transformation Digitale</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.automation">Automatisation</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.performance">Performance Opérationnelle</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.strategy">Stratégie</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.digital">Transformation Digitale</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.automation">Automatisation</span><span class="marquee-dot"></span>
-                <span class="marquee-text" data-i18n="m.performance">Performance Opérationnelle</span><span class="marquee-dot"></span>
-            </div>
-        </div>
-    </div>
-
     <!-- VISION -->
     <section id="vision">
         <p class="section-label reveal" data-i18n="vision.label">Notre vision</p>
@@ -2053,38 +1955,6 @@
         <p class="vision-body reveal reveal-delay-2" data-i18n="vision.body">
             Un outil, une plateforme ou un algorithme ne sont jamais une fin en soi. Ils n'ont de sens que lorsqu'ils améliorent une décision, fluidifient une organisation ou enrichissent une expérience. C'est cette exigence qui structure chaque mission menée par Yaro Consulting, du premier diagnostic jusqu'au déploiement final.
         </p>
-    </section>
-
-    <!-- FONDATEUR -->
-    <section id="propos">
-        <div>
-            <p class="section-label reveal" data-i18n="founder.label">Le fondateur</p>
-            <p class="section-number">01</p>
-        </div>
-        <div class="about-right">
-            <h2 class="reveal" data-i18n="founder.title">Rodrin Bakala Mouengue, un profil <em>hybride</em>.</h2>
-            <p class="about-body reveal reveal-delay-1" data-i18n="founder.p1">
-                Avant de conseiller, j'ai dirigé sur le terrain : management opérationnel, commerce, distribution, logistique, pilotage d'équipes. Cette expérience m'a appris ce qu'aucune méthode ne peut enseigner : la performance d'une organisation se joue dans le détail de son exécution.
-            </p>
-            <p class="about-body reveal reveal-delay-1" data-i18n="founder.p2">
-                J'ai porté cette exigence vers la stratégie et la transformation digitale, en concevant des solutions numériques répondant à des besoins réels. Cette double culture, terrain et digitale, est au cœur de la façon dont j'accompagne aujourd'hui les entreprises, institutions et organisations.
-            </p>
-            <p class="signature reveal reveal-delay-1">Rodrin Bakala Mouengue</p>
-            <div class="stats-row reveal reveal-delay-2">
-                <div class="stat-item">
-                    <div class="stat-number">360°</div>
-                    <div class="stat-label" data-i18n="founder.stat1">vision terrain, business et digitale</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">4</div>
-                    <div class="stat-label" data-i18n="founder.stat2">expertises réunies : stratégie, digital, automatisation, performance</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">1</div>
-                    <div class="stat-label" data-i18n="founder.stat3">interlocuteur unique, du diagnostic au déploiement</div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- EXPERTISES -->
@@ -2169,7 +2039,7 @@
             <p class="section-label reveal" data-i18n="solutions.label">Sans nom de projet, une seule logique : l'utilité</p>
         </div>
         <p class="about-body reveal" data-i18n="solutions.body">
-            Nous ne livrons pas des sites vitrines. Nous concevons des systèmes qui structurent une activité, fiabilisent une relation client ou éclairent une décision, pour des entreprises, institutions et organisations africaines en transformation.
+            Au-delà des sites vitrines, nous concevons des outils qui structurent une activité, facilitent la relation client et améliorent la prise de décision, pour les organisations en France comme en Afrique.
         </p>
         <p class="swipe-hint"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="swipe.hint">Faites glisser</span></p>
         <div class="services-grid">
@@ -2254,6 +2124,105 @@
         </div>
     </div>
 
+    <!-- RÉALISATIONS -->
+    <section id="realisations">
+        <div class="services-header">
+            <h2 class="services-title reveal" data-i18n="real.title">Nos <em>réalisations</em></h2>
+            <p class="section-label reveal" data-i18n="real.label">Projets en ligne et en préparation</p>
+        </div>
+        <p class="about-body reveal" data-i18n="real.body">
+            Un projet accessible au public et d'autres solutions en préparation. Nous distinguons clairement les réalisations livrées des projets à venir.
+        </p>
+        <p class="swipe-hint"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="swipe.hint">Faites glisser</span></p>
+        <div class="services-grid">
+            <div class="service-card project-card reveal">
+                <p class="service-cat" data-i18n="real3.cat">Image &amp; événementiel</p>
+                <h3 class="service-name" data-i18n="real3.name">GaspardNZ — Site &amp; application iOS</h3>
+                <figure class="project-preview">
+                    <img src="images/gaspardnz-ios-preview.webp" alt="Aperçu de la conception de l'application GaspardNZ sur iPhone" width="1200" height="984" loading="lazy" decoding="async">
+                    <figcaption data-i18n="real3.caption">Aperçu de conception · Application iOS</figcaption>
+                </figure>
+                <ul class="service-list">
+                    <li data-i18n="real3.f1">Présentation des prestations</li>
+                    <li data-i18n="real3.f2">Identité visuelle soignée</li>
+                    <li data-i18n="real3.f3">Expérience mobile-first</li>
+                    <li data-i18n="real3.f4">Prise de contact directe</li>
+                </ul>
+                <div class="project-actions">
+                    <a class="project-link" href="https://gaspardnz.style" target="_blank" rel="noopener"><span data-i18n="real.cta">Voir le site web</span>
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a class="project-link" href="https://apps.apple.com/fr/app/gaspardnz/id6829908641" target="_blank" rel="noopener noreferrer"><span data-i18n="real.appCta">Voir l'application sur l'App Store</span>
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <button type="button" class="project-link project-link-btn" id="openFicheBtn"><span data-i18n="real.sheet">Voir la fiche technique</span>
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2v9M4.5 7.5 8 11l3.5-3.5M3 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="service-card project-card project-card-feature reveal reveal-delay-1">
+                <p class="service-cat" data-i18n="real1.cat">Communication stratégique</p>
+                <h3 class="service-name" data-i18n="real1.name">Plateforme citoyenne &amp; institutionnelle</h3>
+                <p class="service-desc" data-i18n="real1.desc">Avant tout un outil de communication stratégique et omnicanal : réunir toute la présence et les informations d'une personnalité publique sur une seule plateforme, avec un assistant conversationnel intelligent (IA) pour dialoguer en continu.</p>
+                <ul class="service-list">
+                    <li data-i18n="real1.f1">Communication omnicanale centralisée</li>
+                    <li data-i18n="real1.f2">Toute l'information sur une seule plateforme</li>
+                    <li data-i18n="real1.f3">Assistant conversationnel intelligent (IA)</li>
+                    <li data-i18n="real1.f4">Prise de rendez-vous &amp; suivi des demandes</li>
+                    <li data-i18n="real1.f7">Signalement citoyen géolocalisé (photo + position GPS)</li>
+                    <li data-i18n="real1.f5">Formulaires contact &amp; presse · multilingue</li>
+                    <li data-i18n="real1.f6">Back-office d'administration : suivi &amp; gestion</li>
+                </ul>
+                <span class="project-soon" data-i18n="real.soon">À venir</span>
+            </div>
+            <div class="service-card project-card reveal reveal-delay-2">
+                <p class="service-cat" data-i18n="real2.cat">Emploi &amp; recrutement</p>
+                <h3 class="service-name" data-i18n="real2.name">Plateforme d'emploi</h3>
+                <ul class="service-list">
+                    <li data-i18n="real2.f1">Publication d'offres d'emploi</li>
+                    <li data-i18n="real2.f2">Candidatures en ligne</li>
+                    <li data-i18n="real2.f3">Recherche par filtres</li>
+                    <li data-i18n="real2.f4">Mise en relation recruteurs / candidats</li>
+                </ul>
+                <span class="project-soon" data-i18n="real.soon">À venir</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FONDATEUR -->
+    <section id="propos">
+        <div>
+            <p class="section-label reveal" data-i18n="founder.label">Le fondateur</p>
+            <p class="section-number">01</p>
+        </div>
+        <div class="about-right">
+            <h2 class="reveal" data-i18n="founder.title">Rodrin Bakala Mouengue, un profil <em>hybride</em>.</h2>
+            <p class="about-body reveal reveal-delay-1" data-i18n="founder.p1">
+                Avant de conseiller, j'ai dirigé sur le terrain : management opérationnel, commerce, distribution, logistique, pilotage d'équipes. Cette expérience m'a appris ce qu'aucune méthode ne peut enseigner : la performance d'une organisation se joue dans le détail de son exécution.
+            </p>
+            <p class="about-body reveal reveal-delay-1" data-i18n="founder.p2">
+                J'ai porté cette exigence vers la stratégie et la transformation digitale, en concevant des solutions numériques répondant à des besoins réels. Cette double culture, terrain et digitale, est au cœur de la façon dont j'accompagne aujourd'hui les entreprises, institutions et organisations.
+            </p>
+            <p class="signature reveal reveal-delay-1">Rodrin Bakala Mouengue</p>
+            <div class="stats-row reveal reveal-delay-2">
+                <div class="stat-item">
+                    <div class="stat-number">360°</div>
+                    <div class="stat-label" data-i18n="founder.stat1">vision terrain, business et digitale</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label" data-i18n="founder.stat2">expertises réunies : stratégie, digital, automatisation, performance</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label" data-i18n="founder.stat3">interlocuteur unique, du diagnostic au déploiement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- POURQUOI -->
     <section id="pourquoi">
         <div class="services-header">
@@ -2283,11 +2252,53 @@
         </div>
     </section>
 
+    <!-- DIAGNOSTIC EXPRESS (préparation locale du message, aucun envoi automatique) -->
+    <section id="diagnostic" aria-labelledby="diagnosticTitle">
+        <div class="diagnostic-intro reveal">
+            <p class="section-label" data-i18n="diag.label">Un premier échange, simplement</p>
+            <h2 id="diagnosticTitle" data-i18n="diag.title">Clarifions votre <em>besoin.</em></h2>
+            <p data-i18n="diag.intro">Trois réponses pour préparer un message précis. Rien n'est envoyé sans votre action.</p>
+        </div>
+        <form id="diagnosticForm" class="diagnostic-form reveal" aria-labelledby="diagnosticTitle">
+            <div class="diagnostic-field">
+                <label for="diagProfile" data-i18n="diag.profile">Vous représentez</label>
+                <select id="diagProfile" name="profile" required>
+                    <option value="" data-i18n="diag.choose">Choisir une réponse</option>
+                    <option value="Entreprise" data-i18n="diag.company">Une entreprise</option>
+                    <option value="Institution" data-i18n="diag.institution">Une institution</option>
+                    <option value="Organisation" data-i18n="diag.organization">Une organisation / association</option>
+                    <option value="Entrepreneur" data-i18n="diag.entrepreneur">Un entrepreneur</option>
+                </select>
+            </div>
+            <div class="diagnostic-field">
+                <label for="diagNeed" data-i18n="diag.need">Votre priorité</label>
+                <select id="diagNeed" name="need" required>
+                    <option value="" data-i18n="diag.choose">Choisir une réponse</option>
+                    <option value="Stratégie et performance" data-i18n="diag.strategy">Stratégie &amp; performance</option>
+                    <option value="Site ou application" data-i18n="diag.product">Site web / application</option>
+                    <option value="Automatisation et outils métiers" data-i18n="diag.automation">Automatisation / outils métiers</option>
+                    <option value="Accompagnement digital" data-i18n="diag.support">Accompagnement digital</option>
+                </select>
+            </div>
+            <div class="diagnostic-field">
+                <label for="diagTiming" data-i18n="diag.timing">Votre horizon</label>
+                <select id="diagTiming" name="timing" required>
+                    <option value="" data-i18n="diag.choose">Choisir une réponse</option>
+                    <option value="Dès que possible" data-i18n="diag.soon">Dès que possible</option>
+                    <option value="Sous 3 mois" data-i18n="diag.three">Sous 3 mois</option>
+                    <option value="Projet à définir" data-i18n="diag.explore">Projet à définir</option>
+                </select>
+            </div>
+            <button type="submit" class="diagnostic-submit"><span data-i18n="diag.submit">Préparer mon message</span><span aria-hidden="true">↗</span></button>
+            <p class="diagnostic-note" role="status" id="diagStatus" aria-live="polite"></p>
+        </form>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact">
         <div class="contact-left">
-            <h2 class="reveal" data-i18n="contact.title">Échangeons sur<br>votre <em>projet.</em></h2>
-            <p class="reveal reveal-delay-1" data-i18n="contact.intro">Décrivez-nous votre contexte et vos enjeux : nous revenons vers vous rapidement avec une première lecture claire de votre projet, généralement dans la journée.</p>
+            <h2 class="reveal" id="contactTitle" data-i18n="contact.title">Échangeons sur<br>votre <em>projet.</em></h2>
+            <p class="reveal reveal-delay-1" data-i18n="contact.intro">Parlez-nous de votre activité, de vos besoins et de vos priorités. Nous vous proposerons un premier échange pour définir ensemble la suite.</p>
             <div class="contact-info reveal reveal-delay-2">
                 <div class="contact-info-item">
                     <span class="contact-info-label" data-i18n="contact.labelEmail">Email</span>
@@ -2302,12 +2313,12 @@
                     <a class="contact-info-val contact-link wa-trigger" href="https://wa.me/33608888768" target="_blank" rel="noopener" data-i18n="contact.waLink">Discuter sur WhatsApp</a>
                 </div>
             </div>
-            <button type="button" class="btn-rdv reveal reveal-delay-2" data-cal-link="yaroconsulting" data-cal-config='{"theme":"dark"}'>
+            <button type="button" class="btn-rdv reveal reveal-delay-2" data-cal-link="yaroconsulting" data-cal-config='{"theme":"light"}'>
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
                 <span data-i18n="contact.rdv">Prendre rendez-vous</span>
             </button>
         </div>
-        <form class="contact-form reveal" id="contactForm">
+        <form class="contact-form reveal" id="contactForm" aria-labelledby="contactTitle">
             <div class="form-field">
                 <label class="form-label" for="name" data-i18n="form.name">Nom complet</label>
                 <input class="form-input" id="name" name="name" type="text" placeholder="Jean Dupont" autocomplete="name" data-i18n-placeholder="form.namePlaceholder" required>
@@ -2337,7 +2348,7 @@
     <!-- FOOTER -->
     </main>
     <footer>
-        <div class="footer-logo">Yaro<span>.</span></div>
+        <a class="footer-logo" href="#main-content" aria-label="Retour à l'accueil"><img src="images/logo-yaro-consulting.webp" width="1774" height="887" alt="Yaro Consulting"></a>
         <ul class="footer-links">
             <li><a href="#vision" data-i18n="nav.vision">Vision</a></li>
             <li><a href="#expertises" data-i18n="nav.expertises">Expertises</a></li>
@@ -2441,13 +2452,13 @@
                 <p class="fiche-eyebrow" data-i18n="fiche.eyebrow">Étude de cas · Fiche technique</p>
             </div>
 
-            <h3 class="fiche-title" data-i18n="real3.name">Site vitrine premium</h3>
+            <h3 class="fiche-title" data-i18n="fiche.projectTitle">GaspardNZ — Site &amp; application iOS</h3>
             <p class="fiche-sub" data-i18n="fiche.sub">Image &amp; événementiel</p>
 
             <p class="fiche-section-label" data-i18n="fiche.mission">Mission réalisée</p>
             <ul class="fiche-mission">
                 <li data-i18n="fiche.m1">Repositionnement stratégique &amp; branding premium</li>
-                <li data-i18n="fiche.m2">Application mobile native (Android &amp; iOS)</li>
+                <li data-i18n="fiche.m2">Application iOS connectée au site et aux services</li>
                 <li data-i18n="fiche.m3">Identité visuelle, direction artistique &amp; UX</li>
                 <li data-i18n="fiche.m4">Site web sur-mesure (multilingue FR/EN/ES/ZH)</li>
                 <li data-i18n="fiche.m5">Référencement Google (SEO technique &amp; contenu)</li>
@@ -2462,7 +2473,7 @@
                 <div class="fiche-row"><span class="fiche-key">SEO</span><span class="fiche-val">JSON-LD · Open Graph · Sitemap</span></div>
                 <div class="fiche-row"><span class="fiche-key" data-i18n="fiche.anim">Animations / UX</span><span class="fiche-val">Framer Motion</span></div>
                 <div class="fiche-row"><span class="fiche-key">Analytics</span><span class="fiche-val">Google Analytics 4</span></div>
-                <div class="fiche-row"><span class="fiche-key" data-i18n="fiche.appmobile">App mobile</span><span class="fiche-val">Capacitor (Android / iOS)</span></div>
+                <div class="fiche-row"><span class="fiche-key" data-i18n="fiche.appmobile">App mobile</span><span class="fiche-val">Capacitor · iOS</span></div>
                 <div class="fiche-row"><span class="fiche-key" data-i18n="fiche.security">Sécurité</span><span class="fiche-val">CSP · CSRF · Rate limiting</span></div>
                 <div class="fiche-row"><span class="fiche-key">Backend / API</span><span class="fiche-val">Node.js · Serverless Functions</span></div>
                 <div class="fiche-row"><span class="fiche-key">Versioning</span><span class="fiche-val">Git / GitHub</span></div>
@@ -2516,16 +2527,17 @@
                 'meta.desc': 'Yaro Consulting supports companies, institutions and organizations in their strategy, digital transformation and operational performance projects.',
                 'nav.vision': 'Vision', 'nav.expertises': 'Expertise', 'nav.realisations': 'Projects', 'nav.methode': 'Method', 'nav.contact': 'Contact', 'nav.cta': 'Start a project', 'nav.menuLabel': 'Menu',
                 'nav.founder': 'Founder', 'nav.solutions': 'Solutions', 'nav.realisations': 'Projects', 'nav.pourquoi': 'Why us',
-                'real.title': 'Completed <em>projects</em>',
-                'real.label': 'Live platforms and websites',
-                'real.body': 'A few projects designed, built and deployed. Explore them directly online.',
+                'real.title': 'Selected <em>work</em>',
+                'real.label': 'Live projects and work in progress',
+                'real.body': 'One publicly accessible project and other solutions in preparation. We distinguish delivered work from upcoming projects.',
                 'real.cta': 'Visit website', 'real.appCta': 'View app on the App Store', 'real.soon': 'Coming soon', 'real.sheet': 'View tech sheet',
                 'fiche.brandsub': 'Strategy · Digital · Brand',
                 'fiche.eyebrow': 'Case study · Tech sheet',
+                'fiche.projectTitle': 'GaspardNZ — Website &amp; iOS app',
                 'fiche.sub': 'Image & events',
                 'fiche.mission': 'Project delivered',
                 'fiche.m1': 'Strategic repositioning & premium branding',
-                'fiche.m2': 'Native mobile app (Android & iOS)',
+                'fiche.m2': 'iOS app connected to the website and services',
                 'fiche.m3': 'Visual identity, art direction & UX',
                 'fiche.m4': 'Custom website (multilingual FR/EN/ES/ZH)',
                 'fiche.m5': 'Google indexing (technical & content SEO)',
@@ -2543,13 +2555,17 @@
                 'real1.f1': 'Centralized omnichannel communication', 'real1.f2': 'All information on a single platform', 'real1.f3': 'Intelligent conversational assistant (AI)', 'real1.f4': 'Appointment booking &amp; request tracking', 'real1.f5': 'Contact &amp; press forms · multilingual', 'real1.f6': 'Admin back-office: tracking &amp; management', 'real1.f7': 'Geolocated citizen reports (photo + GPS location)',
                 'real2.cat': 'Employment &amp; recruitment', 'real2.name': 'Jobs platform',
                 'real2.f1': 'Job posting', 'real2.f2': 'Online applications', 'real2.f3': 'Filtered search', 'real2.f4': 'Recruiter / candidate matching',
-                'real3.cat': 'Image &amp; events', 'real3.name': 'Premium showcase website',
+                'real3.cat': 'Image &amp; events', 'real3.name': 'GaspardNZ — Website &amp; iOS app', 'real3.caption': 'Design preview · iOS application',
                 'real3.f1': 'Services presentation', 'real3.f2': 'Refined visual identity', 'real3.f3': 'Mobile-first experience', 'real3.f4': 'Direct contact',
-                'hero.eyebrow': 'Consultant · Strategy · Digital Transformation',
-                'hero.title1': 'Turning ideas', 'hero.title2': 'into <em>systems</em>', 'hero.title3': 'that perform.',
+                'hero.eyebrow': 'Consulting — Performance — Transformation',
+                'hero.title1': 'Moving', 'hero.title2': 'organizations', 'hero.title3': '<em>forward.</em>',
                 'hero.featureLabel': 'FEATURED PROJECT',
-                'hero.sub': 'Yaro Consulting supports companies, institutions and organizations in their strategy and digital transformation projects, from diagnosis to deployment.',
-                'hero.btnPrimary': 'View our projects', 'hero.btnGhost': 'Get in touch',
+                'hero.sub': 'Strategy, digital transformation and performance: we help businesses and institutions turn ideas into action, across France and Africa.',
+                'hero.btnPrimary': 'Let’s discuss your project', 'hero.btnGhost': 'Explore our expertise',
+                'diag.label': 'A first conversation, made simple', 'diag.title': 'Let’s clarify your <em>needs.</em>', 'diag.intro': 'Three answers to prepare a focused message. Nothing is sent without your action.',
+                'diag.profile': 'You represent', 'diag.choose': 'Select an option', 'diag.company': 'A company', 'diag.institution': 'An institution', 'diag.organization': 'An organization / association', 'diag.entrepreneur': 'An entrepreneur',
+                'diag.need': 'Your priority', 'diag.strategy': 'Strategy &amp; performance', 'diag.product': 'Website / app', 'diag.automation': 'Automation / business tools', 'diag.support': 'Digital support',
+                'diag.timing': 'Your timeframe', 'diag.soon': 'As soon as possible', 'diag.three': 'Within 3 months', 'diag.explore': 'Still exploring', 'diag.submit': 'Prepare my message', 'diag.ready': 'Your summary is ready. Add your details below to send it via WhatsApp.',
                 'm.strategy': 'Strategy', 'm.digital': 'Digital Transformation', 'm.automation': 'Automation', 'm.performance': 'Operational Performance',
                 'vision.label': 'Our vision',
                 'vision.title': 'Technology only matters if it <em>changes something</em>.',
@@ -2577,7 +2593,7 @@
                 'card4.li1': 'UX/UI design', 'card4.li2': 'Premium web interfaces', 'card4.li3': 'Custom digital products',
                 'solutions.title': 'The solutions we <em>design</em>',
                 'solutions.label': 'No project names, one single principle: usefulness',
-                'solutions.body': 'We don’t deliver showcase websites. We design systems that structure an activity, strengthen a customer relationship or inform a decision, for African companies, institutions and organizations in transformation.',
+                'solutions.body': 'Beyond showcase websites, we design tools that organize operations, strengthen customer relationships and improve decisions for organizations across France and Africa.',
                 'sol1.name': 'CRM & Business Tools', 'sol1.desc': 'Centralize the customer relationship and make daily sales tracking reliable.',
                 'sol2.name': 'Decision Dashboards', 'sol2.desc': 'Give leaders a clear, data-driven view of their business.',
                 'sol3.name': 'Business Platforms', 'sol3.desc': 'Tailor-made tools to structure a department, a network or an institution.',
@@ -2600,7 +2616,7 @@
                 'why2.name': 'Field reality', 'why2.desc': 'Direct operational experience of sales, distribution and logistics.',
                 'why3.name': 'Digital execution', 'why3.desc': 'The ability to design and deliver systems, not just recommendations.',
                 'contact.title': 'Let’s talk about<br>your <em>project.</em>',
-                'contact.intro': 'Tell us about your context and challenges: we’ll get back to you quickly with a first clear read of your project, usually within the day.',
+                'contact.intro': 'Tell us about your organization, needs and priorities. We will suggest an initial conversation to define the next steps together.',
                 'contact.labelEmail': 'Email', 'contact.labelTel': 'Phone', 'contact.waLink': 'Chat on WhatsApp',
                 'form.name': 'Full name', 'form.namePlaceholder': 'John Smith',
                 'form.email': 'Email address', 'form.emailPlaceholder': 'john@company.com',
@@ -2616,16 +2632,17 @@
                 'meta.desc': 'Yaro Consulting acompaña a empresas, instituciones y organizaciones en sus proyectos de estrategia, transformación digital y rendimiento operativo.',
                 'nav.vision': 'Visión', 'nav.expertises': 'Especialidades', 'nav.realisations': 'Proyectos', 'nav.methode': 'Método', 'nav.contact': 'Contacto', 'nav.cta': 'Iniciar un proyecto', 'nav.menuLabel': 'Menú',
                 'nav.founder': 'Fundador', 'nav.solutions': 'Soluciones', 'nav.realisations': 'Proyectos', 'nav.pourquoi': 'Por qué',
-                'real.title': 'Proyectos <em>realizados</em>',
-                'real.label': 'Plataformas y sitios en línea',
-                'real.body': 'Algunos proyectos diseñados, desarrollados y desplegados. Descúbralos directamente en línea.',
+                'real.title': 'Nuestros <em>proyectos</em>',
+                'real.label': 'Proyectos publicados y en preparación',
+                'real.body': 'Un proyecto accesible al público y otras soluciones en preparación. Distinguimos los trabajos entregados de los próximos proyectos.',
                 'real.cta': 'Ver sitio web', 'real.appCta': 'Ver aplicación en App Store', 'real.soon': 'Próximamente', 'real.sheet': 'Ver la ficha técnica',
                 'fiche.brandsub': 'Estrategia · Digital · Marca',
                 'fiche.eyebrow': 'Estudio de caso · Ficha técnica',
+                'fiche.projectTitle': 'GaspardNZ — Web y aplicación iOS',
                 'fiche.sub': 'Imagen y eventos',
                 'fiche.mission': 'Misión realizada',
                 'fiche.m1': 'Reposicionamiento estratégico y branding premium',
-                'fiche.m2': 'Aplicación móvil nativa (Android e iOS)',
+                'fiche.m2': 'Aplicación iOS conectada al sitio y los servicios',
                 'fiche.m3': 'Identidad visual, dirección artística y UX',
                 'fiche.m4': 'Sitio web a medida (multilingüe FR/EN/ES/ZH)',
                 'fiche.m5': 'Posicionamiento Google (SEO técnico y de contenido)',
@@ -2643,13 +2660,17 @@
                 'real1.f1': 'Comunicación omnicanal centralizada', 'real1.f2': 'Toda la información en una sola plataforma', 'real1.f3': 'Asistente conversacional inteligente (IA)', 'real1.f4': 'Reserva de citas y seguimiento de solicitudes', 'real1.f5': 'Formularios de contacto y prensa · multilingüe', 'real1.f6': 'Back-office de administración: seguimiento y gestión', 'real1.f7': 'Reportes ciudadanos geolocalizados (foto + ubicación GPS)',
                 'real2.cat': 'Empleo y reclutamiento', 'real2.name': 'Plataforma de empleo',
                 'real2.f1': 'Publicación de ofertas de empleo', 'real2.f2': 'Candidaturas en línea', 'real2.f3': 'Búsqueda con filtros', 'real2.f4': 'Conexión entre reclutadores y candidatos',
-                'real3.cat': 'Imagen y eventos', 'real3.name': 'Sitio escaparate premium',
+                'real3.cat': 'Imagen y eventos', 'real3.name': 'GaspardNZ — Web y aplicación iOS', 'real3.caption': 'Vista previa del diseño · Aplicación iOS',
                 'real3.f1': 'Presentación de servicios', 'real3.f2': 'Identidad visual cuidada', 'real3.f3': 'Experiencia mobile-first', 'real3.f4': 'Contacto directo',
-                'hero.eyebrow': 'Consultor · Estrategia · Transformación Digital',
-                'hero.title1': 'Transformar las ideas', 'hero.title2': 'en <em>sistemas</em>', 'hero.title3': 'que rinden.',
+                'hero.eyebrow': 'Consultoría — Rendimiento — Transformación',
+                'hero.title1': 'Impulsamos', 'hero.title2': 'a las organizaciones', 'hero.title3': '<em>con resultados.</em>',
                 'hero.featureLabel': 'PROYECTO DESTACADO',
-                'hero.sub': 'Yaro Consulting acompaña a empresas, instituciones y organizaciones en sus proyectos de estrategia y transformación digital, del diagnóstico al despliegue.',
-                'hero.btnPrimary': 'Ver proyectos', 'hero.btnGhost': 'Contactar',
+                'hero.sub': 'Estrategia, transformación digital y rendimiento: acompañamos a empresas e instituciones de la idea a la ejecución en Francia y África.',
+                'hero.btnPrimary': 'Hablemos de su proyecto', 'hero.btnGhost': 'Explorar nuestras especialidades',
+                'diag.label': 'Una primera conversación sencilla', 'diag.title': 'Aclaremos su <em>necesidad.</em>', 'diag.intro': 'Tres respuestas para preparar un mensaje preciso. Nada se envía sin su acción.',
+                'diag.profile': 'Usted representa', 'diag.choose': 'Seleccione una opción', 'diag.company': 'Una empresa', 'diag.institution': 'Una institución', 'diag.organization': 'Una organización / asociación', 'diag.entrepreneur': 'Un emprendedor',
+                'diag.need': 'Su prioridad', 'diag.strategy': 'Estrategia y rendimiento', 'diag.product': 'Sitio web / aplicación', 'diag.automation': 'Automatización / herramientas', 'diag.support': 'Acompañamiento digital',
+                'diag.timing': 'Su plazo', 'diag.soon': 'Lo antes posible', 'diag.three': 'En 3 meses', 'diag.explore': 'Proyecto por definir', 'diag.submit': 'Preparar mi mensaje', 'diag.ready': 'El resumen está listo. Añada sus datos a continuación para enviarlo por WhatsApp.',
                 'm.strategy': 'Estrategia', 'm.digital': 'Transformación Digital', 'm.automation': 'Automatización', 'm.performance': 'Rendimiento Operativo',
                 'vision.label': 'Nuestra visión',
                 'vision.title': 'La tecnología solo vale si <em>cambia algo</em>.',
@@ -2677,7 +2698,7 @@
                 'card4.li1': 'Diseño UX/UI', 'card4.li2': 'Interfaces web premium', 'card4.li3': 'Productos digitales a medida',
                 'solutions.title': 'Las soluciones que <em>diseñamos</em>',
                 'solutions.label': 'Sin nombres de proyectos, un solo principio: la utilidad',
-                'solutions.body': 'No entregamos sitios escaparate. Diseñamos sistemas que estructuran una actividad, fiabilizan una relación con el cliente o esclarecen una decisión, para empresas, instituciones y organizaciones africanas en transformación.',
+                'solutions.body': 'Más allá de los sitios escaparate, diseñamos herramientas que organizan la actividad, mejoran la relación con los clientes y facilitan las decisiones de organizaciones en Francia y África.',
                 'sol1.name': 'CRM y Herramientas de Negocio', 'sol1.desc': 'Centralizar la relación con el cliente y fiabilizar el seguimiento comercial a diario.',
                 'sol2.name': 'Cuadros de Mando Decisionales', 'sol2.desc': 'Dar a los directivos una visión clara y cuantificada de su actividad.',
                 'sol3.name': 'Plataformas de Negocio', 'sol3.desc': 'Herramientas a medida para estructurar un servicio, una red o una institución.',
@@ -2700,7 +2721,7 @@
                 'why2.name': 'Realidad de terreno', 'why2.desc': 'Una experiencia operativa directa del comercio, la distribución y la logística.',
                 'why3.name': 'Ejecución digital', 'why3.desc': 'La capacidad de diseñar y entregar sistemas, no solo recomendaciones.',
                 'contact.title': 'Hablemos de<br>su <em>proyecto.</em>',
-                'contact.intro': 'Cuéntenos su contexto y sus retos: le responderemos rápidamente con una primera lectura clara de su proyecto, normalmente en el mismo día.',
+                'contact.intro': 'Cuéntenos su actividad, sus necesidades y sus prioridades. Le propondremos una primera conversación para definir los siguientes pasos.',
                 'contact.labelEmail': 'Email', 'contact.labelTel': 'Tel.', 'contact.waLink': 'Chatear por WhatsApp',
                 'form.name': 'Nombre completo', 'form.namePlaceholder': 'Juan Pérez',
                 'form.email': 'Correo electrónico', 'form.emailPlaceholder': 'juan@empresa.com',
@@ -2717,35 +2738,38 @@
         const WA = 'https://wa.me/33608888768', TEL = 'tel:+33608888768', MAIL = 'mailto:contact@yaroconsulting.fr';
         const CHAT = {
             fr: {
-                welcome: "Bonjour 👋 Je suis l'assistant de Yaro Consulting. Comment puis-je vous aider ?",
+                welcome: "Bonjour. Je suis l'assistant de Yaro Consulting. Comment puis-je vous aider ?",
+                openLabel: "Ouvrir l'assistant", closeLabel: "Fermer l'assistant",
                 home: ['expertises', 'solutions', 'methode', 'rdv', 'contact'],
                 topics: {
                     expertises: { label: 'Nos expertises', bot: "Nous mobilisons quatre expertises à chaque mission :\n\n• Stratégie & performance opérationnelle\n• Transformation digitale\n• Automatisation & outils digitaux\n• Expérience utilisateur & produits digitaux", quick: ['solutions', 'methode', 'rdv'] },
-                    solutions: { label: 'Nos solutions', bot: "Nous concevons des systèmes utiles, pas des sites vitrines :\n\n• CRM & outils métiers\n• Tableaux de bord décisionnels\n• Plateformes métiers\n• Automatisation des processus\n• Systèmes de données & archives\n• Interfaces web premium", quick: ['expertises', 'methode', 'rdv'] },
+                    solutions: { label: 'Nos solutions', bot: "Nous concevons des sites web et des systèmes utiles à chaque organisation :\n\n• CRM & outils métiers\n• Tableaux de bord décisionnels\n• Plateformes métiers\n• Automatisation des processus\n• Systèmes de données & archives\n• Interfaces web premium", quick: ['expertises', 'methode', 'rdv'] },
                     methode: { label: 'Notre méthode', bot: "Une démarche claire, du diagnostic au déploiement : comprendre votre organisation, clarifier les priorités, concevoir la solution, puis la déployer et l'ancrer dans vos usages. Un interlocuteur unique tout au long.", quick: ['rdv', 'contact'] },
-                    rdv: { label: 'Prendre rendez-vous', bot: "Avec plaisir 📅 Je vous ouvre l'agenda pour choisir un créneau…", quick: ['contact', 'expertises', 'solutions'] },
+                    rdv: { label: 'Prendre rendez-vous', bot: "Avec plaisir. Je vous ouvre l'agenda pour choisir un créneau…", quick: ['contact', 'expertises', 'solutions'] },
                     contact: { label: 'Prendre contact', bot: 'Avec plaisir. Choisissez le canal qui vous convient :\n\n• Rendez-vous en ligne : cliquez sur « Prendre rendez-vous »\n• WhatsApp : <a href="' + WA + '" target="_blank" rel="noopener" class="wa-trigger">démarrer une discussion</a>\n• Téléphone : <a href="' + TEL + '">06 08 88 87 68</a>\n• Email : <a href="' + MAIL + '">contact@yaroconsulting.fr</a>', quick: ['rdv', 'expertises', 'solutions'] }
                 }
             },
             en: {
-                welcome: "Hello 👋 I'm the Yaro Consulting assistant. How can I help you?",
+                welcome: "Hello. I'm the Yaro Consulting assistant. How can I help you?",
+                openLabel: 'Open the assistant', closeLabel: 'Close the assistant',
                 home: ['expertises', 'solutions', 'methode', 'rdv', 'contact'],
                 topics: {
                     expertises: { label: 'Our expertise', bot: "We bring four areas of expertise to every engagement:\n\n• Strategy & operational performance\n• Digital transformation\n• Automation & digital tools\n• User experience & digital products", quick: ['solutions', 'methode', 'rdv'] },
-                    solutions: { label: 'Our solutions', bot: "We design useful systems, not showcase websites:\n\n• CRM & business tools\n• Decision dashboards\n• Business platforms\n• Process automation\n• Data & archive systems\n• Premium web interfaces", quick: ['expertises', 'methode', 'rdv'] },
+                    solutions: { label: 'Our solutions', bot: "We design useful websites and systems for organizations:\n\n• CRM & business tools\n• Decision dashboards\n• Business platforms\n• Process automation\n• Data & archive systems\n• Premium web interfaces", quick: ['expertises', 'methode', 'rdv'] },
                     methode: { label: 'Our method', bot: "A clear approach, from diagnosis to deployment: understand your organization, clarify priorities, design the solution, then deploy it and embed it in your daily use. A single point of contact throughout.", quick: ['rdv', 'contact'] },
-                    rdv: { label: 'Book a meeting', bot: "With pleasure 📅 I'm opening the calendar so you can pick a slot…", quick: ['contact', 'expertises', 'solutions'] },
+                    rdv: { label: 'Book a meeting', bot: "With pleasure. I'm opening the calendar so you can pick a slot…", quick: ['contact', 'expertises', 'solutions'] },
                     contact: { label: 'Get in touch', bot: 'With pleasure. Choose the channel that suits you:\n\n• Online booking: click “Book a meeting”\n• WhatsApp: <a href="' + WA + '" target="_blank" rel="noopener" class="wa-trigger">start a chat</a>\n• Phone: <a href="' + TEL + '">06 08 88 87 68</a>\n• Email: <a href="' + MAIL + '">contact@yaroconsulting.fr</a>', quick: ['rdv', 'expertises', 'solutions'] }
                 }
             },
             es: {
-                welcome: "Hola 👋 Soy el asistente de Yaro Consulting. ¿En qué puedo ayudarle?",
+                welcome: "Hola. Soy el asistente de Yaro Consulting. ¿En qué puedo ayudarle?",
+                openLabel: 'Abrir el asistente', closeLabel: 'Cerrar el asistente',
                 home: ['expertises', 'solutions', 'methode', 'rdv', 'contact'],
                 topics: {
                     expertises: { label: 'Nuestras especialidades', bot: "Aportamos cuatro especialidades en cada misión:\n\n• Estrategia y rendimiento operativo\n• Transformación digital\n• Automatización y herramientas digitales\n• Experiencia de usuario y productos digitales", quick: ['solutions', 'methode', 'rdv'] },
-                    solutions: { label: 'Nuestras soluciones', bot: "Diseñamos sistemas útiles, no sitios escaparate:\n\n• CRM y herramientas de negocio\n• Cuadros de mando decisionales\n• Plataformas de negocio\n• Automatización de procesos\n• Sistemas de datos y archivos\n• Interfaces web premium", quick: ['expertises', 'methode', 'rdv'] },
+                    solutions: { label: 'Nuestras soluciones', bot: "Diseñamos sitios web y sistemas útiles para las organizaciones:\n\n• CRM y herramientas de negocio\n• Cuadros de mando decisionales\n• Plataformas de negocio\n• Automatización de procesos\n• Sistemas de datos y archivos\n• Interfaces web premium", quick: ['expertises', 'methode', 'rdv'] },
                     methode: { label: 'Nuestro método', bot: "Un enfoque claro, del diagnóstico al despliegue: entender su organización, clarificar prioridades, diseñar la solución y luego desplegarla e integrarla en sus usos. Un interlocutor único en todo momento.", quick: ['rdv', 'contact'] },
-                    rdv: { label: 'Reservar una cita', bot: "Con gusto 📅 Le abro la agenda para elegir un horario…", quick: ['contact', 'expertises', 'solutions'] },
+                    rdv: { label: 'Reservar una cita', bot: "Con gusto. Le abro la agenda para elegir un horario…", quick: ['contact', 'expertises', 'solutions'] },
                     contact: { label: 'Contactar', bot: 'Con mucho gusto. Elija el canal que prefiera:\n\n• Reserva en línea: haga clic en «Reservar una cita»\n• WhatsApp: <a href="' + WA + '" target="_blank" rel="noopener" class="wa-trigger">iniciar una conversación</a>\n• Teléfono: <a href="' + TEL + '">06 08 88 87 68</a>\n• Email: <a href="' + MAIL + '">contact@yaroconsulting.fr</a>', quick: ['rdv', 'expertises', 'solutions'] }
                 }
             }
@@ -2808,25 +2832,6 @@
             const initial = saved || (['fr', 'en', 'es'].includes(nav) ? nav : 'fr');
             applyLang(initial);
         })();
-
-        // Custom cursor (desktop only - pointer: fine)
-        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-            const cursor = document.getElementById('cursor');
-            const ring = document.getElementById('cursorRing');
-            let rx = 0, ry = 0, cx = 0, cy = 0;
-            document.addEventListener('mousemove', e => {
-                cx = e.clientX; cy = e.clientY;
-                cursor.style.left = cx + 'px';
-                cursor.style.top = cy + 'px';
-            });
-            (function loop() {
-                rx += (cx - rx) * 0.15;
-                ry += (cy - ry) * 0.15;
-                ring.style.left = rx + 'px';
-                ring.style.top = ry + 'px';
-                requestAnimationFrame(loop);
-            })();
-        }
 
         // Nav shrink + progression de lecture
         const nav = document.getElementById('nav');
@@ -3018,36 +3023,43 @@
             window.open(url, '_blank', 'noopener');
         });
 
-        // Hero "vivant" : fade-in + Ken Burns + parallaxe douce
+        // Diagnostic : compose uniquement le brouillon dans le formulaire existant.
+        // Aucune donnée n'est envoyée à ce stade.
+        const diagnosticForm = document.getElementById('diagnosticForm');
+        diagnosticForm.addEventListener('submit', event => {
+            event.preventDefault();
+            const selected = id => document.getElementById(id).selectedOptions[0].textContent.trim();
+            const labels = {
+                fr: ['Profil', 'Priorité', 'Horizon'],
+                en: ['Profile', 'Priority', 'Timeframe'],
+                es: ['Perfil', 'Prioridad', 'Plazo']
+            }[LANG] || ['Profil', 'Priorité', 'Horizon'];
+            const summary = [selected('diagProfile'), selected('diagNeed'), selected('diagTiming')]
+                .map((item, index) => `${labels[index]} : ${item}`).join('\n');
+            const message = document.getElementById('message');
+            const previousSummary = message.dataset.diagSummary || '';
+            const freeText = previousSummary && message.value.startsWith(previousSummary)
+                ? message.value.slice(previousSummary.length).trim() : message.value.trim();
+            message.value = freeText ? `${summary}\n\n${freeText}` : summary;
+            message.dataset.diagSummary = summary;
+            document.getElementById('diagStatus').textContent = getStr(LANG, 'diag.ready') || 'Votre résumé est prêt. Complétez vos coordonnées ci-dessous pour l’envoyer via WhatsApp.';
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            message.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+            setTimeout(() => message.focus({ preventScroll: true }), reduceMotion ? 0 : 450);
+        });
+
+        // Photo réelle : une seule apparition à l'ouverture, sans boucle ni parallaxe.
         const heroBg = document.getElementById('heroBg');
         const heroImg = document.getElementById('heroImg');
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         if (heroBg && heroImg) {
             function activateHero() {
                 heroBg.classList.add('loaded');
-                if (!reduceMotion) heroBg.classList.add('alive');
             }
             if (heroImg.complete) activateHero();
             else heroImg.addEventListener('load', activateHero);
-            // Filet de sécurité : afficher quoi qu'il arrive après 2,5s
+            // Même si le décodage tarde, ne pas cacher le portrait indéfiniment.
             setTimeout(() => heroBg.classList.add('loaded'), 2500);
-
-            // Parallaxe souris (desktop, pointeur fin) - très subtile
-            if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-                let tx = 0, ty = 0, cxv = 0, cyv = 0;
-                window.addEventListener('mousemove', (e) => {
-                    tx = (e.clientX / window.innerWidth) - 0.5;
-                    ty = (e.clientY / window.innerHeight) - 0.5;
-                }, { passive: true });
-                (function drift() {
-                    cxv += (tx - cxv) * 0.04;
-                    cyv += (ty - cyv) * 0.04;
-                    heroBg.style.setProperty('--px', cxv.toFixed(4));
-                    heroBg.style.setProperty('--py', cyv.toFixed(4));
-                    requestAnimationFrame(drift);
-                })();
-            }
         }
 
         // ===== Assistant guidé (chatbot) multilingue =====
@@ -3060,6 +3072,9 @@
 
             let started = false;
             function data() { return CHAT[LANG] || CHAT.fr; }
+            function syncLauncherLabel() {
+                launcher.setAttribute('aria-label', panel.classList.contains('open') ? data().closeLabel : data().openLabel);
+            }
 
             function addMsg(html, who) {
                 const el = document.createElement('div');
@@ -3109,6 +3124,7 @@
                 started = false;
                 body.innerHTML = '';
                 quick.innerHTML = '';
+                syncLauncherLabel();
                 if (panel.classList.contains('open')) start();
             }
 
@@ -3116,6 +3132,7 @@
                 const open = panel.classList.toggle('open');
                 launcher.classList.toggle('open', open);
                 launcher.setAttribute('aria-expanded', open ? 'true' : 'false');
+                syncLauncherLabel();
                 panel.inert = !open;
                 if (open) {
                     start();
@@ -3135,7 +3152,7 @@
     <script>
         (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.eu/embed/embed.js", "init");
         Cal("init", { origin: "https://cal.eu" });
-        Cal("ui", { theme: "dark", cssVarsPerTheme: { dark: { "cal-brand": "#d4b877" } }, hideEventTypeDetails: false, layout: "month_view" });
+        Cal("ui", { theme: "light", cssVarsPerTheme: { light: { "cal-brand": "#a98c70" } }, hideEventTypeDetails: false, layout: "month_view" });
     </script>
 
     <!-- Vercel Web Analytics (sans cookies : visites, pays, pages) -->
