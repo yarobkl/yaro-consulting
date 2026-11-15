@@ -2259,10 +2259,10 @@
             <h2 id="diagnosticTitle" data-i18n="diag.title">Clarifions votre <em>besoin.</em></h2>
             <p data-i18n="diag.intro">Trois réponses pour préparer un message précis. Rien n'est envoyé sans votre action.</p>
         </div>
-        <form id="diagnosticForm" class="diagnostic-form reveal">
+        <form id="diagnosticForm" class="diagnostic-form reveal" aria-labelledby="diagnosticTitle">
             <div class="diagnostic-field">
                 <label for="diagProfile" data-i18n="diag.profile">Vous représentez</label>
-                <select id="diagProfile" required>
+                <select id="diagProfile" name="profile" required>
                     <option value="" data-i18n="diag.choose">Choisir une réponse</option>
                     <option value="Entreprise" data-i18n="diag.company">Une entreprise</option>
                     <option value="Institution" data-i18n="diag.institution">Une institution</option>
@@ -2272,7 +2272,7 @@
             </div>
             <div class="diagnostic-field">
                 <label for="diagNeed" data-i18n="diag.need">Votre priorité</label>
-                <select id="diagNeed" required>
+                <select id="diagNeed" name="need" required>
                     <option value="" data-i18n="diag.choose">Choisir une réponse</option>
                     <option value="Stratégie et performance" data-i18n="diag.strategy">Stratégie &amp; performance</option>
                     <option value="Site ou application" data-i18n="diag.product">Site web / application</option>
@@ -2282,7 +2282,7 @@
             </div>
             <div class="diagnostic-field">
                 <label for="diagTiming" data-i18n="diag.timing">Votre horizon</label>
-                <select id="diagTiming" required>
+                <select id="diagTiming" name="timing" required>
                     <option value="" data-i18n="diag.choose">Choisir une réponse</option>
                     <option value="Dès que possible" data-i18n="diag.soon">Dès que possible</option>
                     <option value="Sous 3 mois" data-i18n="diag.three">Sous 3 mois</option>
@@ -2297,7 +2297,7 @@
     <!-- CONTACT -->
     <section id="contact">
         <div class="contact-left">
-            <h2 class="reveal" data-i18n="contact.title">Échangeons sur<br>votre <em>projet.</em></h2>
+            <h2 class="reveal" id="contactTitle" data-i18n="contact.title">Échangeons sur<br>votre <em>projet.</em></h2>
             <p class="reveal reveal-delay-1" data-i18n="contact.intro">Parlez-nous de votre activité, de vos besoins et de vos priorités. Nous vous proposerons un premier échange pour définir ensemble la suite.</p>
             <div class="contact-info reveal reveal-delay-2">
                 <div class="contact-info-item">
@@ -2318,7 +2318,7 @@
                 <span data-i18n="contact.rdv">Prendre rendez-vous</span>
             </button>
         </div>
-        <form class="contact-form reveal" id="contactForm">
+        <form class="contact-form reveal" id="contactForm" aria-labelledby="contactTitle">
             <div class="form-field">
                 <label class="form-label" for="name" data-i18n="form.name">Nom complet</label>
                 <input class="form-input" id="name" name="name" type="text" placeholder="Jean Dupont" autocomplete="name" data-i18n-placeholder="form.namePlaceholder" required>

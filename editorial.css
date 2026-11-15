@@ -271,6 +271,7 @@ main section { scroll-margin-top: 6rem; }
   letter-spacing: .12em;
   color: #e7d4c4;
 }
+.diagnostic-field label::after { content: ' *'; color: #e0c1a4; }
 .diagnostic-field select {
   appearance: auto;
   min-height: 51px;
