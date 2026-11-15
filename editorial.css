@@ -48,11 +48,11 @@ a, button, select { cursor: pointer; }
   .site-opening-mark img { display: block; width: 100%; height: auto; }
   .site-opening-line {
     display: block;
-    width: 56px;
+    width: 100%;
     height: 1px;
     background: var(--gold-light);
     transform-origin: center;
-    animation: yaroOpeningLine .72s ease-out both;
+    animation: yaroOpeningLine 1.12s .12s cubic-bezier(.16, 1, .3, 1) both;
   }
 }
 @keyframes yaroOpeningCurtain {
@@ -64,7 +64,7 @@ a, button, select { cursor: pointer; }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes yaroOpeningLine {
-  from { opacity: 0; transform: scaleX(.15); }
+  from { opacity: 0; transform: scaleX(0); }
   to { opacity: 1; transform: scaleX(1); }
 }
 
