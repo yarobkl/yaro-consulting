@@ -56,7 +56,8 @@ a, button, select { cursor: pointer; }
     height: 1px;
     background: var(--gold-light);
     transform-origin: center;
-    animation: yaroOpeningLine .48s .82s cubic-bezier(.16, 1, .3, 1) both;
+    /* Même chronologie et même accélération que la nappe : un seul geste continu. */
+    animation: yaroOpeningLine 2.25s cubic-bezier(.76, 0, .24, 1) both;
   }
 }
 @keyframes yaroOpeningCurtain {
@@ -68,8 +69,8 @@ a, button, select { cursor: pointer; }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes yaroOpeningLine {
-  from { opacity: 1; transform: translateX(-50%) scaleX(.08); }
-  to { opacity: 1; transform: translateX(-50%) scaleX(1); }
+  0%, 58% { opacity: 1; transform: translateX(-50%) scaleX(.08); }
+  100% { opacity: 1; transform: translateX(-50%) scaleX(1); }
 }
 
 /* Entête sobre, avec le vrai monogramme de marque. */
