@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yaro Consulting | Rodrin Bakala Mouengue · Stratégie & Transformation Digitale</title>
+    <title>Yaro Consulting | Stratégie &amp; Transformation Digitale</title>
     <meta name="description" content="Yaro Consulting accompagne entreprises, institutions et organisations dans leurs projets de stratégie, transformation digitale et performance opérationnelle.">
     <meta name="author" content="Rodrin Bakala Mouengue">
     <meta name="keywords" content="Yaro Consulting, Rodrin Bakala Mouengue, conseil stratégie, transformation digitale, consultant digital, performance opérationnelle, automatisation, conseil entreprise Afrique">
@@ -48,7 +48,9 @@
       "knowsAbout": ["Stratégie", "Transformation digitale", "Performance opérationnelle", "Automatisation", "Produits digitaux"]
     }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=DM+Sans:wght@300;400;500&amp;family=Caveat:wght@500&amp;display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -65,6 +67,19 @@
         }
 
         html { font-size: 16px; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+
+        .skip-link {
+            position: fixed;
+            top: 0.75rem;
+            left: 1rem;
+            z-index: 10000;
+            padding: 0.75rem 1rem;
+            color: var(--ink);
+            background: var(--gold);
+            text-decoration: none;
+            transform: translateY(-180%);
+        }
+        .skip-link:focus-visible { transform: none; outline: 2px solid var(--cream); }
 
         body {
             font-family: 'DM Sans', sans-serif;
@@ -211,6 +226,13 @@
         .fullscreen-menu {
             position: fixed;
             inset: 0;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            margin: 0;
+            border: 0;
+            color: var(--cream);
             background: var(--ink);
             z-index: 150;
             display: flex;
@@ -223,9 +245,14 @@
             transition: clip-path 0.8s var(--ease);
             pointer-events: none;
         }
+        .fullscreen-menu:not([open]) { display: none; }
+        .fullscreen-menu::backdrop { background: var(--ink); }
         .fullscreen-menu.open {
             clip-path: circle(150% at calc(100% - 2.5rem) 2.5rem);
             pointer-events: auto;
+        }
+        @starting-style {
+            .fullscreen-menu.open { clip-path: circle(0% at calc(100% - 2.5rem) 2.5rem); }
         }
         .fullscreen-menu > a:not(.menu-cta) {
             font-family: 'Cormorant Garamond', serif;
@@ -1558,10 +1585,15 @@
         .fiche-overlay {
             position: fixed;
             inset: 0;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            margin: 0;
+            border: 0;
+            color: var(--cream);
             z-index: 400;
-            background: rgba(6,12,9,0.82);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
+            background: transparent;
             display: flex;
             align-items: flex-start;
             justify-content: center;
@@ -1570,8 +1602,16 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.35s var(--ease);
+            overscroll-behavior: contain;
         }
-        .fiche-overlay.open { opacity: 1; pointer-events: auto; }
+        .fiche-overlay:not([open]) { display: none; }
+        .fiche-overlay::backdrop {
+            background: rgba(6,12,9,0.82);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .fiche-overlay[open] { opacity: 1; pointer-events: auto; }
+        @starting-style { .fiche-overlay[open] { opacity: 0; } }
         .fiche-modal {
             position: relative;
             width: min(760px, 100%);
@@ -1584,7 +1624,7 @@
             transform: translateY(16px) scale(0.99);
             transition: transform 0.4s var(--ease);
         }
-        .fiche-overlay.open .fiche-modal { transform: none; }
+        .fiche-overlay[open] .fiche-modal { transform: none; }
         .fiche-close {
             position: absolute;
             top: 0.9rem;
@@ -1775,7 +1815,7 @@
             border: 1px solid var(--border);
             transition: background 0.25s var(--ease), color 0.25s var(--ease);
         }
-        .cookie-refuse { background: none; color: var(--muted); }
+        .cookie-refuse { background: rgba(240,238,233,0.08); color: var(--cream); border-color: rgba(240,238,233,0.45); }
         .cookie-accept { background: var(--gold); color: var(--ink); border-color: var(--gold); font-weight: 500; }
         @media (hover: hover) {
             .cookie-refuse:hover { color: var(--cream); }
@@ -1797,6 +1837,7 @@
             transition: color 0.25s var(--ease);
         }
         .legal-trigger:hover { color: var(--gold); }
+        .footer-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
         .legal-modal .legal-p {
             font-size: 0.82rem;
             line-height: 1.6;
@@ -1814,6 +1855,8 @@
     </style>
 </head>
 <body>
+
+    <a class="skip-link" href="#main-content" data-i18n="nav.skip">Aller au contenu</a>
 
     <div class="cursor" id="cursor"></div>
     <div class="cursor-ring" id="cursorRing"></div>
@@ -1840,7 +1883,7 @@
         </div>
         <div class="nav-actions">
             <button class="lang-shortcut" id="langShortcut" type="button" aria-label="Changer de langue">FR</button>
-            <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+            <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-controls="fullMenu" aria-expanded="false">
                 <span class="menu-bar"></span><span class="menu-bar"></span><span class="menu-bar"></span>
                 <span class="menu-label" data-i18n="nav.menuLabel">Menu</span>
             </button>
@@ -1848,8 +1891,8 @@
     </nav>
 
     <!-- FULLSCREEN MENU -->
-    <div class="fullscreen-menu" id="fullMenu">
-        <button class="menu-close" id="menuClose" aria-label="Fermer le menu">
+    <dialog class="fullscreen-menu" id="fullMenu" aria-label="Menu de navigation">
+        <button class="menu-close" id="menuClose" type="button" aria-label="Fermer le menu" autofocus>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
         <a href="#vision" data-i18n="nav.vision">Vision</a>
@@ -1866,7 +1909,9 @@
             </div>
         </div>
         <p class="menu-footer">© 2026 Yaro Consulting</p>
-    </div>
+    </dialog>
+
+    <main id="main-content" tabindex="-1">
 
     <!-- HERO -->
     <section class="hero">
@@ -1874,7 +1919,7 @@
             <picture>
                 <source srcset="images/portrait.avif" type="image/avif">
                 <source srcset="images/portrait.webp" type="image/webp">
-                <img src="images/portrait.jpg" alt="Portrait de Rodrin Bakala Mouengue, fondateur de Yaro Consulting" id="heroImg">
+                <img src="images/portrait.jpg" alt="Portrait de Rodrin Bakala Mouengue, fondateur de Yaro Consulting" id="heroImg" width="1280" height="1920" fetchpriority="high" decoding="async">
             </picture>
             <div class="hero-grain"></div>
         </div>
@@ -2056,10 +2101,10 @@
                     <picture>
                         <source srcset="images/conseil.avif" type="image/avif">
                         <source srcset="images/conseil.webp" type="image/webp">
-                        <img src="images/conseil.jpg" loading="lazy" alt="Stratégie et performance opérationnelle">
+                        <img src="images/conseil.jpg" loading="lazy" decoding="async" width="1000" height="666" alt="Stratégie et performance opérationnelle">
                     </picture>
                 </div>
-                <h3 class="service-name" data-i18n="card1.name">Stratégie & Performance Opérationnelle</h3>
+                <h3 class="service-name" data-i18n="card1.name">Stratégie &amp; Performance Opérationnelle</h3>
                 <p class="service-desc" data-i18n="card1.desc">Diagnostiquer une organisation, clarifier ses priorités et améliorer durablement sa performance sur le terrain.</p>
                 <ul class="service-list">
                     <li data-i18n="card1.li1">Diagnostic stratégique</li>
@@ -2073,7 +2118,7 @@
                     <picture>
                         <source srcset="images/digital.avif" type="image/avif">
                         <source srcset="images/digital.webp" type="image/webp">
-                        <img src="images/digital.jpg" loading="lazy" alt="Transformation digitale">
+                        <img src="images/digital.jpg" loading="lazy" decoding="async" width="1000" height="666" alt="Transformation digitale">
                     </picture>
                 </div>
                 <h3 class="service-name" data-i18n="card2.name">Transformation Digitale</h3>
@@ -2087,9 +2132,9 @@
             <div class="service-card reveal reveal-delay-2">
                 <div class="service-num">03</div>
                 <div class="service-img-wrap">
-                    <img src="images/ia-automatisation.svg" loading="lazy" alt="Automatisation et outils digitaux intelligents">
+                    <img src="images/ia-automatisation.svg" loading="lazy" decoding="async" width="1000" height="666" alt="Automatisation et outils digitaux intelligents">
                 </div>
-                <h3 class="service-name" data-i18n="card3.name">Automatisation & Outils Digitaux</h3>
+                <h3 class="service-name" data-i18n="card3.name">Automatisation &amp; Outils Digitaux</h3>
                 <p class="service-desc" data-i18n="card3.desc">Identifier où l'automatisation crée une valeur réelle, puis l'intégrer aux processus existants avec des outils intelligents pensés pour durer.</p>
                 <ul class="service-list">
                     <li data-i18n="card3.li1">Automatisation des processus</li>
@@ -2103,10 +2148,10 @@
                     <picture>
                         <source srcset="images/perf.avif" type="image/avif">
                         <source srcset="images/perf.webp" type="image/webp">
-                        <img src="images/perf.jpg" loading="lazy" alt="Expérience utilisateur et produits digitaux">
+                        <img src="images/perf.jpg" loading="lazy" decoding="async" width="1000" height="666" alt="Expérience utilisateur et produits digitaux">
                     </picture>
                 </div>
-                <h3 class="service-name" data-i18n="card4.name">Expérience Utilisateur & Produits Digitaux</h3>
+                <h3 class="service-name" data-i18n="card4.name">Expérience Utilisateur &amp; Produits Digitaux</h3>
                 <p class="service-desc" data-i18n="card4.desc">Concevoir des interfaces et des produits numériques pensés pour leurs usages, pas pour la démonstration.</p>
                 <ul class="service-list">
                     <li data-i18n="card4.li1">Conception UX/UI</li>
@@ -2130,7 +2175,7 @@
         <div class="services-grid">
             <div class="service-card reveal">
                 <div class="service-num">01</div>
-                <h3 class="service-name" data-i18n="sol1.name">CRM & Outils Métiers</h3>
+                <h3 class="service-name" data-i18n="sol1.name">CRM &amp; Outils Métiers</h3>
                 <p class="service-desc" data-i18n="sol1.desc">Centraliser la relation client et fiabiliser le suivi commercial au quotidien.</p>
             </div>
             <div class="service-card reveal reveal-delay-1">
@@ -2150,7 +2195,7 @@
             </div>
             <div class="service-card reveal">
                 <div class="service-num">05</div>
-                <h3 class="service-name" data-i18n="sol5.name">Systèmes de Données & Archives</h3>
+                <h3 class="service-name" data-i18n="sol5.name">Systèmes de Données &amp; Archives</h3>
                 <p class="service-desc" data-i18n="sol5.desc">Organiser, sécuriser et exploiter l'information stratégique.</p>
             </div>
             <div class="service-card reveal reveal-delay-1">
@@ -2250,7 +2295,7 @@
                 </div>
                 <div class="contact-info-item">
                     <span class="contact-info-label" data-i18n="contact.labelTel">Tél.</span>
-                    <a class="contact-info-val contact-link" href="tel:+33608888768">06 08 88 87 68</a>
+                    <a class="contact-info-val contact-link" href="tel:+33608888768">06&nbsp;08&nbsp;88&nbsp;87&nbsp;68</a>
                 </div>
                 <div class="contact-info-item">
                     <span class="contact-info-label">WhatsApp</span>
@@ -2262,34 +2307,35 @@
                 <span data-i18n="contact.rdv">Prendre rendez-vous</span>
             </button>
         </div>
-        <div class="contact-form reveal">
+        <form class="contact-form reveal" id="contactForm">
             <div class="form-field">
                 <label class="form-label" for="name" data-i18n="form.name">Nom complet</label>
-                <input class="form-input" id="name" type="text" placeholder="Jean Dupont" autocomplete="name" data-i18n-placeholder="form.namePlaceholder">
+                <input class="form-input" id="name" name="name" type="text" placeholder="Jean Dupont" autocomplete="name" data-i18n-placeholder="form.namePlaceholder" required>
             </div>
             <div class="form-field">
                 <label class="form-label" for="email" data-i18n="form.email">Adresse email</label>
-                <input class="form-input" id="email" type="email" placeholder="jean@entreprise.fr" autocomplete="email" inputmode="email" data-i18n-placeholder="form.emailPlaceholder">
+                <input class="form-input" id="email" name="email" type="email" placeholder="jean@entreprise.fr" autocomplete="email" inputmode="email" data-i18n-placeholder="form.emailPlaceholder">
             </div>
             <div class="form-field">
                 <label class="form-label" for="company" data-i18n="form.company">Entreprise</label>
-                <input class="form-input" id="company" type="text" placeholder="Votre société" autocomplete="organization" data-i18n-placeholder="form.companyPlaceholder">
+                <input class="form-input" id="company" name="company" type="text" placeholder="Votre société" autocomplete="organization" data-i18n-placeholder="form.companyPlaceholder">
             </div>
             <div class="form-field">
                 <label class="form-label" for="message" data-i18n="form.message">Votre projet</label>
-                <textarea class="form-textarea" id="message" placeholder="Décrivez brièvement votre besoin…" data-i18n-placeholder="form.messagePlaceholder"></textarea>
+                <textarea class="form-textarea" id="message" name="message" placeholder="Décrivez brièvement votre besoin…" data-i18n-placeholder="form.messagePlaceholder" required></textarea>
             </div>
-            <button class="form-submit" type="button" id="sendBtn">
+            <button class="form-submit" type="submit" id="sendBtn">
                 <span data-i18n="form.submit">Envoyer via WhatsApp</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
             <p class="form-note" data-i18n="form.note">En cliquant, votre message s'ouvre dans WhatsApp, pré-rempli. Vous pouvez aussi écrire directement à <a class="contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>.</p>
-        </div>
+        </form>
     </section>
 
     <!-- FOOTER -->
+    </main>
     <footer>
         <div class="footer-logo">Yaro<span>.</span></div>
         <ul class="footer-links">
@@ -2300,20 +2346,24 @@
             <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
         <p class="footer-copy" data-i18n="footer.copy">© 2026 Yaro Consulting. Tous droits réservés.</p>
-        <button type="button" class="legal-trigger" id="openLegal" data-i18n="nav.legal">Mentions légales</button>
+        <div class="footer-tools">
+            <button type="button" class="legal-trigger" id="openLegal" data-i18n="nav.legal">Mentions légales</button>
+            <button type="button" class="legal-trigger" id="openCookieSettings" data-i18n="cookie.manage">Gérer mes cookies</button>
+        </div>
     </footer>
 
     <!-- FORMULAIRE WHATSAPP (génère le message, modal) -->
-    <div class="fiche-overlay" id="waOverlay" aria-hidden="true">
-        <div class="fiche-modal wa-modal" role="dialog" aria-modal="true" aria-label="Message WhatsApp">
-            <button class="fiche-close" id="waClose" aria-label="Fermer">
+    <dialog class="fiche-overlay" id="waOverlay" aria-label="Message WhatsApp" closedby="any">
+        <div class="fiche-modal wa-modal">
+            <button class="fiche-close" id="waClose" type="button" aria-label="Fermer">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
             <p class="fiche-section-label" data-i18n="wa.title">Message WhatsApp</p>
             <p class="wa-intro" data-i18n="wa.intro">Remplissez ces champs : on prépare votre message WhatsApp automatiquement.</p>
+            <form id="waForm">
             <div class="form-field">
                 <label class="form-label" for="waName" data-i18n="form.name">Nom complet</label>
-                <input class="form-input" id="waName" type="text" placeholder="Jean Dupont" autocomplete="name" data-i18n-placeholder="form.namePlaceholder">
+                <input class="form-input" id="waName" name="waName" type="text" placeholder="Jean Dupont" autocomplete="name" data-i18n-placeholder="form.namePlaceholder" required autofocus>
             </div>
             <div class="form-field">
                 <label class="form-label" for="waSubject" data-i18n="wa.subject">Sujet</label>
@@ -2321,19 +2371,20 @@
             </div>
             <div class="form-field">
                 <label class="form-label" for="waMessage" data-i18n="form.message">Votre projet</label>
-                <textarea class="form-textarea" id="waMessage" placeholder="Décrivez brièvement votre besoin…" data-i18n-placeholder="form.messagePlaceholder"></textarea>
+                <textarea class="form-textarea" id="waMessage" name="waMessage" placeholder="Décrivez brièvement votre besoin…" data-i18n-placeholder="form.messagePlaceholder" required></textarea>
             </div>
-            <button class="form-submit" type="button" id="waSend">
+            <button class="form-submit" type="submit" id="waSend">
                 <span data-i18n="wa.send">Ouvrir WhatsApp</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
+            </form>
         </div>
-    </div>
+    </dialog>
 
     <!-- MENTIONS LÉGALES & CONFIDENTIALITÉ (modal) -->
-    <div class="fiche-overlay" id="legalOverlay" aria-hidden="true">
-        <div class="fiche-modal legal-modal" role="dialog" aria-modal="true" aria-label="Mentions légales et confidentialité">
-            <button class="fiche-close" id="legalClose" aria-label="Fermer">
+    <dialog class="fiche-overlay" id="legalOverlay" aria-label="Mentions légales et confidentialité" closedby="any">
+        <div class="fiche-modal legal-modal">
+            <button class="fiche-close" id="legalClose" type="button" aria-label="Fermer" autofocus>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
             <div class="fiche-head">
@@ -2345,7 +2396,7 @@
 
             <p class="fiche-section-label">Éditeur du site</p>
             <p class="legal-p">Yaro Consulting — Rodrin Bakala Mouengue.<br>
-                Contact : <a class="contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a> · <a class="contact-link" href="tel:+33608888768">06 08 88 87 68</a>.<br>
+                Contact : <a class="contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a> · <a class="contact-link" href="tel:+33608888768">06&nbsp;08&nbsp;88&nbsp;87&nbsp;68</a>.<br>
                 Immatriculation (SIRET) : en cours.</p>
 
             <p class="fiche-section-label">Hébergement</p>
@@ -2354,8 +2405,8 @@
             <p class="fiche-section-label">Données personnelles</p>
             <p class="legal-p">Ce site ne crée pas de compte et ne conserve aucune base de données de visiteurs. Les informations saisies dans le formulaire de contact sont uniquement transmises, à votre initiative, via WhatsApp ou email, dans le seul but de répondre à votre demande. Elles ne sont ni revendues ni partagées.</p>
 
-            <p class="fiche-section-label">Cookies & mesure d'audience</p>
-            <p class="legal-p">Avec votre consentement, Google Analytics dépose des cookies pour mesurer l'audience (pages vues, pays, provenance), avec adresse IP anonymisée. Si vous refusez, aucun cookie de mesure n'est déposé. Une mesure d'audience sans cookie (Vercel Web Analytics) peut être utilisée de manière anonyme et agrégée. Vous pouvez modifier votre choix à tout moment en effaçant les données du site dans votre navigateur.</p>
+            <p class="fiche-section-label">Cookies &amp; mesure d'audience</p>
+            <p class="legal-p">Avec votre consentement, Google Analytics dépose des cookies pour mesurer l'audience (pages vues, pays, provenance), avec adresse IP anonymisée. Si vous refusez, aucun cookie de mesure n'est déposé. Une mesure d'audience sans cookie (Vercel Web Analytics) peut être utilisée de manière anonyme et agrégée. Vous pouvez retirer votre consentement à tout moment avec « Gérer mes cookies » dans le pied de page.</p>
 
             <p class="fiche-section-label">Vos droits (RGPD)</p>
             <p class="legal-p">Conformément au Règlement général sur la protection des données, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour l'exercer, écrivez à <a class="contact-link" href="mailto:contact@yaroconsulting.fr">contact@yaroconsulting.fr</a>.</p>
@@ -2363,23 +2414,23 @@
             <p class="fiche-section-label">Propriété intellectuelle</p>
             <p class="legal-p">L'ensemble des contenus de ce site (textes, visuels, code) est la propriété de Yaro Consulting, sauf mention contraire. Toute reproduction, même partielle, sans autorisation préalable est interdite.</p>
 
-            <p class="legal-update">Dernière mise à jour : juillet 2026.</p>
+            <p class="legal-update">Dernière mise à jour : novembre 2026.</p>
         </div>
-    </div>
+    </dialog>
 
     <!-- BANDEAU COOKIES (consentement Google Analytics) -->
-    <div class="cookie-banner" id="cookieBanner" aria-hidden="true" role="dialog" aria-label="Consentement cookies">
+    <section class="cookie-banner" id="cookieBanner" inert aria-label="Consentement cookies">
         <p class="cookie-text" data-i18n="cookie.text">Nous utilisons des cookies de mesure d'audience (Google Analytics) pour améliorer le site. Vous pouvez accepter ou refuser.</p>
         <div class="cookie-actions">
             <button type="button" class="cookie-btn cookie-refuse" id="cookieRefuse" data-i18n="cookie.refuse">Refuser</button>
             <button type="button" class="cookie-btn cookie-accept" id="cookieAccept" data-i18n="cookie.accept">Accepter</button>
         </div>
-    </div>
+    </section>
 
     <!-- FICHE TECHNIQUE (étude de cas, modal) -->
-    <div class="fiche-overlay" id="ficheOverlay" aria-hidden="true">
-        <div class="fiche-modal" role="dialog" aria-modal="true" aria-label="Fiche technique">
-            <button class="fiche-close" id="ficheClose" aria-label="Fermer">
+    <dialog class="fiche-overlay" id="ficheOverlay" aria-label="Fiche technique" closedby="any">
+        <div class="fiche-modal">
+            <button class="fiche-close" id="ficheClose" type="button" aria-label="Fermer" autofocus>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
             <div class="fiche-head">
@@ -2391,16 +2442,16 @@
             </div>
 
             <h3 class="fiche-title" data-i18n="real3.name">Site vitrine premium</h3>
-            <p class="fiche-sub" data-i18n="fiche.sub">Image & événementiel</p>
+            <p class="fiche-sub" data-i18n="fiche.sub">Image &amp; événementiel</p>
 
             <p class="fiche-section-label" data-i18n="fiche.mission">Mission réalisée</p>
             <ul class="fiche-mission">
-                <li data-i18n="fiche.m1">Repositionnement stratégique & branding premium</li>
-                <li data-i18n="fiche.m2">Application mobile native (Android & iOS)</li>
-                <li data-i18n="fiche.m3">Identité visuelle, direction artistique & UX</li>
+                <li data-i18n="fiche.m1">Repositionnement stratégique &amp; branding premium</li>
+                <li data-i18n="fiche.m2">Application mobile native (Android &amp; iOS)</li>
+                <li data-i18n="fiche.m3">Identité visuelle, direction artistique &amp; UX</li>
                 <li data-i18n="fiche.m4">Site web sur-mesure (multilingue FR/EN/ES/ZH)</li>
-                <li data-i18n="fiche.m5">Référencement Google (SEO technique & contenu)</li>
-                <li data-i18n="fiche.m6">Présence digitale complète & développement de marque</li>
+                <li data-i18n="fiche.m5">Référencement Google (SEO technique &amp; contenu)</li>
+                <li data-i18n="fiche.m6">Présence digitale complète &amp; développement de marque</li>
             </ul>
 
             <p class="fiche-section-label" data-i18n="fiche.stack">Stack technique</p>
@@ -2417,17 +2468,17 @@
                 <div class="fiche-row"><span class="fiche-key">Versioning</span><span class="fiche-val">Git / GitHub</span></div>
             </div>
 
-            <p class="fiche-badge" data-i18n="fiche.badge">Conception & architecture sur-mesure</p>
+            <p class="fiche-badge" data-i18n="fiche.badge">Conception &amp; architecture sur-mesure</p>
 
             <div class="fiche-foot">
                 <span class="fiche-brand">Yaro Consulting</span>
                 <span class="fiche-foot-right">yaroconsulting.fr · <em data-i18n="fiche.tagline">Transformer les idées en systèmes qui performent</em></span>
             </div>
         </div>
-    </div>
+    </dialog>
 
     <!-- ASSISTANT GUIDÉ -->
-    <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant Yaro Consulting" aria-hidden="true">
+    <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant Yaro Consulting" inert>
         <div class="chat-header">
             <div class="chat-avatar">Y</div>
             <div class="chat-header-info">
@@ -2438,7 +2489,7 @@
         <div class="chat-body" id="chatBody"></div>
         <div class="chat-quick" id="chatQuick"></div>
     </div>
-    <button class="chat-launcher" id="chatLauncher" aria-label="Ouvrir l'assistant" aria-expanded="false">
+    <button class="chat-launcher" id="chatLauncher" type="button" aria-label="Ouvrir l'assistant" aria-controls="chatPanel" aria-expanded="false">
         <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
         <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
@@ -2484,7 +2535,7 @@
                 'fiche.badge': 'Custom design & architecture',
                 'fiche.tagline': 'Turning ideas into systems that perform',
                 'cookie.text': 'We use audience-measurement cookies (Google Analytics) to improve the site. You can accept or decline.',
-                'cookie.accept': 'Accept', 'cookie.refuse': 'Decline',
+                'cookie.accept': 'Accept', 'cookie.refuse': 'Decline', 'cookie.manage': 'Manage cookies', 'nav.skip': 'Skip to content',
                 'nav.legal': 'Legal notice', 'contact.rdv': 'Book a meeting',
                 'wa.title': 'WhatsApp message', 'wa.intro': 'Fill in these fields: we prepare your WhatsApp message automatically.', 'wa.subject': 'Subject', 'wa.subjectPlaceholder': 'Your need in a word', 'wa.send': 'Open WhatsApp',
                 'real1.cat': 'Strategic communication', 'real1.name': 'Citizen &amp; institutional platform',
@@ -2583,7 +2634,7 @@
                 'fiche.badge': 'Diseño y arquitectura a medida',
                 'fiche.tagline': 'Transformar las ideas en sistemas que rinden',
                 'cookie.text': 'Usamos cookies de medición de audiencia (Google Analytics) para mejorar el sitio. Puede aceptar o rechazar.',
-                'cookie.accept': 'Aceptar', 'cookie.refuse': 'Rechazar',
+                'cookie.accept': 'Aceptar', 'cookie.refuse': 'Rechazar', 'cookie.manage': 'Gestionar cookies', 'nav.skip': 'Ir al contenido',
                 'nav.legal': 'Aviso legal', 'contact.rdv': 'Reservar una cita',
                 'wa.title': 'Mensaje de WhatsApp', 'wa.intro': 'Rellene estos campos: preparamos su mensaje de WhatsApp automáticamente.', 'wa.subject': 'Asunto', 'wa.subjectPlaceholder': 'Su necesidad en una palabra', 'wa.send': 'Abrir WhatsApp',
                 'real1.cat': 'Comunicación estratégica', 'real1.name': 'Plataforma ciudadana e institucional',
@@ -2788,79 +2839,76 @@
         const menuBtn = document.getElementById('menuBtn');
         const fullMenu = document.getElementById('fullMenu');
         function toggleMenu(force) {
-            const open = force ?? !fullMenu.classList.contains('open');
+            const open = force ?? !fullMenu.open;
+            if (open && !fullMenu.open) fullMenu.showModal();
+            if (!open && fullMenu.open) fullMenu.close();
             menuBtn.classList.toggle('open', open);
             fullMenu.classList.toggle('open', open);
-            menuBtn.setAttribute('aria-expanded', open);
-            document.body.style.overflow = open ? 'hidden' : '';
+            menuBtn.setAttribute('aria-expanded', String(open));
         }
         menuBtn.addEventListener('click', () => toggleMenu());
         document.getElementById('menuClose').addEventListener('click', () => toggleMenu(false));
         fullMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && fullMenu.classList.contains('open')) toggleMenu(false);
+        fullMenu.addEventListener('close', () => {
+            menuBtn.classList.remove('open');
+            fullMenu.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
         });
+
+        function setModalOpen(dialog, open) {
+            if (open && !dialog.open) dialog.showModal();
+            else if (!open && dialog.open) dialog.close();
+        }
+        function dismissOnBackdrop(dialog) {
+            // Fallback pour Safari et les navigateurs sans prise en charge de closedby="any".
+            if ('closedBy' in HTMLDialogElement.prototype) return;
+            dialog.addEventListener('click', e => {
+                if (e.target !== dialog) return;
+                const content = dialog.querySelector('.fiche-modal').getBoundingClientRect();
+                if (e.clientX < content.left || e.clientX > content.right ||
+                    e.clientY < content.top || e.clientY > content.bottom) dialog.close();
+            });
+        }
 
         // Fiche technique (modal)
         const ficheOverlay = document.getElementById('ficheOverlay');
         const openFicheBtn = document.getElementById('openFicheBtn');
         const ficheClose = document.getElementById('ficheClose');
         function toggleFiche(open) {
-            ficheOverlay.classList.toggle('open', open);
-            ficheOverlay.setAttribute('aria-hidden', !open);
-            document.body.style.overflow = open ? 'hidden' : '';
+            setModalOpen(ficheOverlay, open);
         }
         if (openFicheBtn) openFicheBtn.addEventListener('click', () => toggleFiche(true));
         if (ficheClose) ficheClose.addEventListener('click', () => toggleFiche(false));
-        if (ficheOverlay) ficheOverlay.addEventListener('click', e => { if (e.target === ficheOverlay) toggleFiche(false); });
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && ficheOverlay.classList.contains('open')) toggleFiche(false);
-        });
+        if (ficheOverlay) dismissOnBackdrop(ficheOverlay);
 
         // Mentions légales (modal)
         const legalOverlay = document.getElementById('legalOverlay');
         function toggleLegal(open) {
-            legalOverlay.classList.toggle('open', open);
-            legalOverlay.setAttribute('aria-hidden', !open);
-            document.body.style.overflow = open ? 'hidden' : '';
+            setModalOpen(legalOverlay, open);
         }
         const openLegalBtn = document.getElementById('openLegal');
         const legalCloseBtn = document.getElementById('legalClose');
         if (openLegalBtn) openLegalBtn.addEventListener('click', () => toggleLegal(true));
         if (legalCloseBtn) legalCloseBtn.addEventListener('click', () => toggleLegal(false));
-        if (legalOverlay) legalOverlay.addEventListener('click', e => { if (e.target === legalOverlay) toggleLegal(false); });
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && legalOverlay.classList.contains('open')) toggleLegal(false);
-        });
+        if (legalOverlay) dismissOnBackdrop(legalOverlay);
 
         // Formulaire WhatsApp : les liens WhatsApp ouvrent un mini-formulaire qui génère le message
         const waOverlay = document.getElementById('waOverlay');
         function toggleWa(open) {
-            waOverlay.classList.toggle('open', open);
-            waOverlay.setAttribute('aria-hidden', !open);
-            document.body.style.overflow = open ? 'hidden' : '';
-            if (open) setTimeout(() => { const n = document.getElementById('waName'); if (n) n.focus(); }, 200);
+            setModalOpen(waOverlay, open);
         }
         document.addEventListener('click', e => {
             const trigger = e.target.closest('.wa-trigger');
             if (trigger) { e.preventDefault(); toggleWa(true); }
         });
         document.getElementById('waClose').addEventListener('click', () => toggleWa(false));
-        waOverlay.addEventListener('click', e => { if (e.target === waOverlay) toggleWa(false); });
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && waOverlay.classList.contains('open')) toggleWa(false);
-        });
-        document.getElementById('waSend').addEventListener('click', () => {
+        dismissOnBackdrop(waOverlay);
+        document.getElementById('waForm').addEventListener('submit', event => {
+            event.preventDefault();
             const name = document.getElementById('waName').value.trim();
             const subject = document.getElementById('waSubject').value.trim();
             const message = document.getElementById('waMessage').value.trim();
-            if (!name || !message) {
-                const miss = !name ? document.getElementById('waName') : document.getElementById('waMessage');
-                miss.style.borderColor = '#c2603f';
-                miss.focus();
-                setTimeout(() => { miss.style.borderColor = ''; }, 2000);
-                return;
-            }
+            if (!name || !message) return;
             const wm = WA_MSG[LANG] || WA_MSG.fr;
             let text = `${wm.greeting}\n\n${wm.iam} ${name}`;
             if (subject) text += ` — ${subject}`;
@@ -2875,9 +2923,14 @@
             const banner = document.getElementById('cookieBanner');
             const accept = document.getElementById('cookieAccept');
             const refuse = document.getElementById('cookieRefuse');
+            const settings = document.getElementById('openCookieSettings');
             if (!banner) return;
             function loadGA() {
-                if (window.__gaLoaded) return;
+                window['ga-disable-' + GA_ID] = false;
+                if (window.__gaLoaded) {
+                    window.gtag?.('consent', 'update', { analytics_storage: 'granted' });
+                    return;
+                }
                 window.__gaLoaded = true;
                 const s = document.createElement('script');
                 s.async = true;
@@ -2885,22 +2938,45 @@
                 document.head.appendChild(s);
                 window.dataLayer = window.dataLayer || [];
                 window.gtag = function () { dataLayer.push(arguments); };
+                gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied' });
                 gtag('js', new Date());
                 gtag('config', GA_ID, { anonymize_ip: true });
             }
-            function hide() { banner.classList.remove('show'); banner.setAttribute('aria-hidden', 'true'); document.body.classList.remove('cookie-banner-visible'); }
+            function revokeGA() {
+                window['ga-disable-' + GA_ID] = true;
+                window.gtag?.('consent', 'update', { analytics_storage: 'denied' });
+                // Effacer uniquement les cookies de mesure associés à Google Analytics.
+                document.cookie.split(';').forEach(part => {
+                    const name = part.trim().split('=')[0];
+                    if (!/^(_ga($|_)|_gid$|_gat($|_))/.test(name)) return;
+                    document.cookie = name + '=; Max-Age=0; Path=/; SameSite=Lax';
+                    document.cookie = name + '=; Max-Age=0; Path=/; Domain=.yaroconsulting.fr; SameSite=Lax';
+                });
+            }
+            function hide() {
+                banner.classList.remove('show');
+                banner.inert = true;
+                document.body.classList.remove('cookie-banner-visible');
+            }
+            function show() {
+                banner.inert = false;
+                banner.classList.add('show');
+                document.body.classList.add('cookie-banner-visible');
+            }
             let consent = null;
             try { consent = localStorage.getItem('yaro_cookie_consent'); } catch (e) {}
             if (consent === 'granted') { loadGA(); }
             else if (consent !== 'denied') {
-                setTimeout(() => { banner.classList.add('show'); banner.setAttribute('aria-hidden', 'false'); document.body.classList.add('cookie-banner-visible'); }, 1200);
+                setTimeout(show, 1200);
             }
+            settings?.addEventListener('click', show);
             accept.addEventListener('click', () => {
                 try { localStorage.setItem('yaro_cookie_consent', 'granted'); } catch (e) {}
                 loadGA(); hide();
             });
             refuse.addEventListener('click', () => {
                 try { localStorage.setItem('yaro_cookie_consent', 'denied'); } catch (e) {}
+                revokeGA();
                 hide();
             });
         })();
@@ -2919,20 +2995,15 @@
 
         // Formulaire → WhatsApp
         const WHATSAPP_NUMBER = '33608888768';
-        const sendBtn = document.getElementById('sendBtn');
-        sendBtn.addEventListener('click', () => {
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', event => {
+            event.preventDefault();
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const company = document.getElementById('company').value.trim();
             const message = document.getElementById('message').value.trim();
 
-            if (!name || !message) {
-                const missing = !name ? document.getElementById('name') : document.getElementById('message');
-                missing.style.borderColor = '#c2603f';
-                missing.focus();
-                setTimeout(() => { missing.style.borderColor = ''; }, 2000);
-                return;
-            }
+            if (!name || !message) return;
 
             const wm = WA_MSG[LANG] || WA_MSG.fr;
             let text = `${wm.greeting}\n\n`;
@@ -3043,8 +3114,11 @@
                 const open = panel.classList.toggle('open');
                 launcher.classList.toggle('open', open);
                 launcher.setAttribute('aria-expanded', open ? 'true' : 'false');
-                panel.setAttribute('aria-hidden', open ? 'false' : 'true');
-                if (open) start();
+                panel.inert = !open;
+                if (open) {
+                    start();
+                    quick.querySelector('button')?.focus();
+                } else launcher.focus();
             }
 
             launcher.addEventListener('click', toggle);
