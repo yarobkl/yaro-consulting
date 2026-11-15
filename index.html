@@ -1854,13 +1854,21 @@
 </head>
 <body>
 
+    <!-- Signature d'ouverture : purement décorative, sans bloquer la navigation. -->
+    <div class="site-opening" aria-hidden="true">
+        <div class="site-opening-mark">
+            <img src="images/logo-yaro-consulting.webp" width="1774" height="887" alt="" decoding="async">
+            <span class="site-opening-line"></span>
+        </div>
+    </div>
+
     <a class="skip-link" href="#main-content" data-i18n="nav.skip">Aller au contenu</a>
 
     <!-- NAV -->
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
     <nav id="nav">
-        <a href="#main-content" class="logo" aria-label="Yaro Consulting — accueil"><img src="images/logo-yaro-consulting.webp" width="1774" height="887" alt="Yaro Consulting"></a>
+        <a href="#accueil" class="logo" aria-label="Yaro Consulting — retour à l’accueil"><img src="images/logo-yaro-consulting.webp" width="1774" height="887" alt="Yaro Consulting"></a>
         <ul class="nav-links">
             <li><a href="#vision" data-i18n="nav.vision">Vision</a></li>
             <li><a href="#expertises" data-i18n="nav.expertises">Expertises</a></li>
@@ -1909,7 +1917,7 @@
     <main id="main-content" tabindex="-1">
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="accueil">
         <div class="hero-bg" id="heroBg">
             <picture>
                 <source srcset="images/portrait.avif" type="image/avif">
@@ -2348,7 +2356,7 @@
     <!-- FOOTER -->
     </main>
     <footer>
-        <a class="footer-logo" href="#main-content" aria-label="Retour à l'accueil"><img src="images/logo-yaro-consulting.webp" width="1774" height="887" alt="Yaro Consulting"></a>
+        <a class="footer-logo" href="#accueil" aria-label="Retour à l’accueil"><img src="images/logo-yaro-consulting.webp" width="1774" height="887" alt="Yaro Consulting"></a>
         <ul class="footer-links">
             <li><a href="#vision" data-i18n="nav.vision">Vision</a></li>
             <li><a href="#expertises" data-i18n="nav.expertises">Expertises</a></li>

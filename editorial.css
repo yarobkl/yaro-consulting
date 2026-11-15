@@ -25,6 +25,49 @@ a, button, select { cursor: pointer; }
 ::selection { background: #dac5b4; color: var(--text); }
 .scroll-progress { height: 2px; background: var(--accent-deep); }
 
+/* Une signature d'ouverture courte, ivoire et champagne ; aucune attente JS. */
+.site-opening { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .site-opening {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: grid;
+    place-items: center;
+    background: var(--paper);
+    pointer-events: none;
+    animation: yaroOpeningCurtain 1.15s cubic-bezier(.76, 0, .24, 1) both;
+  }
+  .site-opening-mark {
+    width: clamp(180px, 45vw, 290px);
+    display: grid;
+    justify-items: center;
+    gap: 1.1rem;
+    animation: yaroOpeningMark .65s ease-out both;
+  }
+  .site-opening-mark img { display: block; width: 100%; height: auto; }
+  .site-opening-line {
+    display: block;
+    width: 56px;
+    height: 1px;
+    background: var(--gold-light);
+    transform-origin: center;
+    animation: yaroOpeningLine .72s ease-out both;
+  }
+}
+@keyframes yaroOpeningCurtain {
+  0%, 36% { transform: translateY(0); }
+  100% { transform: translateY(-102%); }
+}
+@keyframes yaroOpeningMark {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes yaroOpeningLine {
+  from { opacity: 0; transform: scaleX(.15); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
 /* Entête sobre, avec le vrai monogramme de marque. */
 nav, nav.scrolled {
   background: rgba(250, 248, 244, .94);
