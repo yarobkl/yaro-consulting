@@ -2739,6 +2739,7 @@
         const CHAT = {
             fr: {
                 welcome: "Bonjour. Je suis l'assistant de Yaro Consulting. Comment puis-je vous aider ?",
+                openLabel: "Ouvrir l'assistant", closeLabel: "Fermer l'assistant",
                 home: ['expertises', 'solutions', 'methode', 'rdv', 'contact'],
                 topics: {
                     expertises: { label: 'Nos expertises', bot: "Nous mobilisons quatre expertises à chaque mission :\n\n• Stratégie & performance opérationnelle\n• Transformation digitale\n• Automatisation & outils digitaux\n• Expérience utilisateur & produits digitaux", quick: ['solutions', 'methode', 'rdv'] },
@@ -2750,6 +2751,7 @@
             },
             en: {
                 welcome: "Hello. I'm the Yaro Consulting assistant. How can I help you?",
+                openLabel: 'Open the assistant', closeLabel: 'Close the assistant',
                 home: ['expertises', 'solutions', 'methode', 'rdv', 'contact'],
                 topics: {
                     expertises: { label: 'Our expertise', bot: "We bring four areas of expertise to every engagement:\n\n• Strategy & operational performance\n• Digital transformation\n• Automation & digital tools\n• User experience & digital products", quick: ['solutions', 'methode', 'rdv'] },
@@ -2761,6 +2763,7 @@
             },
             es: {
                 welcome: "Hola. Soy el asistente de Yaro Consulting. ¿En qué puedo ayudarle?",
+                openLabel: 'Abrir el asistente', closeLabel: 'Cerrar el asistente',
                 home: ['expertises', 'solutions', 'methode', 'rdv', 'contact'],
                 topics: {
                     expertises: { label: 'Nuestras especialidades', bot: "Aportamos cuatro especialidades en cada misión:\n\n• Estrategia y rendimiento operativo\n• Transformación digital\n• Automatización y herramientas digitales\n• Experiencia de usuario y productos digitales", quick: ['solutions', 'methode', 'rdv'] },
@@ -3069,6 +3072,9 @@
 
             let started = false;
             function data() { return CHAT[LANG] || CHAT.fr; }
+            function syncLauncherLabel() {
+                launcher.setAttribute('aria-label', panel.classList.contains('open') ? data().closeLabel : data().openLabel);
+            }
 
             function addMsg(html, who) {
                 const el = document.createElement('div');
@@ -3118,6 +3124,7 @@
                 started = false;
                 body.innerHTML = '';
                 quick.innerHTML = '';
+                syncLauncherLabel();
                 if (panel.classList.contains('open')) start();
             }
 
@@ -3125,6 +3132,7 @@
                 const open = panel.classList.toggle('open');
                 launcher.classList.toggle('open', open);
                 launcher.setAttribute('aria-expanded', open ? 'true' : 'false');
+                syncLauncherLabel();
                 panel.inert = !open;
                 if (open) {
                     start();
