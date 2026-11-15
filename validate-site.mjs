@@ -27,7 +27,7 @@ for (const [, anchor] of html.matchAll(/href="#([^"]+)"/g)) {
   if (anchor) check(ids.includes(anchor), `Ancre absente : #${anchor}`);
 }
 for (const [, filename] of html.matchAll(/(?:src|href)="((?:images\/|editorial\.css)[^"]+)"/g)) {
-  check(fs.existsSync(path.join(root, filename)), `Ressource absente : ${filename}`);
+  check(fs.existsSync(path.join(root, filename.split(/[?#]/, 1)[0])), `Ressource absente : ${filename}`);
 }
 for (const match of html.matchAll(/<img\b[^>]*>/g)) {
   check(/\balt="/.test(match[0]), 'Image sans attribut alt');
