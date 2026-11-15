@@ -290,6 +290,16 @@ main section { scroll-margin-top: 6rem; }
   min-height: 34px;
 }
 .chat-panel .chat-quick button:hover { color: #fffaf3; background: var(--text); }
+@media (max-width: 767px) {
+  /* Garder toutes les réponses visibles quand les cookies sont proposés. */
+  body.cookie-banner-visible .chat-panel {
+    bottom: 10.8rem;
+    height: min(540px, calc(100dvh - 15rem));
+  }
+  /* Le sous-titre de la fiche ne doit jamais passer sous le bouton fermer. */
+  .fiche-modal .fiche-head { display: block; }
+  .fiche-modal .fiche-eyebrow { text-align: left; max-width: none; margin-top: 1rem; }
+}
 @media (forced-colors: active) {
   .fiche-modal, .cookie-banner, .chat-panel,
   .fiche-close, .cookie-btn, .chat-quick button { border: 1px solid CanvasText; }
