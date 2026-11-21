@@ -2200,6 +2200,10 @@
                         <span data-i18n="qr.cta">Télécharger sur l'App Store</span>
                         <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>
+                    <button type="button" class="project-link project-link-btn" id="openQrFicheBtn" aria-haspopup="dialog" aria-controls="qrFicheOverlay">
+                        <span data-i18n="real.sheet">Voir la fiche technique</span>
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9M4.5 7.5 8 11l3.5-3.5M3 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
                 </div>
             </div>
             <div class="service-card project-card project-card-feature reveal reveal-delay-1">
@@ -2530,6 +2534,61 @@
         </div>
     </dialog>
 
+    <!-- FICHE TECHNIQUE QR PERMANENT (application iOS native) -->
+    <dialog class="fiche-overlay" id="qrFicheOverlay" aria-label="Fiche technique QR Permanent" aria-labelledby="qrFicheTitle" closedby="any">
+        <div class="fiche-modal">
+            <button class="fiche-close" id="qrFicheClose" type="button" aria-label="Fermer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+            <div class="fiche-head">
+                <div>
+                    <p class="fiche-brand">Yaro Consulting</p>
+                    <p class="fiche-brand-sub" data-i18n="qrtech.brandsub">Conception · Développement iOS · Produit</p>
+                </div>
+                <p class="fiche-eyebrow" data-i18n="fiche.eyebrow">Étude de cas · Fiche technique</p>
+            </div>
+
+            <h3 class="fiche-title" id="qrFicheTitle" data-i18n="qrtech.title">QR Permanent — Application iOS</h3>
+            <p class="fiche-sub" data-i18n="qrtech.subtitle">Utilitaire natif · Gratuit · Sans compte ni publicité</p>
+
+            <p class="fiche-section-label" data-i18n="qrtech.scope">Objectif &amp; fonctionnalités</p>
+            <ul class="fiche-mission">
+                <li data-i18n="qrtech.f1">Génération de QR codes statiques pour liens, réseaux Wi-Fi et cartes de contact vCard</li>
+                <li data-i18n="qrtech.f2">Personnalisation des couleurs et des pictogrammes</li>
+                <li data-i18n="qrtech.f3">Bibliothèque locale avec recherche, favoris et suppression</li>
+                <li data-i18n="qrtech.f4">Synchronisation privée iCloud facultative, stockage hors ligne</li>
+                <li data-i18n="qrtech.f5">Partage natif et ajout de passes dans Apple Wallet</li>
+                <li data-i18n="qrtech.f6">QR codes sans expiration imposée par l'application ; liens externes susceptibles de changer</li>
+            </ul>
+
+            <p class="fiche-section-label" data-i18n="fiche.stack">Stack technique</p>
+            <div class="fiche-stack">
+                <div class="fiche-row"><span class="fiche-key" data-i18n="qrtech.platform">Plateforme</span><span class="fiche-val">iOS 17+</span></div>
+                <div class="fiche-row"><span class="fiche-key" data-i18n="qrtech.app">Application</span><span class="fiche-val">Swift · SwiftUI · Xcode</span></div>
+                <div class="fiche-row"><span class="fiche-key" data-i18n="qrtech.qrgen">Génération QR</span><span class="fiche-val">Core Image · Core Graphics</span></div>
+                <div class="fiche-row"><span class="fiche-key" data-i18n="qrtech.storage">Stockage local</span><span class="fiche-val">SwiftData</span></div>
+                <div class="fiche-row"><span class="fiche-key" data-i18n="qrtech.sync">Synchronisation</span><span class="fiche-val">iCloud · CloudKit (optionnel)</span></div>
+                <div class="fiche-row"><span class="fiche-key" data-i18n="qrtech.wallet">Cartes</span><span class="fiche-val">PassKit · Apple Wallet</span></div>
+                <div class="fiche-row"><span class="fiche-key" data-i18n="qrtech.api">Signature des passes</span><span class="fiche-val">Python · HTTPS · Vercel Functions</span></div>
+                <div class="fiche-row"><span class="fiche-key">Versioning</span><span class="fiche-val">Git · GitHub</span></div>
+            </div>
+
+            <p class="fiche-badge" data-i18n="qrtech.badge">Application iPhone native · Vie privée dès la conception</p>
+
+            <div class="project-actions">
+                <a class="project-link" href="https://apps.apple.com/fr/app/id6834140571" target="_blank" rel="noopener noreferrer">
+                    <span data-i18n="qr.cta">Télécharger sur l'App Store</span>
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+
+            <div class="fiche-foot">
+                <span class="fiche-brand">Yaro Consulting</span>
+                <span class="fiche-foot-right">yaroconsulting.fr · <em data-i18n="fiche.tagline">Transformer les idées en systèmes qui performent</em></span>
+            </div>
+        </div>
+    </dialog>
+
     <!-- ASSISTANT GUIDÉ -->
     <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistant Yaro Consulting" inert>
         <div class="chat-header">
@@ -2580,6 +2639,24 @@
                 'qr.f3': 'Apple Wallet integration',
                 'qr.f4': 'Easy customization and sharing',
                 'qr.cta': 'Download on the App Store',
+                'qrtech.brandsub': 'Design · iOS development · Product',
+                'qrtech.title': 'QR Permanent — iOS App',
+                'qrtech.subtitle': 'Native utility · Free · No account or ads',
+                'qrtech.scope': 'Purpose &amp; features',
+                'qrtech.f1': 'Static QR codes for links, Wi-Fi networks and vCard contacts',
+                'qrtech.f2': 'Custom colors and icons',
+                'qrtech.f3': 'Local library with search, favorites and deletion',
+                'qrtech.f4': 'Optional private iCloud sync with offline storage',
+                'qrtech.f5': 'Native sharing and Apple Wallet passes',
+                'qrtech.f6': 'No app-imposed QR expiration; external destinations may change',
+                'qrtech.platform': 'Platform',
+                'qrtech.app': 'App',
+                'qrtech.qrgen': 'QR generation',
+                'qrtech.storage': 'Local storage',
+                'qrtech.sync': 'Sync',
+                'qrtech.wallet': 'Wallet',
+                'qrtech.api': 'Pass signing',
+                'qrtech.badge': 'Native iPhone app · Privacy by design',
                 'fiche.brandsub': 'Strategy · Digital · Brand',
                 'fiche.eyebrow': 'Case study · Tech sheet',
                 'fiche.projectTitle': 'GaspardNZ — Website &amp; iOS app',
@@ -2692,6 +2769,24 @@
                 'qr.f3': 'Integración con Apple Wallet',
                 'qr.f4': 'Personalización y uso compartido sencillos',
                 'qr.cta': 'Descargar en App Store',
+                'qrtech.brandsub': 'Diseño · Desarrollo iOS · Producto',
+                'qrtech.title': 'QR Permanent — Aplicación iOS',
+                'qrtech.subtitle': 'Utilidad nativa · Gratis · Sin cuenta ni anuncios',
+                'qrtech.scope': 'Objetivo y funcionalidades',
+                'qrtech.f1': 'Códigos QR estáticos para enlaces, redes Wi-Fi y contactos vCard',
+                'qrtech.f2': 'Colores e iconos personalizables',
+                'qrtech.f3': 'Biblioteca local con búsqueda, favoritos y eliminación',
+                'qrtech.f4': 'Sincronización privada opcional con iCloud y almacenamiento sin conexión',
+                'qrtech.f5': 'Compartir de forma nativa y añadir pases a Apple Wallet',
+                'qrtech.f6': 'Sin caducidad impuesta por la app; los destinos externos pueden cambiar',
+                'qrtech.platform': 'Plataforma',
+                'qrtech.app': 'Aplicación',
+                'qrtech.qrgen': 'Generación QR',
+                'qrtech.storage': 'Almacenamiento local',
+                'qrtech.sync': 'Sincronización',
+                'qrtech.wallet': 'Wallet',
+                'qrtech.api': 'Firma de pases',
+                'qrtech.badge': 'Aplicación nativa para iPhone · Privacidad desde el diseño',
                 'fiche.brandsub': 'Estrategia · Digital · Marca',
                 'fiche.eyebrow': 'Estudio de caso · Ficha técnica',
                 'fiche.projectTitle': 'GaspardNZ — Web y aplicación iOS',
@@ -2943,6 +3038,18 @@
         if (openFicheBtn) openFicheBtn.addEventListener('click', () => toggleFiche(true));
         if (ficheClose) ficheClose.addEventListener('click', () => toggleFiche(false));
         if (ficheOverlay) dismissOnBackdrop(ficheOverlay);
+
+        // Fiche technique QR Permanent (modal indépendant)
+        const qrFicheOverlay = document.getElementById('qrFicheOverlay');
+        const openQrFicheBtn = document.getElementById('openQrFicheBtn');
+        const qrFicheClose = document.getElementById('qrFicheClose');
+        if (openQrFicheBtn && qrFicheOverlay) {
+            openQrFicheBtn.addEventListener('click', () => setModalOpen(qrFicheOverlay, true));
+        }
+        if (qrFicheClose && qrFicheOverlay) {
+            qrFicheClose.addEventListener('click', () => setModalOpen(qrFicheOverlay, false));
+        }
+        if (qrFicheOverlay) dismissOnBackdrop(qrFicheOverlay);
 
         // Mentions légales (modal)
         const legalOverlay = document.getElementById('legalOverlay');
